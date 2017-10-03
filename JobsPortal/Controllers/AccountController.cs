@@ -36,14 +36,14 @@ namespace JobsPortal.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddJobOffer(JobOfferViewModel jobOFfer)
-        {
-            if(ModelState.IsValid)
-            {
-                await _jobOfferService.AddJobOferAsync(jobOFfer);
-            }
-            return View();
-        }
+        //public async Task<ActionResult> AddJobOffer(JobOfferViewModel jobOFfer)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        await _jobOfferService.AddJobOferAsync(jobOFfer);
+        //    }
+        //    return View();
+        //}
 
         public ApplicationSignInManager SignInManager
         {

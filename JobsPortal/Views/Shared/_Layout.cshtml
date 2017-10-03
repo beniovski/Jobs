@@ -9,56 +9,142 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/modern-business.css" rel="stylesheet">
     <link href="../Content/parallax.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Content/font-awesome.min.css">
+    <link rel="stylesheet" href="../Content/icofont.css">
+    <link rel="stylesheet" href="../Content/slidr.css">
+    <link rel="stylesheet" href="../Content/main.css"> 
+
 </head>
 <body>
+    <!-- header -->
+    <header id="header" class="clearfix">
+        <!-- navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- navbar-header -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img class="img-responsive" src="images/logo.png" alt="Logo"></a>
+                </div>
+                <!-- /navbar-header -->
 
-    <!-- Static navbar -->
-    <nav class="navbar-default">
-        <div class="container container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-static-top">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Job OFfer</a></li>
-                    <li><a href="#">Your Carrier</a></li>
-                    <li><a href="#">Companies</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li>@Html.ActionLink("Registration", "Register", "Company")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Company")</li>
-                    <li>@Html.ActionLink("Add Offer", "AddOffer", "Company")</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                <div class="navbar-left">
+                    <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="job-list.html">Job list</a></li>
+                            <li><a href="details.html">Job Details</a></li>
+                            <li><a href="resume.html">Resume</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="post-resume.html">Post Resume</a></li>
+                                    <li><a href="post.html">Job Post</a></li>
+                                    <li><a href="edit-resume.html">Edit Resume</a></li>
+                                    <li><a href="profile-details.html">profile Details</a></li>
+                                    <li><a href="bookmark.html">Bookmark</a></li>
+                                    <li><a href="applied-job.html">Applied Job</a></li>
+                                    <li><a href="delete-account.html">Close Account</a></li>
+                                    <li><a href="signup.html">Job Signup</a></li>
+                                    <li><a href="signin.html">Job Signin</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </nav>
+                    </div>
+                </div><!-- navbar-left -->
+                <!-- nav-right -->
+                <div class="nav-right">
+                    <ul class="sign-in">
+                        <li><i class="fa fa-user"></i></li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    </ul><!-- sign-in -->
+
+                    
+                </div>
+                <!-- nav-right -->
+            </div><!-- container -->
+        </nav><!-- navbar -->
+    </header><!-- header -->
     @RenderSection("HomeSlider", required: false)
 
 
     @RenderBody()
     <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year — moja aplikacja platformy ASP.NET</p>
-    </footer>
+    <!-- footer -->
+    <footer id="footer" class="clearfix">
+        <!-- footer-top -->
+        <section class="footer-top clearfix">
+            <div class="container">
+                <div class="row">
+                    <!-- footer-widget -->
+                    <div class="col-sm-3">
+                        <div class="footer-widget">
+                            <h3>Quik Links</h3>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">All Cities</a></li>
+                                <li><a href="#">Help & Support</a></li>
+                                <li><a href="#">Advertise With Us</a></li>
+                            </ul>
+                        </div>
+                    </div><!-- footer-widget -->
+                    <!-- footer-widget -->
+                    <div class="col-sm-3">
+                        <div class="footer-widget">
+                            <h3>How to sell fast</h3>
+                            <ul>
+                                <li><a href="#">How to sell fast</a></li>
+                                <li><a href="#">Membership</a></li>
+                                <li><a href="#">Banner Advertising</a></li>
+                                <li><a href="#">Promote your ad</a></li>
+                                <li><a href="#">Jobs Delivers</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div><!-- footer-widget -->
+                    <!-- footer-widget -->
+                    <div class="col-sm-3">
+                        <div class="footer-widget social-widget">
+                            <h3>Follow us on</h3>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook-official"></i>Facebook</a></li>
+                                <li><a href="#"><i class="fa fa-twitter-square"></i>Twitter</a></li>
+                                <li><a href="#"><i class="fa fa-google-plus-square"></i>Google+</a></li>
+                                <li><a href="#"><i class="fa fa-youtube-play"></i>youtube</a></li>
+                            </ul>
+                        </div>
+                    </div><!-- footer-widget -->
+                    <!-- footer-widget -->
+                    <div class="col-sm-3">
+                        <div class="footer-widget news-letter">
+                            <h3>Newsletter</h3>
+                            <p>Jobs is Worldest leading Portal platform that brings!</p>
+                            <!-- form -->
+                            <form action="#">
+                                <input type="email" class="form-control" placeholder="Your email id">
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </form><!-- form -->
+                        </div>
+                    </div><!-- footer-widget -->
+                </div><!-- row -->
+            </div><!-- container -->
+        </section><!-- footer-top -->
+
+        <div class="footer-bottom clearfix text-center">
+            <div class="container">
+                <p>Copyright &copy; <a href="#">Jobs</a> 2017. Developed by <a href="http://themeregion.com/">ThemeRegion</a></p>
+            </div>
+        </div><!-- footer-bottom -->
+    </footer><!-- footer -->
 
 
     @Scripts.Render("~/bundles/jquery")
