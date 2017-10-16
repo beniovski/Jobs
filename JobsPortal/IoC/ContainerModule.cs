@@ -12,8 +12,9 @@ namespace JobsPortal.IoC
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<JobOfferService>().As<IJobOfferService>();
             builder.RegisterType<JobRepository>().As<IJobOfferRepositories>();
+            builder.RegisterType<JobOfferService>().As<IJobOfferService>();
+          
 
             base.Load(builder);
 

@@ -121,3 +121,5 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Autofac.Integration.Mvc.xml
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\AutoMapper.xml
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addreference.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addcompanyidtojoboffers.resources

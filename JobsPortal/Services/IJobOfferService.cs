@@ -10,5 +10,9 @@ namespace JobsPortal.Services
     public interface IJobOfferService
     {
         Task AddJobOferAsync(JobOfferViewModel jobOffer);
+
+        Task <IEnumerable<JobOfferViewModel>> GetAllJobOfferAsync();
+
+        Task<JobOfferViewModel> GetJobOfferByIdAsync(int id); 
     }
 }

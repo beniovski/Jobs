@@ -1,6 +1,8 @@
-﻿using System;
+﻿using JobsPortal.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,11 +10,19 @@ namespace JobsPortal.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private readonly IJobOfferService _jobOfferService;
 
+        public HomeController(IJobOfferService jobOfferService)
+        {
+            _jobOfferService = jobOfferService;
+        }
+        public async Task<ActionResult> Index()
+        {
+            var jobOffer = await _jobOfferService.GetAllJobOfferAsync();
+
+            return View(jobOffer);
+        }
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

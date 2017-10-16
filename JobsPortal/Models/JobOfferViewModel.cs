@@ -44,5 +44,9 @@ namespace JobsPortal.Models
         public Decimal SalaryMin { get; set; }
 
         public Decimal SalaryMax { get; set; }
+
+        public string CompanyId { get; set; }
+
+        public ApplicationUser Company { get; set; }
     }
 }

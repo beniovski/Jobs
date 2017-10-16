@@ -1,0 +1,29 @@
+﻿.bgnd {
+    background-attachment: fixed;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 54vh;
+    max-height: 1200px;
+    min-height: 200px;
+}
+
+header + .bgnd {
+    height: 86vh;
+}
+
+.bgnd-1 {
+    background-image: url(http://placehold.it/1900x1080);
+}
+
+.bgnd-2 {
+    background-image: url(http://placehold.it/1900x1080);
+}
+
+.bgnd-3 {
+    background-image: url(http://placehold.it/1900x1080);
+}
+
+.bgnd-4 {
+    background-image: url(http://placehold.it/1900x1080);
+}

@@ -21,5 +21,15 @@ namespace JobsPortal.Services
         {
             await _jobOfferRepository.AddJobOfferAsync(jobOffer);
         }
+
+        public async Task<IEnumerable<JobOfferViewModel>> GetAllJobOfferAsync()
+        {
+            return await _jobOfferRepository.GetAllAsync();
+        }
+
+        public async Task<JobOfferViewModel> GetJobOfferByIdAsync(int id)
+        {
+            return await _jobOfferRepository.GetAsync(id);
+        }
     }
 }

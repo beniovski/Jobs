@@ -11,7 +11,9 @@ namespace JobsPortal.Repositories
     {
         Task AddJobOfferAsync(JobOfferViewModel jobOffer);
 
-        Task GetAsync(int id);
+        Task<IEnumerable<JobOfferViewModel>> GetAllAsync();
+
+        Task<JobOfferViewModel> GetAsync(int id);
        
     }
 }

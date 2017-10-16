@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using JobsPortal.Models;
+using System.Collections;
 
 namespace JobsPortal.Repositories
 {
@@ -22,9 +23,12 @@ namespace JobsPortal.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task GetAsync(int id)
+        public async Task <IEnumerable<JobOfferViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _dbContext.JobOfferViewModel;
         }
+
+        public async Task<JobOfferViewModel> GetAsync(int id) => await Task.FromResult(_dbContext.JobOfferViewModel.FirstOrDefault(x => x.Id == id));
+     
     }
 }

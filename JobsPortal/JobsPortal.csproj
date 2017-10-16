@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,6 +216,14 @@
     <Compile Include="Migrations\201709251624398_add jobOfferMOdel.cs" />
     <Compile Include="Migrations\201709251624398_add jobOfferMOdel.Designer.cs">
       <DependentUpon>201709251624398_add jobOfferMOdel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091628456_add reference.cs" />
+    <Compile Include="Migrations\201710091628456_add reference.Designer.cs">
+      <DependentUpon>201710091628456_add reference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091646240_add company id to joboffers.cs" />
+    <Compile Include="Migrations\201710091646240_add company id to joboffers.Designer.cs">
+      <DependentUpon>201710091646240_add company id to joboffers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -255,6 +264,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -305,12 +315,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\AddJobOffer.cshtml" />
+    <Content Include="Views\JobOffer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Mappers\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\JobOffer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -327,6 +337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709251624398_add jobOfferMOdel.resx">
       <DependentUpon>201709251624398_add jobOfferMOdel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091628456_add reference.resx">
+      <DependentUpon>201710091628456_add reference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091646240_add company id to joboffers.resx">
+      <DependentUpon>201710091646240_add company id to joboffers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

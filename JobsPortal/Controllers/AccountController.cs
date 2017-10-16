@@ -20,30 +20,35 @@ namespace JobsPortal.Controllers
         private ApplicationUserManager _userManager;
         private readonly IJobOfferService _jobOfferService;
 
-        public AccountController()
+        public AccountController(IJobOfferService jobOfferService)
         {
+            _jobOfferService = jobOfferService;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IJobOfferService JobOfferService )
-        {
-            _jobOfferService = JobOfferService;
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {           
             UserManager = userManager;
             SignInManager = signInManager;
         }
 
-        public ActionResult AddJobOffer()
+        
+        public async Task <ActionResult> AddJobOffer()
         {
+             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddJobOffer(JobOfferViewModel jobOffer)
+        {
+            if (ModelState.IsValid)
+            {
+                jobOffer.CompanyId = User.Identity.GetUserId();
+                await _jobOfferService.AddJobOferAsync(jobOffer);
+            }
+
             return View();
         }
 
-        //public async Task<ActionResult> AddJobOffer(JobOfferViewModel jobOFfer)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        await _jobOfferService.AddJobOferAsync(jobOFfer);
-        //    }
-        //    return View();
-        //}
 
         public ApplicationSignInManager SignInManager
         {

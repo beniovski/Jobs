@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace JobsPortal.Models
 {
@@ -19,6 +21,13 @@ namespace JobsPortal.Models
         public string City { get; set; }
 
         public DateTime CreationDate { get; set; }
+
+        public virtual ICollection<JobOfferViewModel> JobOffers { get; protected set; }
+        
+        public ApplicationUser()
+        {
+            JobOffers = new HashSet<JobOfferViewModel>();
+        }
            
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
