@@ -316,6 +316,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\AddJobOffer.cshtml" />
     <Content Include="Views\JobOffer\Details.cshtml" />
+    <Content Include="Views\JobOffer\DetailsCopy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

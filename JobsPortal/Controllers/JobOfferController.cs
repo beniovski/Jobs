@@ -17,10 +17,17 @@ namespace JobsPortal.Controllers
             _jobOfferService = jobOfferService;
         }
 
+        [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
             var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
             return View(jobOffer);
+
+        }
+
+        public async Task<ActionResult> DetailsCopy()
+        {
+            return View();
         }
 
     }

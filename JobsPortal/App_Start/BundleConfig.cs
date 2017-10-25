@@ -25,7 +25,17 @@ namespace JobsPortal
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-theme.css",
+                      "~/Content/bootstrap-theme.min.css",
+                      "~/Content/custom.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/icofont.css",
+                      "~/Content/main.css",
+                      "~/Content/modern-business.css",
+                      "~/Content/modern-business.css",
+                      "~/Content/parallax.css",
+                      "~/Content/parallax.css",
+                      "~/Content/slidr.css"));
         }
     }
 }
