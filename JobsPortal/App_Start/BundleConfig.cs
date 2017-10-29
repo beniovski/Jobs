@@ -24,17 +24,14 @@ namespace JobsPortal
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/bootstrap-theme.css",
-                      "~/Content/bootstrap-theme.min.css",
+                      "~/Content/bootstrap.css",                                      
                       "~/Content/custom.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/icofont.css",
                       "~/Content/main.css",
-                      "~/Content/modern-business.css",
-                      "~/Content/modern-business.css",
+                      "~/Content/modern-business.css",                     
                       "~/Content/parallax.css",
-                      "~/Content/parallax.css",
+                      "~/Content/responsive.css",
                       "~/Content/slidr.css"));
         }
     }

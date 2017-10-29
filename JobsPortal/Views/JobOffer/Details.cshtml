@@ -1,4 +1,8 @@
-﻿  <section class="job-bg page job-details-page">
+﻿@model JobsPortal.Models.JobOfferViewModel
+
+
+ 
+ <section class="job-bg page job-details-page">
     <div class="container">
         <div class="breadcrumb-section">
             <ol class="breadcrumb">
@@ -19,13 +23,13 @@
                     </div>
 
                     <div class="ad-info">
-                        <span><span><a href="#" class="title">Human Resource Manager</a></span>  <a href="#"> Dropbox Inc</a></span>
+                        <span><span><a href="#" class="title">@Model.Title </a></span>  <a href="#"> Dropbox Inc</a></span>
                         <div class="ad-meta">
                             <ul>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@Model.Country, @Model.City</a></li>
                                 <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                <li><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</li>
-                                <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
+                                <li><i class="fa fa-money" aria-hidden="true"></i>@Model.SalaryMin - @Model.SalaryMax</li>
+                                <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>@Model.Category</a></li>
                                 <li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : Jan 10, 2017</li>
                             </ul>
                         </div><!-- ad-meta -->
@@ -54,25 +58,17 @@
                         <div class="section job-description">
                             <div class="description-info">
                                 <h1>Description</h1>
-                                <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni।</p>
+                                <p>
+                                    @Model.Description
+                                </p>
                             </div>
                             <div class="responsibilities">
                                 <h1>Key Responsibilities:</h1>
-                                <p>-Execute all visual design stages of website design from concept to final hand-off to development-Create print advertisements, social media advertisements, client collateral & digital resizes according to Client demands With direction of the Creative team, input into new design ideas for client branding-Update & keep all agency collateral materials, including keeping records of Client's logos, fonts, images, etc.  </p>
+                                <p>obowiazki   </p>
                             </div>
                             <div class="requirements">
                                 <h1>Minimum Requirements</h1>
-                                <ul>
-                                    <li>Bachelor's Degree</li>
-                                    <li>2-5 years of relevant experience ( or equivalent educational experience)</li>
-                                    <li>Experience developing in Wordpress and other web design platforms</li>
-                                    <li>HTML, CSS and JavaScript experience a plus</li>
-                                    <li>In depth knowledge & technical experience of Photoshop, Illustrator, InDesign, Adobe PDF, Keynote, PowerPoint, Microsoft Word & Excel</li>
-                                    <li>Exceptional eye for design, deep understanding of creativity and ability to recognize fresh approaches to Advertising </li>
-                                    <li>Must be fluent in Spanish; working written and spoken proficiency</li>
-                                    <li>**All applicants must be eligible to work in the U.S. without sponsorship</li>
-                                </ul>
+                               @Model.Requaierments
                             </div>
                         </div>
                     </div>
