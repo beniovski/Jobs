@@ -56,15 +56,32 @@
                                 </ul>
                             </li>
                             <li>@Html.ActionLink("Dodaj Ofertę !", "AddJobOffer", "Account")</li>
+
+                            @if(HttpContext.Current.User.Identity.IsAuthenticated == true)
+                            {
+                                <li>kolejne menu</li>
+                            }
+                          
                         </ul>
                     </div>
                 </div><!-- navbar-left -->
                 <!-- nav-right -->
                 <div class="nav-right">
+                   
                     <ul class="sign-in">
-                        <li><i class="fa fa-user"></i></li>
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated == true)
+                        {
+                            <li>@User.Identity.Name</li>
+                            <li>@Html.ActionLink("Wyloguj !", "LogOff", "Account")</li>
+                        }
+                       else
+                        {
+                            <li><i class="fa fa-user"></i></li>
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    
+                        }
+                       
                     </ul><!-- sign-in -->
 
                     
