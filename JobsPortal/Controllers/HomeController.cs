@@ -36,5 +36,10 @@ namespace JobsPortal.Controllers
 
             return View();
         }
+
+        public JsonResult MainSearch(string term)
+        {
+           return Json(_jobOfferService.JobSuggestBoxSearch(term), JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -32,6 +32,8 @@ namespace JobsPortal
                       "~/Content/modern-business.css",                     
                       "~/Content/parallax.css",
                       "~/Content/responsive.css",
+                      "~/Content/themes/base/base.css",
+                      "~/Content/themes/base/jquery-ui.css",
                       "~/Content/slidr.css"));
         }
     }

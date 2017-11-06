@@ -29,6 +29,12 @@ namespace JobsPortal.Repositories
         }
 
         public async Task<JobOfferViewModel> GetAsync(int id) => await Task.FromResult(_dbContext.JobOfferViewModel.FirstOrDefault(x => x.Id == id));
-     
+
+        public List<string> JobSuggestBoxSearch(string name) => _dbContext.JobOfferViewModel
+                                                                 .Where(p => p.Title.Contains(name))
+                                                                 .Select(p=>p.Title).ToList();
+            
+
+
     }
 }

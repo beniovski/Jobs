@@ -31,5 +31,11 @@ namespace JobsPortal.Services
         {
             return await _jobOfferRepository.GetAsync(id);
         }
+
+        public List<string> JobSuggestBoxSearch(string name)
+        {
+            return  _jobOfferRepository.JobSuggestBoxSearch(name);
+        }
+
     }
 }

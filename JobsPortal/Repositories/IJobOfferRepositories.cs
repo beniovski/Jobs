@@ -14,6 +14,8 @@ namespace JobsPortal.Repositories
         Task<IEnumerable<JobOfferViewModel>> GetAllAsync();
 
         Task<JobOfferViewModel> GetAsync(int id);
-       
+
+       List<string> JobSuggestBoxSearch(string name);
+
     }
 }
