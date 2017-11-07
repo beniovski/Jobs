@@ -1,0 +1,92 @@
+﻿@model IEnumerable<JobsPortal.Models.JobOfferViewModel>
+
+
+<!-- Tabela z ofertami pracy -->
+<section class="content">
+    <div class="container">
+        <div class="section latest-jobs-ads">
+           
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="job-ad-item">
+                            <div class="item-info">
+                                <div class="item-image-box">
+                                    <div class="item-image">
+                                        <a href="job-details.html"><img src="images/job/3.png" alt="Image" class="img-responsive"></a>
+                                    </div><!-- item-image -->
+                                </div>
+
+                                <div class="ad-info">
+                                    <span><a href="job-details.html" class= title>@item.Title</a><a href="#">@item.Company</a></span>
+                                    <div class="ad-meta">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
+                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
+                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
+                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>@item.Category</a></li>
+                                        </ul>
+                                    </div><!-- ad-meta -->
+                                </div><!-- ad-info -->
+                                <div class="button">
+                                    @Html.ActionLink("Aplikuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                </div>
+                            </div><!-- item-info -->
+                        </div><!-- ad-item -->
+                    }
+                 
+                
+
+              
+           
+        </div><!-- trending ads -->
+    </div>
+</section>
+<!-- Koniec tabeli z ofertami pracy -->
+<section class="bgnd bgnd-3 js-parallax-bg">
+    <div class="va-wrapper">
+        <div class="va-container">
+            <div class="container text-center">
+                <h1>Lorem ipsum dolor</h1>
+                <h2>Sed eget orci nec diam suscipit</h2>
+                <h3>Donec fermentum justo in quam aliquet</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Najnowsze wpisy na blogu</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Tytuł wpisu 1.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+            <div class="col-md-4">
+                <h3>Tytuł wpisu 2.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+            <div class="col-md-4">
+                <h3>Tytuł wpisu 3.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+            <div class="col-md-4">
+                <h3>Tytuł wpisu 4.</h3>
+                <p>LLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+            <div class="col-md-4">
+                <h3>Tytuł wpisu 5.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+            <div class="col-md-4">
+                <h3>Tytuł wpisu 6.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -22,8 +22,14 @@ namespace JobsPortal.Controllers
         {
             var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
             return View(jobOffer);
-
         }
+         
+        public async Task<ActionResult> AllOfers()
+        {
+            var jobOffers = await _jobOfferService.GetAllJobOfferAsync();
+            return View(jobOffers);
+        }
+
 
         public async Task<ActionResult> DetailsCopy()
         {

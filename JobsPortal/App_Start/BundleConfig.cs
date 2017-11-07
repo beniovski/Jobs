@@ -23,7 +23,12 @@ namespace JobsPortal
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new ScriptBundle("~/bundles/homeIndex").Include(
+                     "~/Scripts/gator.min.js",
+                     "~/Scripts/parallaxbg.js",
+                     "~/Scripts/jquery-ui-1.12.1.js"));
+
+               bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",                                      
                       "~/Content/custom.css",
                       "~/Content/font-awesome.min.css",

@@ -508,13 +508,12 @@
 </section>
 
 <!--end parallax-->
+
+
 @section scripts
 {
-    <script src="../../Scripts/gator.min.js"></script>
-    <script src="../../Scripts/parallaxbg.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-
-    <script type="text/javascript">
+@Scripts.Render("~/bundles/homeIndex")
+ <script type="text/javascript">
         $(function (){
             $("#mainSearch").autocomplete({
                 source : '@Url.Action("MainSearch", "Home")'
@@ -522,15 +521,6 @@
             });
         });
 
-
-
-       
-
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-
-    })
-    ParallaxBG.init();
-    </script>
+</script>
 
 }
