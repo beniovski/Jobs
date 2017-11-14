@@ -58,8 +58,8 @@
                             <li>@Html.ActionLink("Dodaj Ofertę !", "AddJobOffer", "Account")</li>
 
                             @if(HttpContext.Current.User.Identity.IsAuthenticated == true)
-                            {
-                                <li>kolejne menu</li>
+                            {                                
+                                <li>@Html.ActionLink("Moje konto", "CompanyDetails", "Account")</li>
                             }
                           
                         </ul>
@@ -71,7 +71,8 @@
                     <ul class="sign-in">
                         @if (HttpContext.Current.User.Identity.IsAuthenticated == true)
                         {
-                            <li>@User.Identity.Name</li>
+                            
+                            <li>@Html.ActionLink(@User.Identity.Name, "CompanyDetails", "Account")</li>
                             <li>@Html.ActionLink("Wyloguj !", "LogOff", "Account")</li>
                         }
                        else

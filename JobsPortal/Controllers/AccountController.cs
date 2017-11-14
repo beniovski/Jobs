@@ -24,6 +24,12 @@ namespace JobsPortal.Controllers
         {
             _jobOfferService = jobOfferService;
         }
+     
+        public async Task<ActionResult> CompanyDetails()
+        {            
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());          
+            return View(user);
+        }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {           

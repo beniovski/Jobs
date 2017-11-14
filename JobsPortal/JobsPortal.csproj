@@ -364,6 +364,7 @@
     <Content Include="Views\JobOffer\Details.cshtml" />
     <Content Include="Views\JobOffer\DetailsCopy.cshtml" />
     <Content Include="Views\JobOffer\AllOfers.cshtml" />
+    <Content Include="Views\Account\CompanyDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
