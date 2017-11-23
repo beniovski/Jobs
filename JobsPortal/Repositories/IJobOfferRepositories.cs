@@ -9,11 +9,13 @@ namespace JobsPortal.Repositories
 {
     public interface IJobOfferRepositories
     {
-        Task AddJobOfferAsync(JobOfferViewModel jobOffer);
+       Task AddJobOfferAsync(JobOfferViewModel jobOffer);
 
-        Task<IEnumerable<JobOfferViewModel>> GetAllAsync();
+       Task<IEnumerable<JobOfferViewModel>> GetAllAsync();
 
-        Task<JobOfferViewModel> GetAsync(int id);
+       Task<JobOfferViewModel> GetAsync(int id);
+
+       Task<IEnumerable<JobOfferViewModel>> GetAsyncByCompanyId(string id);
 
        List<string> JobSuggestBoxSearch(string name);
 

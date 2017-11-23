@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JobsPortal.Models.JobOfferViewModel>
+@{
+    Layout = "_CompanyDetailsPartial.cshtml";
+}
+
+
+@section CompanyMenu
+{
+    @foreach (var item in Model)
+    {
+        <div class="job-ad-item">
+            <div class="item-info">
+                <div class="item-image-box">
+                    <div class="item-image">
+                        <a href="job-details.html"><img src="images/job/3.png" alt="Image" class="img-responsive"></a>
+                    </div><!-- item-image -->
+                </div>
+
+                <div class="ad-info">
+                    <span><a href="job-details.html" class="title">@item.Title</a><a href="#">@item.Company</a></span>
+                    <div class="ad-meta">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
+                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
+                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
+                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>@item.Category</a></li>
+                        </ul>
+                    </div><!-- ad-meta -->
+                </div><!-- ad-info -->
+                <div class="button">
+                    @Html.ActionLink("Aplikuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div><!-- item-info -->
+        </div><!-- ad-item -->
+    }
+}

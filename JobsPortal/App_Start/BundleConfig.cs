@@ -23,12 +23,20 @@ namespace JobsPortal
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/wyswigjs").Include(
+                      "~/Scripts/bootstrap3-wysihtml5.all.min.js",
+                      "~/Scripts/bootstrap3-wysihtml5.min.js"));
+            
+            bundles.Add(new StyleBundle("~/Content/wyswigcss").Include(
+                      "~/Content/bootstrap3-wysihtml5.min.css"));
+        
+
             bundles.Add(new ScriptBundle("~/bundles/homeIndex").Include(
                      "~/Scripts/gator.min.js",
                      "~/Scripts/parallaxbg.js",
                      "~/Scripts/jquery-ui-1.12.1.js"));
 
-               bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",                                      
                       "~/Content/custom.css",
                       "~/Content/font-awesome.min.css",

@@ -9,6 +9,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
+    @section cssStyles
+    {
+      @Styles.Render("~/Content/wyswigcss")
+    }
+
+
 </head>
 <body>
     <section class=" job-bg ad-details-page">
@@ -50,16 +56,16 @@
                                         </div>
                                     
                                    <div class="row form-group item-description">
-                                        @Html.LabelFor(m => m.Description, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.Descriptions, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                                            @Html.TextAreaFor(m => m.Descriptions, new { @class = "form-control", rows = "12", cols = "10" })
                                         </div>
                                     </div>
                                     
                                     <div class="row form-group item-description">
-                                        @Html.LabelFor(m => m.Requaierments, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.Requaierments, new {@class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextAreaFor(m => m.Requaierments, new { @class = "form-control" })
+                                            @Html.TextAreaFor(m => m.Requaierments, new { @class = "form-control", rows = "12", cols = "10" })
                                         </div>
                                     </div>
                                 
@@ -67,7 +73,7 @@
                                     <div class="row form-group select-price">
                                         @Html.LabelFor(m => m.Country, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">                                            
-                                            @Html.TextBoxFor(m => m.Requaierments, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
                                             <span>@Html.LabelFor(m => m.City)</span>
                                             @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
                                            
@@ -93,8 +99,11 @@
 
                                         </div>
                                     </div>
-
-
+                                    <div class="row form-group item-description">
+                                       
+                                        
+                                    </div>
+                                   
                                    
                                 <div class="row form-group add-title">
                                         <label class="col-sm-3 label-title">Exprience<span class="required">*</span></label>
@@ -145,5 +154,19 @@
             </div>
         </div><!-- container -->
     </section><!-- main -->
+
+    @section scripts
+{
+        @Scripts.Render("~/bundles/wyswigjs")
+    <script type="text/javascript">
+                
+
+        $('#Requaierments').wysihtml5();
+        $('#Descriptions').wysihtml5();
+  
+
+        </script>
+
+    }
 </body>
 </html>

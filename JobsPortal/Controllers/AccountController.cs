@@ -31,6 +31,14 @@ namespace JobsPortal.Controllers
             return View(user);
         }
 
+        public async Task<ActionResult> JobOffers()
+        {
+           
+            
+            var jobOffers = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            return View(jobOffers);
+        }
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {           
             UserManager = userManager;
@@ -44,6 +52,7 @@ namespace JobsPortal.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public async Task<ActionResult> AddJobOffer(JobOfferViewModel jobOffer)
         {
             if (ModelState.IsValid)

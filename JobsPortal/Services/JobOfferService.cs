@@ -27,6 +27,11 @@ namespace JobsPortal.Services
             return await _jobOfferRepository.GetAllAsync();
         }
 
+        public async Task<IEnumerable<JobOfferViewModel>> GetJobOfferByCompanyIdAsync(string companyId)
+        {
+            return await _jobOfferRepository.GetAsyncByCompanyId(companyId);
+        }
+
         public async Task<JobOfferViewModel> GetJobOfferByIdAsync(int id)
         {
             return await _jobOfferRepository.GetAsync(id);

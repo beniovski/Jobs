@@ -11,7 +11,9 @@ namespace JobsPortal.Services
     {
         Task AddJobOferAsync(JobOfferViewModel jobOffer);
 
-        Task <IEnumerable<JobOfferViewModel>> GetAllJobOfferAsync();
+        Task<IEnumerable<JobOfferViewModel>> GetAllJobOfferAsync();
+
+        Task<IEnumerable<JobOfferViewModel>> GetJobOfferByCompanyIdAsync(string companyId);
 
         Task<JobOfferViewModel> GetJobOfferByIdAsync(int id);
 

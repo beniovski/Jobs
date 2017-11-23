@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,13 +21,28 @@ namespace JobsPortal.Models
         [Display(Name = "Miasto")]
         public string City { get; set; }
 
+        [NotMapped]
+        private HtmlString DescriptionBody;
+
         [Display(Name = "Opis stanowiska ")]
         [Required(ErrorMessage = "Opis nie może być pusty")]
-        public string Description { get; set; }
+        public string Descriptions
+        {
+            get { return DescriptionBody.ToHtmlString(); }
+            set { DescriptionBody = new HtmlString(value); }
+        }
+
+        [NotMapped]
+        private HtmlString RequaiermentsBody;
 
         [Display(Name = "Wymagania : ")]
         [Required(ErrorMessage = "Wymagania nie mogą być puste")]
-        public string Requaierments { get; set; }
+        public string Requaierments
+        {
+            get { return RequaiermentsBody.ToHtmlString();}
+            set { RequaiermentsBody = new HtmlString(value); }
+        }
+
 
         [Display(Name = "Kategoria")]
         public string Category { get; set; }
