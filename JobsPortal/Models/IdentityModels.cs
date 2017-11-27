@@ -43,6 +43,8 @@ namespace JobsPortal.Models
     {
         public DbSet<JobOfferViewModel> JobOfferViewModel { get; set; }
 
+        public DbSet<JobCategoriesViewModel> JobOfferCategoriesViewModel { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

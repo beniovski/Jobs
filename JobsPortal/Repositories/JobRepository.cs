@@ -8,13 +8,11 @@ using System.Collections;
 
 namespace JobsPortal.Repositories
 {
-    public class JobRepository : IJobOfferRepositories
-    {
-        private readonly ApplicationDbContext _dbContext;
-
-        public JobRepository()
+    public class JobRepository : DbConnection, IJobOfferRepositories
+    { 
+        public JobRepository() : base()
         {
-            _dbContext = new ApplicationDbContext();
+
         }
 
         public async Task AddJobOfferAsync(JobOfferViewModel jobOffer)

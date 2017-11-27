@@ -34,7 +34,9 @@ namespace JobsPortal
             bundles.Add(new ScriptBundle("~/bundles/homeIndex").Include(
                      "~/Scripts/gator.min.js",
                      "~/Scripts/parallaxbg.js",
-                     "~/Scripts/jquery-ui-1.12.1.js"));
+                     "~/Scripts/jquery-3.2.1.min.js",
+                     "~/Scripts/jquery-ui-1.12.1.min.js"
+                     ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",                                      

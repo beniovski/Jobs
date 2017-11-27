@@ -228,13 +228,33 @@
     <Compile Include="Migrations\201711231954583_change model description.Designer.cs">
       <DependentUpon>201711231954583_change model description.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711260924457_remove date to .cs" />
+    <Compile Include="Migrations\201711260924457_remove date to .Designer.cs">
+      <DependentUpon>201711260924457_remove date to .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711261246058_add job categories.cs" />
+    <Compile Include="Migrations\201711261246058_add job categories.Designer.cs">
+      <DependentUpon>201711261246058_add job categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271651176_add html allow atributes.cs" />
+    <Compile Include="Migrations\201711271651176_add html allow atributes.Designer.cs">
+      <DependentUpon>201711271651176_add html allow atributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271815507_change max lenght of requirements and descriptions.cs" />
+    <Compile Include="Migrations\201711271815507_change max lenght of requirements and descriptions.Designer.cs">
+      <DependentUpon>201711271815507_change max lenght of requirements and descriptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobCategoriesViewModel.cs" />
     <Compile Include="Models\JobOfferViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DbConection.cs" />
+    <Compile Include="Repositories\IJobCategoryRepository.cs" />
     <Compile Include="Repositories\IJobOfferRepositories.cs" />
+    <Compile Include="Repositories\JobCategoriesRepository.cs" />
     <Compile Include="Repositories\JobRepository.cs" />
     <Compile Include="Services\IJobOfferService.cs" />
     <Compile Include="Services\JobOfferService.cs" />
@@ -401,6 +421,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711231954583_change model description.resx">
       <DependentUpon>201711231954583_change model description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260924457_remove date to .resx">
+      <DependentUpon>201711260924457_remove date to .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711261246058_add job categories.resx">
+      <DependentUpon>201711261246058_add job categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271651176_add html allow atributes.resx">
+      <DependentUpon>201711271651176_add html allow atributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271815507_change max lenght of requirements and descriptions.resx">
+      <DependentUpon>201711271815507_change max lenght of requirements and descriptions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

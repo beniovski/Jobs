@@ -192,12 +192,10 @@ namespace JobsPortal.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
-                    Email = model.Email,
-                    Adress = model.Adress,
-                    City = model.City,
+                    Email = model.Email,                   
                     CompanyName = model.CompanyName,
                     CreationDate = DateTime.Now,
-                    Description = model.Description,
+                   
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

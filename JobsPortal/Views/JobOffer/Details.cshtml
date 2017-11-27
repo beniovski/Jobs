@@ -1,6 +1,4 @@
 ﻿@model JobsPortal.Models.JobOfferViewModel
-
-
  
  <section class="job-bg page job-details-page">
     <div class="container">
@@ -58,7 +56,7 @@
                         <div class="section job-description">
                             <div class="description-info">
                                 <h1>Description</h1>                                
-                                    @Model.Description                                
+                                    @Html.Raw(WebUtility.HtmlDecode(Model.Descriptions));                                
                             </div>
                             <div class="responsibilities">
                                 <h1>Key Responsibilities:</h1>
@@ -66,7 +64,7 @@
                             </div>
                             <div class="requirements">
                                 <h1>Minimum Requirements</h1>
-                               @Model.Requaierments
+                              @Html.Raw(WebUtility.HtmlDecode(Model.Requaierments)); 
                             </div>
                         </div>
                     </div>
