@@ -5,17 +5,17 @@ using System.Web;
 
 namespace JobsPortal.Models
 {
-    public class JobCategoriesViewModel
+    public class JobCategories
     {
         public int id { get; set; }
 
         public string name { get; set; }
 
-        HashSet<JobOfferViewModel> JobOfferViewModel;
+        HashSet<JobOffer> JobOffer;
 
-        public JobCategoriesViewModel()
+        public JobCategories()
         {
-            JobOfferViewModel = new HashSet<JobOfferViewModel>();
+            JobOffer = new HashSet<JobOffer>();
         }
     }
 }

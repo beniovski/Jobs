@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using JobsPortal.Mappers;
 
 namespace JobsPortal
 {
@@ -18,10 +19,13 @@ namespace JobsPortal
                         
             ConfigureContainer(); // Autofac init
 
+            AutoMapperConfig.Init(); // AutoMapper init
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
 
         private void ConfigureContainer()

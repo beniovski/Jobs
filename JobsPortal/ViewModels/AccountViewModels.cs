@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace JobsPortal.Models
+namespace JobsPortal.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

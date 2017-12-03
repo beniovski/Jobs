@@ -152,3 +152,4 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addjobcategories.resources
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addhtmlallowatributes.resources
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.changemaxlenghtofrequirementsanddescriptions.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addmapping.resources

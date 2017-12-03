@@ -10,7 +10,7 @@ namespace JobsPortal.Repositories
     {
         protected readonly ApplicationDbContext _dbContext;
 
-        public DbConnection()
+        protected DbConnection()
         {
             _dbContext = new ApplicationDbContext();
         }

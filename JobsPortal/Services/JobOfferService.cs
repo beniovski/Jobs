@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using AutoMapper;
 using JobsPortal.Models;
 using JobsPortal.Repositories;
+using JobsPortal.ViewModels;
 
 namespace JobsPortal.Services
 {
@@ -19,22 +21,26 @@ namespace JobsPortal.Services
 
         public async Task AddJobOferAsync(JobOfferViewModel jobOffer)
         {
-            await _jobOfferRepository.AddJobOfferAsync(jobOffer);
+            var jobOfferMap = Mapper.Map<JobOffer>(jobOffer);
+            await _jobOfferRepository.AddJobOfferAsync(jobOfferMap);
         }
 
         public async Task<IEnumerable<JobOfferViewModel>> GetAllJobOfferAsync()
         {
-            return await _jobOfferRepository.GetAllAsync();
+            var getJob = await _jobOfferRepository.GetAllAsync();
+            return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(getJob);
         }
 
         public async Task<IEnumerable<JobOfferViewModel>> GetJobOfferByCompanyIdAsync(string companyId)
         {
-            return await _jobOfferRepository.GetAsyncByCompanyId(companyId);
+            var jobOffer = await _jobOfferRepository.GetAsyncByCompanyId(companyId);
+            return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(jobOffer);
         }
 
         public async Task<JobOfferViewModel> GetJobOfferByIdAsync(int id)
         {
-            return await _jobOfferRepository.GetAsync(id);
+            var getJobOffer = await _jobOfferRepository.GetAsync(id);
+            return Mapper.Map<JobOffer, JobOfferViewModel>(getJobOffer);
         }
 
         public List<string> JobSuggestBoxSearch(string name)

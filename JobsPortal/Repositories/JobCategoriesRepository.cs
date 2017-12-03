@@ -14,9 +14,9 @@ namespace JobsPortal.Repositories
 
         }
 
-        public async Task<IEnumerable<JobCategoriesViewModel>> GetAllJobCategories()
+        public async Task<IEnumerable<JobCategories>> GetAllJobCategories()
         {
-            return _dbContext.JobOfferCategoriesViewModel.ToList();
+            return _dbContext.JobOfferCategories.ToList();
         }
     }
 }

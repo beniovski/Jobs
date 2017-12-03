@@ -22,11 +22,11 @@ namespace JobsPortal.Models
 
         public DateTime CreationDate { get; set; }
 
-        public virtual ICollection<JobOfferViewModel> JobOffers { get; protected set; }
+        public virtual ICollection<JobOffer> JobOffers { get; protected set; }
         
         public ApplicationUser()
         {
-            JobOffers = new HashSet<JobOfferViewModel>();
+            JobOffers = new HashSet<JobOffer>();
         }
            
 
@@ -41,9 +41,9 @@ namespace JobsPortal.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<JobOfferViewModel> JobOfferViewModel { get; set; }
+        public DbSet<JobOffer> JobOffer { get; set; }
 
-        public DbSet<JobCategoriesViewModel> JobOfferCategoriesViewModel { get; set; }
+        public DbSet<JobCategories> JobOfferCategories { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -15,22 +15,22 @@ namespace JobsPortal.Repositories
 
         }
 
-        public async Task AddJobOfferAsync(JobOfferViewModel jobOffer)
+        public async Task AddJobOfferAsync(JobOffer jobOffer)
         {
-            _dbContext.JobOfferViewModel.Add(jobOffer);
+            _dbContext.JobOffer.Add(jobOffer);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task <IEnumerable<JobOfferViewModel>> GetAllAsync()
+        public async Task <IEnumerable<JobOffer>> GetAllAsync()
         {
-            return _dbContext.JobOfferViewModel;
+            return _dbContext.JobOffer;
         }
 
-        public async Task<IEnumerable<JobOfferViewModel>> GetAsyncByCompanyId(string id) => await Task.FromResult(_dbContext.JobOfferViewModel.Where(x => x.CompanyId == id));
+        public async Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id) => await Task.FromResult(_dbContext.JobOffer.Where(x => x.CompanyId == id));
 
-        public async Task<JobOfferViewModel> GetAsync(int id) => await Task.FromResult(_dbContext.JobOfferViewModel.FirstOrDefault(x => x.Id == id));
+        public async Task<JobOffer> GetAsync(int id) => await Task.FromResult(_dbContext.JobOffer.FirstOrDefault(x => x.Id == id));
 
-        public List<string> JobSuggestBoxSearch(string name) => _dbContext.JobOfferViewModel
+        public List<string> JobSuggestBoxSearch(string name) => _dbContext.JobOffer
                                                                  .Where(p => p.Title.Contains(name))
                                                                  .Select(p=>p.Title).ToList();       
 

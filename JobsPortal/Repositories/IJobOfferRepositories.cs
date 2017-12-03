@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 namespace JobsPortal.Repositories
 {
     public interface IJobOfferRepositories
-    {
-       Task AddJobOfferAsync(JobOfferViewModel jobOffer);
+    {      
+        
+       Task AddJobOfferAsync(JobOffer jobOffer);
 
-       Task<IEnumerable<JobOfferViewModel>> GetAllAsync();
+       Task<IEnumerable<JobOffer>> GetAllAsync();
 
-       Task<JobOfferViewModel> GetAsync(int id);
+       Task<JobOffer> GetAsync(int id);
 
-       Task<IEnumerable<JobOfferViewModel>> GetAsyncByCompanyId(string id);
+       Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id);
 
        List<string> JobSuggestBoxSearch(string name);
 

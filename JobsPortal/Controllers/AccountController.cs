@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JobsPortal.Models;
 using JobsPortal.Services;
+using JobsPortal.ViewModels;
 
 namespace JobsPortal.Controllers
 {
