@@ -51,6 +51,8 @@ namespace JobsPortal.ViewModels
         [Required(ErrorMessage = "początek publikacji nie może być pusta")]
         public DateTime DateFrom { get; set; }
 
+        public DateTime DateTo { get; set; } 
+
         [Display(Name = "Minimalne zarobki " )]
         [Required(ErrorMessage = "Kwota mninmalna nie moze byc pusta")]
         public Decimal SalaryMin { get; set; }

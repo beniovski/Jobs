@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JobsPortal.ViewModels.JobOfferViewModel>
+﻿@model JobsPortal.ViewModels.CompanyViewModel
 @{
     Layout = "_CompanyDetailsPartial.cshtml";
 }
@@ -6,7 +6,7 @@
 
 @section CompanyMenu
 {
-    @foreach (var item in Model)
+    @foreach (var item in Model.JobOfferView)
     {
         <div class="job-ad-item">
             <div class="item-info">

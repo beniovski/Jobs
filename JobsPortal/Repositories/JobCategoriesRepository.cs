@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using JobsPortal.Models;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace JobsPortal.Repositories
 
         public async Task<IEnumerable<JobCategories>> GetAllJobCategories()
         {
-            return _dbContext.JobOfferCategories.ToList();
+            return _dbContext.JobOfferCategories;
         }
     }
 }

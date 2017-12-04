@@ -14,7 +14,8 @@ namespace JobsPortal.IoC
         {
             builder.RegisterType<JobRepository>().As<IJobOfferRepositories>();
             builder.RegisterType<JobOfferService>().As<IJobOfferService>();
-          
+            builder.RegisterType<JobCategoriesRepository>().As<IJobCategoryRepository>();
+            builder.RegisterType<JobCategoryService>().As<IJobCategoryService>();
 
             base.Load(builder);
 

@@ -249,11 +249,27 @@
     <Compile Include="Migrations\201712031017389_add mapping.Designer.cs">
       <DependentUpon>201712031017389_add mapping.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031043295_resolve date exception .cs" />
+    <Compile Include="Migrations\201712031043295_resolve date exception .Designer.cs">
+      <DependentUpon>201712031043295_resolve date exception .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712031102536_change date type .cs" />
+    <Compile Include="Migrations\201712031102536_change date type .Designer.cs">
+      <DependentUpon>201712031102536_change date type .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712031105505_change type.cs" />
+    <Compile Include="Migrations\201712031105505_change type.Designer.cs">
+      <DependentUpon>201712031105505_change type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JobCategories.cs" />
     <Compile Include="Models\JobOffer.cs" />
+    <Compile Include="Services\IJobCategoryService.cs" />
+    <Compile Include="Services\JobCategoryService.cs" />
+    <Compile Include="ViewModels\CompanyViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
     <Compile Include="ViewModels\JobCategoriesViewModel.cs" />
     <Compile Include="ViewModels\JobOfferViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -442,6 +458,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712031017389_add mapping.resx">
       <DependentUpon>201712031017389_add mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031043295_resolve date exception .resx">
+      <DependentUpon>201712031043295_resolve date exception .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031102536_change date type .resx">
+      <DependentUpon>201712031102536_change date type .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031105505_change type.resx">
+      <DependentUpon>201712031105505_change type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

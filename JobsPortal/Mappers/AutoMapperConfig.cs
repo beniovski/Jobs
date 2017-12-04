@@ -15,7 +15,9 @@ namespace JobsPortal.Mappers
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<JobOffer, JobOfferViewModel>();
                 cfg.CreateMap<JobOfferViewModel, JobOffer>();
-                
+                cfg.CreateMap<JobCategoriesViewModel, JobCategories>();
+                cfg.CreateMap<JobCategories, JobCategoriesViewModel>();
+
             });
 
         }

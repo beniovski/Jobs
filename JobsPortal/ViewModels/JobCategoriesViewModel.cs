@@ -7,9 +7,9 @@ namespace JobsPortal.ViewModels
 {
     public class JobCategoriesViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
         HashSet<JobOfferViewModel> JobOfferViewModel;
 

@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using JobsPortal.Models;
 using JobsPortal.Services;
 using JobsPortal.ViewModels;
+using Microsoft.Ajax.Utilities;
 
 namespace JobsPortal.Controllers
 {
@@ -20,25 +21,22 @@ namespace JobsPortal.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private readonly IJobOfferService _jobOfferService;
+        private readonly IJobCategoryService _categoryService;
 
-        public AccountController(IJobOfferService jobOfferService)
+        public AccountController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService)
         {
+            _categoryService = jobCategoryService;
             _jobOfferService = jobOfferService;
         }
      
         public async Task<ActionResult> CompanyDetails()
-        {            
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());          
-            return View(user);
-        }
-
-        public async Task<ActionResult> JobOffers()
         {
-           
-            
-            var jobOffers = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
-            return View(jobOffers);
+            CompanyViewModel cvm = new CompanyViewModel();
+            cvm.ApplicationUser =  await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            cvm.JobOfferView = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            return View("JobOffers", cvm);
         }
+      
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {           
@@ -49,7 +47,9 @@ namespace JobsPortal.Controllers
         
         public async Task <ActionResult> AddJobOffer()
         {
-             return View();
+             AddJobOfferViewModel adjo = new AddJobOfferViewModel();
+            adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
+            return View(adjo);
         }
 
         [HttpPost]
@@ -58,6 +58,7 @@ namespace JobsPortal.Controllers
         {
             if (ModelState.IsValid)
             {
+                jobOffer.DateTo = jobOffer.DateFrom.AddDays(30);
                 jobOffer.CompanyId = User.Identity.GetUserId();
                 await _jobOfferService.AddJobOferAsync(jobOffer);
             }

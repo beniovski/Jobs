@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model JobsPortal.ViewModels.JobOfferViewModel
+@model JobsPortal.ViewModels.AddJobOfferViewModel
 
 <!DOCTYPE html>
 
@@ -40,71 +40,62 @@
                                 <div class="section postdetails">
                                     <h4>Dodaj ofertę<span class="pull-right">* Wymagane pola</span></h4>
                                     <div class="row form-group add-title">                                      
-                                        @Html.LabelFor(m => m.Title, new { @class = "col-sm-3 label-title"})
+                                        @Html.LabelFor(m => m.JobOfferViewModel.Title, new { @class = "col-sm-3 label-title"})
                                     <div class="col-sm-9">   
-                                        @Html.TextBoxFor(m=>m.Title,new {@class= "form-control" })
+                                        @Html.TextBoxFor(m=>m.JobOfferViewModel.Title,new {@class= "form-control" })
 
                                     </div>
                                     </div>                               
                                     
                                         <div class="row form-group add-title">
-                                            @Html.LabelFor(m => m.Category, new { @class = "col-sm-3 label-title" })
+                                            @Html.LabelFor(m => m.JobOfferViewModel.Category, new { @class = "col-sm-3 label-title" })
                                             <div class="col-sm-9">
-                                                @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
-                                               <select name="category select">
-                                                   <option>Rozwój oprogramowania </option>
-                                                   <option>Administratracka sieciami</option>
-                                                   <option>Administracja systemami</option>
-                                                   <option>SEO</option>
-                                                   <option>Bazy danych</option>
-                                                   <option>Telekomunikacja</option>
-                                                   <option>Grafika</option>
-                                                   <option>Help Desk</option>
-                                                   <option>Wdrażanie oprogramowania</option>
-
-                                               </select>
+                                                @Html.TextBoxFor(m => m.JobOfferViewModel.Category, new { @class = "form-control" })
+                                                
+                                                @Html.DropDownList("categoryList", new SelectList(Model.JobCategoriesViewModel,"Id", "Name"), "Wybierz kategorie")
+                                               
                                             </div>
                                         </div>
                                     
                                    <div class="row form-group item-description">
-                                        @Html.LabelFor(m => m.Descriptions, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.JobOfferViewModel.Descriptions, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextAreaFor(m => m.Descriptions, new { @class = "form-control", rows = "12", cols = "10" })
+                                            @Html.TextAreaFor(m => m.JobOfferViewModel.Descriptions, new { @class = "form-control", rows = "12", cols = "10" })
                                         </div>
                                     </div>
                                     
                                     <div class="row form-group item-description">
-                                        @Html.LabelFor(m => m.Requaierments, new {@class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.JobOfferViewModel.Requaierments, new {@class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextAreaFor(m => m.Requaierments, new { @class = "form-control", rows = "12", cols = "10" })
+                                            @Html.TextAreaFor(m => m.JobOfferViewModel.Requaierments, new { @class = "form-control", rows = "12", cols = "10" })
                                         </div>
                                     </div>
                                 
 
                                     <div class="row form-group select-price">
-                                        @Html.LabelFor(m => m.Country, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.JobOfferViewModel.Country, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">                                            
-                                            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
-                                            <span>@Html.LabelFor(m => m.City)</span>
-                                            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.Country, new { @class = "form-control" })
+                                            <span>@Html.LabelFor(m => m.JobOfferViewModel.City)</span>
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.City, new { @class = "form-control" })
                                            
                                         </div>
                                     </div>
 
                                     <div class="row form-group select-price">
-                                        @Html.LabelFor(m => m.SalaryMin, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.JobOfferViewModel.SalaryMin, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.SalaryMin, new { @class = "form-control" })
-                                            <span>@Html.LabelFor(m => m.SalaryMax)</span>
-                                            @Html.TextBoxFor(m => m.SalaryMax, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.SalaryMin, new { @class = "form-control" })
+                                            <span>@Html.LabelFor(m => m.JobOfferViewModel.SalaryMax)</span>
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.SalaryMax, new { @class = "form-control" })
 
                                         </div>
                                     </div>
 
                                     <div class="row form-group select-price">
-                                        @Html.LabelFor(m => m.DateFrom, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.JobOfferViewModel.DateFrom, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.DateFrom, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.DateFrom, new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="row form-group item-description">
