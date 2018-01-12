@@ -9,6 +9,6 @@ namespace JobsPortal.Repositories
 {
     public interface IJobCategoryRepository
     {
-       Task<IEnumerable<JobCategories>> GetAllJobCategories();
+       Task <IEnumerable<JobCategories>> GetAllJobCategories();
     }
 }

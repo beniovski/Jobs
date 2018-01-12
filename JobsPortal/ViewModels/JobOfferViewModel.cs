@@ -22,21 +22,13 @@ namespace JobsPortal.ViewModels
         public string Country { get; set; }
 
         [Display(Name = "Miasto")]
-        public string City { get; set; }
-
-        [NotMapped]
-        [AllowHtml, DataType(DataType.Html)]
-        private MvcHtmlString DescriptionBody { get; set; }
+        public string City { get; set; }    
 
         [AllowHtml, DataType(DataType.Html)]
         [Display(Name = "Opis stanowiska ")]
         [MaxLength(4000)]
         [Required(ErrorMessage = "Opis nie może być pusty")]
         public string Descriptions { get; set; }
-
-        [NotMapped]
-        [AllowHtml, DataType(DataType.Html)]
-        private MvcHtmlString RequaiermentsBody { get; set;}
 
         [AllowHtml, DataType(DataType.Html)]
         [Display(Name = "Wymagania : ")]
@@ -57,6 +49,7 @@ namespace JobsPortal.ViewModels
         [Required(ErrorMessage = "Kwota mninmalna nie moze byc pusta")]
         public Decimal SalaryMin { get; set; }
 
+        [Display(Name = "Maksymalne zarobki")]
         public Decimal SalaryMax { get; set; }
 
         public string CompanyId { get; set; }

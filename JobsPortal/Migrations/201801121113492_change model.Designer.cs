@@ -7,13 +7,13 @@ namespace JobsPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addmapping : IMigrationMetadata
+    public sealed partial class changemodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addmapping));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changemodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712031017389_add mapping"; }
+            get { return "201801121113492_change model"; }
         }
         
         string IMigrationMetadata.Source

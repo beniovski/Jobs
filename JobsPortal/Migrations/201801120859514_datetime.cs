@@ -3,7 +3,7 @@ namespace JobsPortal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addhtmlallowatributes : DbMigration
+    public partial class datetime : DbMigration
     {
         public override void Up()
         {

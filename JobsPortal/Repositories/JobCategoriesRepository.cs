@@ -15,9 +15,9 @@ namespace JobsPortal.Repositories
 
         }
 
-        public async Task<IEnumerable<JobCategories>> GetAllJobCategories()
+        public async Task <IEnumerable<JobCategories>> GetAllJobCategories()
         {
-            return _dbContext.JobOfferCategories;
+            return  _dbContext.JobOfferCategories;
         }
     }
 }

@@ -7,13 +7,13 @@ namespace JobsPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changedatetype : IMigrationMetadata
+    public sealed partial class modelchange : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changedatetype));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(modelchange));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712031102536_change date type "; }
+            get { return "201801121102013_model change"; }
         }
         
         string IMigrationMetadata.Source

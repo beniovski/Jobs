@@ -18,9 +18,9 @@ namespace JobsPortal.Services
         {
             _jobCategoryRepository = jobCategoryRepository;
         }
-        public async Task<IEnumerable<JobCategoriesViewModel>> GetAllJobCategoriesAsync()
+        public async Task <IEnumerable<JobCategoriesViewModel>> GetAllJobCategoriesAsync()
         {
-            var getCategories = await _jobCategoryRepository.GetAllJobCategories();
+            var getCategories = await  _jobCategoryRepository.GetAllJobCategories();
             return Mapper.Map<IEnumerable<JobCategories>, IEnumerable<JobCategoriesViewModel>>(getCategories);
         }
     }

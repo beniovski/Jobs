@@ -52,7 +52,7 @@
                                             <div class="col-sm-9">
                                                 @Html.TextBoxFor(m => m.JobOfferViewModel.Category, new { @class = "form-control" })
                                                 
-                                                @Html.DropDownList("categoryList", new SelectList(Model.JobCategoriesViewModel,"Id", "Name"), "Wybierz kategorie")
+                                                @Html.DropDownListFor(model => model.JobOfferViewModel.JobCategories.Id, new SelectList(Model.JobCategoriesViewModel,"Id", "Name"), "Wybierz kategorie")
                                                
                                             </div>
                                         </div>
@@ -60,14 +60,14 @@
                                    <div class="row form-group item-description">
                                         @Html.LabelFor(m => m.JobOfferViewModel.Descriptions, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextAreaFor(m => m.JobOfferViewModel.Descriptions, new { @class = "form-control", rows = "12", cols = "10" })
+                                            @Html.TextAreaFor(m => m.JobOfferViewModel.Descriptions, new { @class = "form-control", rows = "12", cols = "10", id = "Descriptions" })
                                         </div>
                                     </div>
                                     
                                     <div class="row form-group item-description">
                                         @Html.LabelFor(m => m.JobOfferViewModel.Requaierments, new {@class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextAreaFor(m => m.JobOfferViewModel.Requaierments, new { @class = "form-control", rows = "12", cols = "10" })
+                                            @Html.TextAreaFor(m => m.JobOfferViewModel.Requaierments, new { @class = "form-control", rows = "12", cols = "10", id= "Requaierments" })
                                         </div>
                                     </div>
                                 
@@ -95,7 +95,7 @@
                                     <div class="row form-group select-price">
                                         @Html.LabelFor(m => m.JobOfferViewModel.DateFrom, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.JobOfferViewModel.DateFrom, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.DateFrom, new { @class = "form-control", id= "DateFrom" })
                                         </div>
                                     </div>
                                     <div class="row form-group item-description">
@@ -161,7 +161,11 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#DateFrom").datepicker();
+            $("#DateFrom").datepicker({
+                dateFormat: "dd-mm-yyyy"
+            });
+
+
         });               
 
         $('#Requaierments').wysihtml5();

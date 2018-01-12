@@ -7,13 +7,13 @@ namespace JobsPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class test : IMigrationMetadata
+    public sealed partial class datetimeissues : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(datetimeissues));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711231927185_test"; }
+            get { return "201801120905542_datetime issues"; }
         }
         
         string IMigrationMetadata.Source

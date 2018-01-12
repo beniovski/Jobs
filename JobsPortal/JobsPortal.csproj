@@ -213,53 +213,25 @@
     </Compile>
     <Compile Include="IoC\ContainerModule.cs" />
     <Compile Include="Mappers\AutoMapperConfig.cs" />
-    <Compile Include="Migrations\201711231927185_test.cs" />
-    <Compile Include="Migrations\201711231927185_test.Designer.cs">
-      <DependentUpon>201711231927185_test.cs</DependentUpon>
+    <Compile Include="Migrations\201801021922449_init.cs" />
+    <Compile Include="Migrations\201801021922449_init.Designer.cs">
+      <DependentUpon>201801021922449_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711231938293_html to db.cs" />
-    <Compile Include="Migrations\201711231938293_html to db.Designer.cs">
-      <DependentUpon>201711231938293_html to db.cs</DependentUpon>
+    <Compile Include="Migrations\201801120859514_datetime.cs" />
+    <Compile Include="Migrations\201801120859514_datetime.Designer.cs">
+      <DependentUpon>201801120859514_datetime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711231945142_test1.cs" />
-    <Compile Include="Migrations\201711231945142_test1.Designer.cs">
-      <DependentUpon>201711231945142_test1.cs</DependentUpon>
+    <Compile Include="Migrations\201801120905542_datetime issues.cs" />
+    <Compile Include="Migrations\201801120905542_datetime issues.Designer.cs">
+      <DependentUpon>201801120905542_datetime issues.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711231954583_change model description.cs" />
-    <Compile Include="Migrations\201711231954583_change model description.Designer.cs">
-      <DependentUpon>201711231954583_change model description.cs</DependentUpon>
+    <Compile Include="Migrations\201801121102013_model change.cs" />
+    <Compile Include="Migrations\201801121102013_model change.Designer.cs">
+      <DependentUpon>201801121102013_model change.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711260924457_remove date to .cs" />
-    <Compile Include="Migrations\201711260924457_remove date to .Designer.cs">
-      <DependentUpon>201711260924457_remove date to .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711261246058_add job categories.cs" />
-    <Compile Include="Migrations\201711261246058_add job categories.Designer.cs">
-      <DependentUpon>201711261246058_add job categories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711271651176_add html allow atributes.cs" />
-    <Compile Include="Migrations\201711271651176_add html allow atributes.Designer.cs">
-      <DependentUpon>201711271651176_add html allow atributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711271815507_change max lenght of requirements and descriptions.cs" />
-    <Compile Include="Migrations\201711271815507_change max lenght of requirements and descriptions.Designer.cs">
-      <DependentUpon>201711271815507_change max lenght of requirements and descriptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031017389_add mapping.cs" />
-    <Compile Include="Migrations\201712031017389_add mapping.Designer.cs">
-      <DependentUpon>201712031017389_add mapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031043295_resolve date exception .cs" />
-    <Compile Include="Migrations\201712031043295_resolve date exception .Designer.cs">
-      <DependentUpon>201712031043295_resolve date exception .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031102536_change date type .cs" />
-    <Compile Include="Migrations\201712031102536_change date type .Designer.cs">
-      <DependentUpon>201712031102536_change date type .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031105505_change type.cs" />
-    <Compile Include="Migrations\201712031105505_change type.Designer.cs">
-      <DependentUpon>201712031105505_change type.cs</DependentUpon>
+    <Compile Include="Migrations\201801121113492_change model.cs" />
+    <Compile Include="Migrations\201801121113492_change model.Designer.cs">
+      <DependentUpon>201801121113492_change model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JobCategories.cs" />
@@ -432,41 +404,20 @@
     <Content Include="Scripts\gator.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711231927185_test.resx">
-      <DependentUpon>201711231927185_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801021922449_init.resx">
+      <DependentUpon>201801021922449_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711231938293_html to db.resx">
-      <DependentUpon>201711231938293_html to db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801120859514_datetime.resx">
+      <DependentUpon>201801120859514_datetime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711231945142_test1.resx">
-      <DependentUpon>201711231945142_test1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801120905542_datetime issues.resx">
+      <DependentUpon>201801120905542_datetime issues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711231954583_change model description.resx">
-      <DependentUpon>201711231954583_change model description.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801121102013_model change.resx">
+      <DependentUpon>201801121102013_model change.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711260924457_remove date to .resx">
-      <DependentUpon>201711260924457_remove date to .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711261246058_add job categories.resx">
-      <DependentUpon>201711261246058_add job categories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711271651176_add html allow atributes.resx">
-      <DependentUpon>201711271651176_add html allow atributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711271815507_change max lenght of requirements and descriptions.resx">
-      <DependentUpon>201711271815507_change max lenght of requirements and descriptions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031017389_add mapping.resx">
-      <DependentUpon>201712031017389_add mapping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031043295_resolve date exception .resx">
-      <DependentUpon>201712031043295_resolve date exception .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031102536_change date type .resx">
-      <DependentUpon>201712031102536_change date type .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031105505_change type.resx">
-      <DependentUpon>201712031105505_change type.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801121113492_change model.resx">
+      <DependentUpon>201801121113492_change model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

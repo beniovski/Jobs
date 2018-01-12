@@ -19,7 +19,7 @@ namespace JobsPortal.Services
             _jobOfferRepository = jobOfferRepositories;
         }
 
-        public async Task AddJobOferAsync(JobOfferViewModel jobOffer)
+        public async Task AddJobOferAsync(AddJobOfferViewModel jobOffer)
         {
             var jobOfferMap = Mapper.Map<JobOffer>(jobOffer);
             await _jobOfferRepository.AddJobOfferAsync(jobOfferMap);

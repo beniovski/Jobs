@@ -54,16 +54,18 @@ namespace JobsPortal.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public async Task<ActionResult> AddJobOffer(JobOfferViewModel jobOffer)
+        public async Task<ActionResult> AddJobOffer(AddJobOfferViewModel jobOffer)
         {
             if (ModelState.IsValid)
             {
-                jobOffer.DateTo = jobOffer.DateFrom.AddDays(30);
-                jobOffer.CompanyId = User.Identity.GetUserId();
+               
+                jobOffer.JobOfferViewModel.DateTo = jobOffer.JobOfferViewModel.DateFrom.AddDays(30);
+                jobOffer.JobOfferViewModel.CompanyId = User.Identity.GetUserId();
+                
                 await _jobOfferService.AddJobOferAsync(jobOffer);
             }
-
-            return View();
+            jobOffer.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
+            return View(jobOffer);
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -22,12 +23,12 @@ namespace JobsPortal.Models
         public string Requaierments { get; set; }
     
         public string Category { get; set; }
+       
+        [DataType(DataType.Date)]
+        public DateTime? DateFrom { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public DateTime DateFrom { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public DateTime DateTo { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? DateTo { get; set; }
 
         public Decimal SalaryMin { get; set; }
 

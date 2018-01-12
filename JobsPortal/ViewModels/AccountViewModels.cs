@@ -68,8 +68,7 @@ namespace JobsPortal.ViewModels
         [Required]
         [Display(Name= "Nazwa Firmy")]
         public string CompanyName { get; set; }
-
-        [Required(ErrorMessage ="Musisz podać adres fimry")]
+        
         public string Adress { get; set; }
 
         [Display(Name ="Podaj krótki opis Firmy")]
