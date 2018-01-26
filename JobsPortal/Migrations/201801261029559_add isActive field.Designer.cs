@@ -7,13 +7,13 @@ namespace JobsPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changemodel : IMigrationMetadata
+    public sealed partial class addisActivefield : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changemodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addisActivefield));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801121113492_change model"; }
+            get { return "201801261029559_add isActive field"; }
         }
         
         string IMigrationMetadata.Source

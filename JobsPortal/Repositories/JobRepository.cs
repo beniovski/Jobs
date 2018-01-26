@@ -14,6 +14,7 @@ namespace JobsPortal.Repositories
         {
 
         }
+           
 
         public async Task AddJobOfferAsync(JobOffer jobOffer)
         {

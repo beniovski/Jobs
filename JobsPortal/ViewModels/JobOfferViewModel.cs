@@ -54,7 +54,9 @@ namespace JobsPortal.ViewModels
 
         public string CompanyId { get; set; }
 
-        public string JobCategoryId { get; set; }
+        public bool IsActive { get; set; }
+
+        public int JobCategoriesId { get; set; }
 
         public JobCategoriesViewModel JobCategories { get; set; }
 

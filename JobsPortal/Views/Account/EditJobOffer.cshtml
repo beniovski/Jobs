@@ -1,0 +1,156 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model JobsPortal.ViewModels.JobOfferViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @section cssStyles
+    {
+      @Styles.Render("~/Content/wyswigcss")
+    }
+
+
+</head>
+<body>
+    <section class=" job-bg ad-details-page">
+        <div class="container">
+            <div class="breadcrumb-section">
+                <!-- breadcrumb -->
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Job Post </li>
+                </ol><!-- breadcrumb -->
+                <h2 class="title text-center">Edytuj ofertę</h2>
+            </div><!-- banner -->
+
+            <div class="job-postdetails">
+              
+                <div class="row">
+                    <div class="col-md-8">
+                        @using (Html.BeginForm("EditJobOffer", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <fieldset>
+                                <div class="section postdetails">
+                                    <h4>Dodaj ofertę<span class="pull-right">* Wymagane pola</span></h4>
+                                    <div class="row form-group add-title">                                      
+                                        @Html.LabelFor(m => m.Title, new { @class = "col-sm-3 label-title"})
+                                        <div class="col-sm-9">   
+                                            @Html.TextBoxFor(m=>m.Title,new {@class= "form-control", @readonly = "readonly" })
+
+                                        </div>
+                                     </div>                               
+                                    
+                                    
+                                   <div class="row form-group item-description">
+                                        @Html.LabelFor(m => m.Descriptions, new { @class = "col-sm-3 label-title" })
+                                        <div class="col-sm-9">
+                                            @Html.TextAreaFor(m => m.Descriptions, new { @class = "form-control", rows = "12", cols = "10", id = "Descriptions" })
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row form-group item-description">
+                                        @Html.LabelFor(m => m.Requaierments, new {@class = "col-sm-3 label-title" })
+                                        <div class="col-sm-9">
+                                            @Html.TextAreaFor(m => m.Requaierments, new { @class = "form-control", rows = "12", cols = "10", id= "Requaierments" })
+                                        </div>
+                                    </div>
+                                
+
+                                    <div class="row form-group select-price">
+                                        @Html.LabelFor(m => m.Country, new { @class = "col-sm-3 label-title" })
+                                        <div class="col-sm-9">                                            
+                                            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                                            <span>@Html.LabelFor(m => m.City)</span>
+                                            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group select-price">
+                                        @Html.LabelFor(m => m.SalaryMin, new { @class = "col-sm-3 label-title" })
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(m => m.SalaryMin, new { @class = "form-control" })
+                                            <span>@Html.LabelFor(m => m.SalaryMax)</span>
+                                            @Html.TextBoxFor(m => m.SalaryMax, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row form-group item-description">
+                                       
+                                        
+                                    </div>
+                                   
+                                   
+                                <div class="row form-group add-title">
+                                        <label class="col-sm-3 label-title">Exprience<span class="required">*</span></label>
+                                        <div class="col-sm-9">
+                                            <div class="dropdown category-dropdown">
+                                                <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">Mid Level</span> <i class="fa fa-angle-down pull-right"></i></a>
+                                                <ul class="dropdown-menu category-change">
+                                                    <li><a href="#">Entry Level</a></li>
+                                                    <li><a href="#">Mid Level</a></li>
+                                                    <li><a href="#">Mid-Senior Level</a></li>
+                                                    <li><a href="#">Top Level</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Dodaj Ofertę pracy</button>   
+                                </div><!-- postdetails -->
+                                
+                                                         
+
+                               
+                            </fieldset>                 
+
+                        }
+                    </div>
+
+
+                    <!-- quick-rules -->
+                    <div class="col-md-4">
+                        <div class="section quick-rules">
+                            <h4>Quick rules</h4>
+                            <p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However, all ads must follow our rules:</p>
+
+                            <ul>
+                                <li>Make sure you post in the correct category.</li>
+                                <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                                <li>Do not upload pictures with watermarks.</li>
+                                <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                                <li>Do not put your email or phone numbers in the title or description.</li>
+                                <li>Make sure you post in the correct category.</li>
+                                <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                                <li>Do not upload pictures with watermarks.</li>
+                                <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                            </ul>
+                        </div>
+                    </div><!-- quick-rules -->
+                </div><!-- photos-ad -->
+            </div>
+        </div><!-- container -->
+    </section><!-- main -->
+
+    @section scripts
+{
+        @Scripts.Render("~/bundles/wyswigjs")
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        $('#Requaierments').wysihtml5();
+        $('#Descriptions').wysihtml5();
+
+    </script>
+
+    }
+</body>
+</html>

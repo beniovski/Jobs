@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace JobsPortal.Repositories
 {
     public interface IJobOfferRepositories
-    {      
-        
+    {
        Task AddJobOfferAsync(JobOffer jobOffer);
 
        Task<IEnumerable<JobOffer>> GetAllAsync();

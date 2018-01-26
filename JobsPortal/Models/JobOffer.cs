@@ -12,6 +12,10 @@ namespace JobsPortal.Models
     {
         public int Id { get; set; }
 
+        public string CompanyId { get; set; }
+
+        public int JobCategoriesId { get; set; }
+
         public string Title { get; set; }
       
         public string Country { get; set; }
@@ -34,9 +38,7 @@ namespace JobsPortal.Models
 
         public Decimal SalaryMax { get; set; }
 
-        public string CompanyId { get; set; }
-
-        public string JobCategoryId { get; set; }
+        public bool IsActive { get; set; }
 
         public JobCategories JobCategories { get; set; }
 

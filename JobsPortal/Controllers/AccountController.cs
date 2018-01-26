@@ -52,6 +52,35 @@ namespace JobsPortal.Controllers
             return View(adjo);
         }
 
+        public async Task<ActionResult> ArchiveJobOffer()
+        {
+            //ToDo implement AcrchivejobOffer
+            return View();
+        }
+
+        public async Task<ActionResult> EditJobOffer(int id)
+        {
+            //TODO implement editJobOffer
+            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
+            return View(jobOffer);
+           
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditJobOffer()
+        {
+            //TODO implement editJobOffer
+            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
+            return View(jobOffer);
+
+        }
+
+        public async Task<ActionResult> CopyJobOffer()
+        {
+            //TODO implement copyJObOffer
+            return View();
+        }
+
         [HttpPost]
         [ValidateInput(false)]
         public async Task<ActionResult> AddJobOffer(AddJobOfferViewModel jobOffer)
@@ -61,7 +90,7 @@ namespace JobsPortal.Controllers
                
                 jobOffer.JobOfferViewModel.DateTo = jobOffer.JobOfferViewModel.DateFrom.AddDays(30);
                 jobOffer.JobOfferViewModel.CompanyId = User.Identity.GetUserId();
-                
+                jobOffer.JobOfferViewModel.IsActive = true;
                 await _jobOfferService.AddJobOferAsync(jobOffer);
             }
             jobOffer.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();

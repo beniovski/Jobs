@@ -25,12 +25,29 @@
                             <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
                            
                         </ul>
+                       
                     </div><!-- ad-meta -->
-                </div><!-- ad-info -->
-                <div class="button">
-                    @Html.ActionLink("Aplikuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-primary" })
+                  
+                   
+                    
+               </div><!-- ad-info -->
+                <div class="btn-group button center-block">
+                    
+                    @Html.ActionLink("Edytuj", "EditJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-info" })
+
+                    @Html.ActionLink("Kopiuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-warning" })
+
+                    @Html.ActionLink("Usuń", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-danger" })
                 </div>
+                  
+                   
+                    
+              
+                   
             </div><!-- item-info -->
+          
         </div><!-- ad-item -->
+
+       
     }
 }

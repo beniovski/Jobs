@@ -213,25 +213,13 @@
     </Compile>
     <Compile Include="IoC\ContainerModule.cs" />
     <Compile Include="Mappers\AutoMapperConfig.cs" />
-    <Compile Include="Migrations\201801021922449_init.cs" />
-    <Compile Include="Migrations\201801021922449_init.Designer.cs">
-      <DependentUpon>201801021922449_init.cs</DependentUpon>
+    <Compile Include="Migrations\201801131023115_Init.cs" />
+    <Compile Include="Migrations\201801131023115_Init.Designer.cs">
+      <DependentUpon>201801131023115_Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801120859514_datetime.cs" />
-    <Compile Include="Migrations\201801120859514_datetime.Designer.cs">
-      <DependentUpon>201801120859514_datetime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801120905542_datetime issues.cs" />
-    <Compile Include="Migrations\201801120905542_datetime issues.Designer.cs">
-      <DependentUpon>201801120905542_datetime issues.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801121102013_model change.cs" />
-    <Compile Include="Migrations\201801121102013_model change.Designer.cs">
-      <DependentUpon>201801121102013_model change.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801121113492_change model.cs" />
-    <Compile Include="Migrations\201801121113492_change model.Designer.cs">
-      <DependentUpon>201801121113492_change model.cs</DependentUpon>
+    <Compile Include="Migrations\201801261029559_add isActive field.cs" />
+    <Compile Include="Migrations\201801261029559_add isActive field.Designer.cs">
+      <DependentUpon>201801261029559_add isActive field.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JobCategories.cs" />
@@ -393,6 +381,7 @@
     <Content Include="Views\Account\JobOffers.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Account\EditJobOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,20 +393,11 @@
     <Content Include="Scripts\gator.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801021922449_init.resx">
-      <DependentUpon>201801021922449_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801131023115_Init.resx">
+      <DependentUpon>201801131023115_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801120859514_datetime.resx">
-      <DependentUpon>201801120859514_datetime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801120905542_datetime issues.resx">
-      <DependentUpon>201801120905542_datetime issues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121102013_model change.resx">
-      <DependentUpon>201801121102013_model change.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121113492_change model.resx">
-      <DependentUpon>201801121113492_change model.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801261029559_add isActive field.resx">
+      <DependentUpon>201801261029559_add isActive field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

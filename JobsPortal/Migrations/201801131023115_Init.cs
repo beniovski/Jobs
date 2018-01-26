@@ -3,7 +3,7 @@ namespace JobsPortal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -18,19 +18,18 @@ namespace JobsPortal.Migrations
                         Descriptions = c.String(),
                         Requaierments = c.String(),
                         Category = c.String(),
-                        DateFrom = c.DateTime(nullable: false),
-                        DateTo = c.DateTime(nullable: false),
+                        DateFrom = c.DateTime(),
+                        DateTo = c.DateTime(),
                         SalaryMin = c.Decimal(nullable: false, precision: 18, scale: 2),
                         SalaryMax = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CompanyId = c.String(maxLength: 128),
-                        JobCategoryId = c.String(),
-                        JobCategories_id = c.Int(),
+                        JobCategoriesId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.CompanyId)
-                .ForeignKey("dbo.JobCategories", t => t.JobCategories_id)
+                .ForeignKey("dbo.JobCategories", t => t.JobCategoriesId, cascadeDelete: true)
                 .Index(t => t.CompanyId)
-                .Index(t => t.JobCategories_id);
+                .Index(t => t.JobCategoriesId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -99,10 +98,10 @@ namespace JobsPortal.Migrations
                 "dbo.JobCategories",
                 c => new
                     {
-                        id = c.Int(nullable: false, identity: true),
-                        name = c.String(),
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                     })
-                .PrimaryKey(t => t.id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -119,7 +118,7 @@ namespace JobsPortal.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.JobOffers", "JobCategories_id", "dbo.JobCategories");
+            DropForeignKey("dbo.JobOffers", "JobCategoriesId", "dbo.JobCategories");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.JobOffers", "CompanyId", "dbo.AspNetUsers");
@@ -130,7 +129,7 @@ namespace JobsPortal.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.JobOffers", new[] { "JobCategories_id" });
+            DropIndex("dbo.JobOffers", new[] { "JobCategoriesId" });
             DropIndex("dbo.JobOffers", new[] { "CompanyId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.JobCategories");

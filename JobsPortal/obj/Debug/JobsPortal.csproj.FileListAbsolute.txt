@@ -143,9 +143,6 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\System.Diagnostics.DiagnosticSource.xml
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.init.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.Init.resources
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.csproj.GenerateResource.Cache
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.datetime.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.datetimeissues.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.modelchange.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.changemodel.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addisActivefield.resources

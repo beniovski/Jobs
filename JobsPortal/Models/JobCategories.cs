@@ -7,11 +7,11 @@ namespace JobsPortal.Models
 {
     public class JobCategories
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        HashSet<JobOffer> JobOffer;
+        public HashSet<JobOffer> JobOffer;
 
         public JobCategories()
         {
