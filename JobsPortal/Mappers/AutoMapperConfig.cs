@@ -29,10 +29,12 @@ namespace JobsPortal.Mappers
                     .ForMember(dest => dest.SalaryMax, opts => opts.MapFrom(src => src.JobOfferViewModel.SalaryMax))
                     .ForMember(dest => dest.SalaryMin, opts => opts.MapFrom(src => src.JobOfferViewModel.SalaryMin))
                     .ForMember(dest => dest.Title, opts => opts.MapFrom(src => src.JobOfferViewModel.Title))
+                    .ForMember(dest => dest.IsActive, opts => opts.MapFrom(src => src.JobOfferViewModel.IsActive))
                 ;
 
                 cfg.CreateMap<JobCategoriesViewModel, JobCategories>();
                 cfg.CreateMap<JobCategories, JobCategoriesViewModel>();
+                cfg.CreateMap< EditJobOfferViewModel , JobOffer > ();
 
             });
 

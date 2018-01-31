@@ -27,22 +27,16 @@
                         </ul>
                        
                     </div><!-- ad-meta -->
-                  
-                   
-                    
+
                </div><!-- ad-info -->
                 <div class="btn-group button center-block">
                     
                     @Html.ActionLink("Edytuj", "EditJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-info" })
 
-                    @Html.ActionLink("Kopiuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Kopiuj", "CopyJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-warning" })
 
-                    @Html.ActionLink("Usuń", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Usuń", "ArchiveJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-danger" })
                 </div>
-                  
-                   
-                    
-              
                    
             </div><!-- item-info -->
           

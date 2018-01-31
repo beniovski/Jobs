@@ -47,38 +47,38 @@ namespace JobsPortal.Controllers
         
         public async Task <ActionResult> AddJobOffer()
         {
-             AddJobOfferViewModel adjo = new AddJobOfferViewModel();
+            AddJobOfferViewModel adjo = new AddJobOfferViewModel();
             adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
             return View(adjo);
         }
-
-        public async Task<ActionResult> ArchiveJobOffer()
+        [HttpGet]
+        public async Task<ActionResult> ArchiveJobOffer(int id)
         {
-            //ToDo implement AcrchivejobOffer
-            return View();
+            await _jobOfferService.ArchiveJobOfferAsync(id);
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<ActionResult> EditJobOffer(int id)
         {
-            //TODO implement editJobOffer
             var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
-            return View(jobOffer);
-           
+            return View(jobOffer);   
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditJobOffer()
+        public async Task<ActionResult> EditJobOffer(JobOfferViewModel jobOffer)
         {
-            //TODO implement editJobOffer
-            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
+            await _jobOfferService.EditJobOfferAsync(jobOffer);
             return View(jobOffer);
-
         }
 
-        public async Task<ActionResult> CopyJobOffer()
+        public async Task<ActionResult> CopyJobOffer(int id)
         {
-            //TODO implement copyJObOffer
-            return View();
+            AddJobOfferViewModel adjo = new AddJobOfferViewModel();
+            adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
+
+            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
+            adjo.JobOfferViewModel = jobOffer;
+            return View("AddJobOffer", adjo);
         }
 
         [HttpPost]

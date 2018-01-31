@@ -48,5 +48,14 @@ namespace JobsPortal.Services
             return  _jobOfferRepository.JobSuggestBoxSearch(name);
         }
 
+        public async Task EditJobOfferAsync(JobOfferViewModel jobOffer)
+        {
+           await _jobOfferRepository.UpdateJobOfferAsync(Mapper.Map<JobOfferViewModel, JobOffer>(jobOffer));
+        }
+
+        public async Task ArchiveJobOfferAsync(int id)
+        {
+            await _jobOfferRepository.ArchiveJobOfferAsync(id);
+        }
     }
 }

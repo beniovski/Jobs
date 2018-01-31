@@ -1,23 +1,23 @@
-﻿using JobsPortal.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using JobsPortal.Models;
 
 namespace JobsPortal.Repositories
 {
     public interface IJobOfferRepositories
     {
-       Task AddJobOfferAsync(JobOffer jobOffer);
+        Task AddJobOfferAsync(JobOffer jobOffer);
 
-       Task<IEnumerable<JobOffer>> GetAllAsync();
+        Task UpdateJobOfferAsync(JobOffer jobOffer);
 
-       Task<JobOffer> GetAsync(int id);
+        Task ArchiveJobOfferAsync(int id);
 
-       Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id);
+        Task<IEnumerable<JobOffer>> GetAllAsync();
 
-       List<string> JobSuggestBoxSearch(string name);
+        Task<JobOffer> GetAsync(int id);
 
+        Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id);
+
+        List<string> JobSuggestBoxSearch(string name);
     }
 }

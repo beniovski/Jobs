@@ -231,6 +231,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
     <Compile Include="ViewModels\JobCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\EditJobOfferViewModel.cs" />
     <Compile Include="ViewModels\JobOfferViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
