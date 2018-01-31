@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 
 namespace JobsPortal.Controllers
 {
@@ -33,6 +35,20 @@ namespace JobsPortal.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult SendEmail()
+        {
+            MailMessage msg = new MailMessage();
+            msg.To.Add(new MailAddress("daniel.bednarczuk90@gmail.com", "test"));
+            msg.From = new MailAddress("danbed19905@gmail.com");
+            SmtpClient spClient = new SmtpClient();
+         
+            spClient.Send(msg);
+           
+
 
             return View();
         }

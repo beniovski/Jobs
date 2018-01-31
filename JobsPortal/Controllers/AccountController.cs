@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +10,6 @@ using Microsoft.Owin.Security;
 using JobsPortal.Models;
 using JobsPortal.Services;
 using JobsPortal.ViewModels;
-using Microsoft.Ajax.Utilities;
 
 namespace JobsPortal.Controllers
 {
@@ -239,9 +237,22 @@ namespace JobsPortal.Controllers
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Wyślij wiadomość e-mail z tym łączem
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Potwierdź konto", "Potwierdź konto, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Potwierdź konto", "Potwierdź konto, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
+
+                    //semdEmailTest
+                   
+                        MailMessage msg  = new MailMessage();
+                        msg.To.Add(user.Email);
+                        msg.Body = callbackUrl;
+
+                        Services.EmailService.SendEmailConf(msg);
+
+
+
+
+
 
                     return RedirectToAction("Index", "Home");
                 }

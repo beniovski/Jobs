@@ -19,7 +19,7 @@ namespace JobsPortal.Repositories
 
         public async Task AddJobOfferAsync(JobOffer jobOffer)
         {
-            _dbContext.JobOffer.Add(jobOffer);
+            _dbContext.JobOffer.Add(jobOffer); 
             await _dbContext.SaveChangesAsync();
         }
 

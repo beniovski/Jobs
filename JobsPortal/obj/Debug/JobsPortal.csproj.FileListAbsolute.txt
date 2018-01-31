@@ -146,3 +146,14 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.Init.resources
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.csproj.GenerateResource.Cache
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addisActivefield.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.dll
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.dll
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.SmtpApi.dll
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGridMail.dll
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.xml
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.pdb
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.xml
