@@ -28,7 +28,7 @@ namespace JobsPortal.Repositories
             return _dbContext.JobOffer.Where(x=>x.IsActive && x.DateTo > DateTime.Now).OrderByDescending(x => x.DateFrom);
         }
 
-        public async Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id) => await Task.FromResult(_dbContext.JobOffer.Where(x => x.CompanyId == id));
+        public async Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id) => await Task.FromResult(_dbContext.JobOffer.Where(x => x.CompanyId == id && x.IsActive));
 
         public async Task<JobOffer> GetAsync(int id) => await Task.FromResult(_dbContext.JobOffer.FirstOrDefault(x => x.Id == id));
 
@@ -55,6 +55,9 @@ namespace JobsPortal.Repositories
             entity.IsActive = false;
             _dbContext.SaveChanges();
         }
-       
+
+        public async Task<IEnumerable<JobOffer>> GetArchiveByCompanyId(string id)
+            => await Task.FromResult(_dbContext.JobOffer.Where(x => x.CompanyId == id && !x.IsActive));
+
     }
 }

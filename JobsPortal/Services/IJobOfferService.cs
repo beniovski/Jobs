@@ -20,6 +20,8 @@ namespace JobsPortal.Services
 
         Task<IEnumerable<JobOfferViewModel>> GetJobOfferByCompanyIdAsync(string companyId);
 
+        Task<IEnumerable<JobOfferViewModel>> GetArchiveJobOfferByCompanyIdAsync(string companyId);
+
         Task<JobOfferViewModel> GetJobOfferByIdAsync(int id);
 
         List<string> JobSuggestBoxSearch(string name); 

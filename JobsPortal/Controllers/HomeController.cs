@@ -38,20 +38,7 @@ namespace JobsPortal.Controllers
 
             return View();
         }
-
-        public ActionResult SendEmail()
-        {
-            MailMessage msg = new MailMessage();
-            msg.To.Add(new MailAddress("daniel.bednarczuk90@gmail.com", "test"));
-            msg.From = new MailAddress("danbed19905@gmail.com");
-            SmtpClient spClient = new SmtpClient();
-         
-            spClient.Send(msg);
-           
-
-
-            return View();
-        }
+       
 
         public JsonResult MainSearch(string term)
         {

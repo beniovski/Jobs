@@ -34,6 +34,14 @@ namespace JobsPortal.Controllers
             cvm.JobOfferView = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
             return View("JobOffers", cvm);
         }
+
+        public async Task<ActionResult> ArchiveJobsOffer()
+        {
+            CompanyViewModel cvm = new CompanyViewModel();
+            cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            cvm.JobOfferView = await _jobOfferService.GetArchiveJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            return View("ArchiveJobsOffer", cvm);
+        }
       
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -141,6 +149,11 @@ namespace JobsPortal.Controllers
                 return View(model);
             }
 
+            var userid = UserManager.FindByEmail(model.Email).Id;
+            if (!UserManager.IsEmailConfirmed(userid))
+            {
+                return View("EmailNotConfirmed");
+            }
             // Nie powoduje to liczenia niepowodzeń logowania w celu zablokowania konta
             // Aby włączyć wyzwalanie blokady konta po określonej liczbie niepomyślnych prób wprowadzenia hasła, zmień ustawienie na shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -233,7 +246,7 @@ namespace JobsPortal.Controllers
 
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Wyślij wiadomość e-mail z tym łączem
@@ -249,10 +262,7 @@ namespace JobsPortal.Controllers
 
                         Services.EmailService.SendEmailConf(msg);
 
-
-
-
-
+                        ViewBag.ConfirmEmail = $"sprawdź swoją skrzynkę {user.Email}";
 
                     return RedirectToAction("Index", "Home");
                 }

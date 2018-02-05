@@ -2,12 +2,18 @@
 
 @{
     ViewBag.Title = "Home Page";
+    var conf = ViewBag.ConfirmEmail;
 }
 @section HomeSlider
 {
-    <header>        
+    <header>
+        <div>
+            @conf;
+        </div>
+        
         <!-- Wrapper for slides -->
         <div class="banner-job">
+           
             <div class="banner-overlay"></div>
             <div class="container text-center">
                 <h1 class="title">The Easiest Way to Get Your New Job</h1>

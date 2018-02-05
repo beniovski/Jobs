@@ -57,5 +57,11 @@ namespace JobsPortal.Services
         {
             await _jobOfferRepository.ArchiveJobOfferAsync(id);
         }
+
+        public async Task<IEnumerable<JobOfferViewModel>> GetArchiveJobOfferByCompanyIdAsync(string companyId)
+        {
+            var jobOffer = await _jobOfferRepository.GetArchiveByCompanyId(companyId);
+            return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(jobOffer);
+        }
     }
 }
