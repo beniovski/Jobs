@@ -40,7 +40,9 @@ namespace JobsPortal.Models
 
         public bool IsActive { get; set; }
 
-        public JobCategories JobCategories { get; set; }
+        public JobCategories JobCategories { get; set; } 
+
+        public Countries Countries { get; set; }
 
         public ApplicationUser Company { get; set; }
 

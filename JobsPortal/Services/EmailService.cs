@@ -8,20 +8,18 @@ using Microsoft.AspNet.Identity;
 
 namespace JobsPortal.Services
 {
-    public static class EmailService 
+    public class EmailServices : IEmailService
     {
-       
-        public static void SendEmailConf(MailMessage message)
+        public void SendEmail(string destinationEmail, string message)
         {
             MailMessage msg = new MailMessage();
-            msg.To.Add(new MailAddress(message.To.ToString(), "test"));
+            msg.To.Add(new MailAddress(destinationEmail, "test"));
             msg.From = new MailAddress("danbed19905@gmail.com");
-            msg.Body = message.Body;
+            msg.Body = message;
 
             SmtpClient spClient = new SmtpClient();
 
-           spClient.Send(msg);
-
+            spClient.Send(msg);
         }
     }
 }

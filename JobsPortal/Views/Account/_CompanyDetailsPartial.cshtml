@@ -5,6 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }   
 
+@section cssStyles
+    {
+    @Styles.Render("~/Content/wyswigcss")
+}
 
 <section class=" job-bg page  ad-profile-page">
     <div class="container">
@@ -33,7 +37,7 @@
             <ul class="user-menu">
                 <li class="active"><a href="profile.html">Aktualne oferty</a></li>
                 <li>@Html.ActionLink("Archiwum", "ArchiveJobsOffer", "Account")</li>
-                <li><a href="edit-resume.html">Edytuj dane</a></li>
+                <li>@Html.ActionLink("Profil firmy","CompanyDescription", "Account")</li>
                 <li><a href="profile-details.html">Profil fimry</a></li>
                 <li><a href="bookmark.html">Bookmark</a></li>
                 <li><a href="applied-job.html">applied job</a></li>
@@ -59,6 +63,28 @@
         @RenderSection("CompanyMenu", required: true)
 
         </div>
-    </section>    
+</section>   
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/wyswigjs")
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#DateFrom").datepicker({
+                dateFormat: "dd-mm-yyyy"
+            });
+
+
+        });
+
+        $('#Requaierments').wysihtml5();
+        $('#Descriptions').wysihtml5();
+
+    </script>
+}
 
           

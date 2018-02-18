@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Autofac.Integration.Mvc;
 
 namespace JobsPortal.IoC
 {
@@ -15,7 +16,10 @@ namespace JobsPortal.IoC
             builder.RegisterType<JobRepository>().As<IJobOfferRepositories>();
             builder.RegisterType<JobOfferService>().As<IJobOfferService>();
             builder.RegisterType<JobCategoriesRepository>().As<IJobCategoryRepository>();
+            builder.RegisterType<CountryRepository>().As<ICountryRepository>();
             builder.RegisterType<JobCategoryService>().As<IJobCategoryService>();
+            builder.RegisterType<CountryService>().As<ICountryService>();
+            builder.RegisterType<EmailServices>().As<IEmailService>().InstancePerLifetimeScope();
 
             base.Load(builder);
 

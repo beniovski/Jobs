@@ -17,10 +17,10 @@ namespace JobsPortal.Mappers
                 cfg.CreateMap<JobOffer, AddJobOfferViewModel>();
                 cfg.CreateMap<AddJobOfferViewModel, JobOffer>()
                     .ForMember(dest => dest.JobCategories, opts => opts.MapFrom(src => src.JobCategoriesViewModel))
+                    .ForMember(dest => dest.Countries, opts => opts.MapFrom(src => src.CountryViewModel))
                     .ForMember(dest => dest.City, opts => opts.MapFrom(src => src.JobOfferViewModel.City))
                     .ForMember(dest => dest.Company, opts => opts.MapFrom(src => src.JobOfferViewModel.Company))
                     .ForMember(dest => dest.CompanyId, opts => opts.MapFrom(src => src.JobOfferViewModel.CompanyId))
-                    .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.JobOfferViewModel.Country))
                     .ForMember(dest => dest.DateFrom, opts => opts.MapFrom(src => src.JobOfferViewModel.DateFrom))
                     .ForMember(dest => dest.DateTo, opts => opts.MapFrom(src => src.JobOfferViewModel.DateTo))
                     .ForMember(dest => dest.Descriptions, opts => opts.MapFrom(src => src.JobOfferViewModel.Descriptions))
@@ -34,7 +34,9 @@ namespace JobsPortal.Mappers
 
                 cfg.CreateMap<JobCategoriesViewModel, JobCategories>();
                 cfg.CreateMap<JobCategories, JobCategoriesViewModel>();
-                cfg.CreateMap< EditJobOfferViewModel , JobOffer > ();
+                cfg.CreateMap<CountryViewModel, Countries>();
+                cfg.CreateMap<Countries, CountryViewModel>();
+                cfg.CreateMap< EditJobOfferViewModel , JobOffer>();
 
             });
 

@@ -1,0 +1,40 @@
+﻿@model  JobsPortal.ViewModels.CompanyViewModel
+
+@{
+    Layout = "_CompanyDetailsPartial.cshtml";
+}
+
+@section CompanyMenu
+{
+  <div class="job-postdetails">
+
+    <div class="row">
+        <div class="col-md-8">
+            @using (Html.BeginForm("CompanyDescription", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+
+                  
+                <fieldset>
+                    <div class="section postdetails">
+                        <h4>Dodaj ofertę<span class="pull-right">* Wymagane pola</span></h4>
+
+                        <div class="row form-group item-description">
+                            @Html.LabelFor(m => m.ApplicationUser.Description, new { @class = "col-sm-3 label-title" })
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(m => m.ApplicationUser.Description, new { @class = "form-control", rows = "12", cols = "10", id = "Descriptions" })
+                            </div>
+                        </div>
+                     
+                        <button type="submit" class="btn btn-primary">Dodaj Ofertę pracy</button>
+                    </div><!-- postdetails -->
+                </fieldset>
+            }
+        </div>
+    </div><!-- photos-ad -->
+</div>
+
+}

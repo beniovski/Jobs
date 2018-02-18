@@ -30,13 +30,10 @@
 
                 </div><!-- ad-info -->
                 <div class="btn-group button center-block">
+                    
+                    @Html.ActionLink("Dodaj ponownie", "CopyJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-warning" })
 
-                    @Html.ActionLink("Edytuj", "EditJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-info" })
-
-                    @Html.ActionLink("Kopiuj", "CopyJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-warning" })
-
-                    @Html.ActionLink("Usuń", "ArchiveJobOffer", "Account", new { id = item.Id }, new { @class = "btn btn-danger" })
-                </div>
+               </div>
 
             </div><!-- item-info -->
 

@@ -71,16 +71,25 @@
                                         </div>
                                     </div>
                                 
-
-                                    <div class="row form-group select-price">
-                                        @Html.LabelFor(m => m.JobOfferViewModel.Country, new { @class = "col-sm-3 label-title" })
-                                        <div class="col-sm-9">                                            
-                                            @Html.TextBoxFor(m => m.JobOfferViewModel.Country, new { @class = "form-control" })
+                                <div class="row form-group select-price">
+                                        <div class="col-sm-9">                                        
+                                       
                                             <span>@Html.LabelFor(m => m.JobOfferViewModel.City)</span>
                                             @Html.TextBoxFor(m => m.JobOfferViewModel.City, new { @class = "form-control" })
                                            
                                         </div>
                                     </div>
+                                
+                                    <div class="row form-group add-title">
+                                        @Html.LabelFor(m => m.JobOfferViewModel.Country, new { @class = "col-sm-3 label-title" })
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.Country, new { @class = "form-control" })
+
+                                            @Html.DropDownListFor(model => model.JobOfferViewModel.Country.Id, new SelectList(Model.CountryViewModel, "Id", "CountryName"), "Wybierz kraj")
+
+                                        </div>
+                                    </div>
+                                   
 
                                     <div class="row form-group select-price">
                                         @Html.LabelFor(m => m.JobOfferViewModel.SalaryMin, new { @class = "col-sm-3 label-title" })

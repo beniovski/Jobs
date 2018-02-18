@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace JobsPortal.Models
 {
@@ -42,6 +44,8 @@ namespace JobsPortal.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<JobOffer> JobOffer { get; set; }
+
+        public DbSet<Countries> Countries { get; set; }
 
         public DbSet<JobCategories> JobOfferCategories { get; set; }
 

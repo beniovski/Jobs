@@ -18,9 +18,6 @@ namespace JobsPortal.ViewModels
         [Required(ErrorMessage = "Nazwa Stanowiska nie może być pusta"), MinLength(3), MaxLength(30)]
         public string Title { get; set; }
 
-        [Display(Name = "Nazwa Państwa")]
-        public string Country { get; set; }
-
         [Display(Name = "Miasto")]
         public string City { get; set; }    
 
@@ -59,6 +56,8 @@ namespace JobsPortal.ViewModels
         public int JobCategoriesId { get; set; }
 
         public JobCategoriesViewModel JobCategories { get; set; }
+
+        public CountryViewModel Country { get; set; }
 
         public ApplicationUser Company { get; set; }
     }

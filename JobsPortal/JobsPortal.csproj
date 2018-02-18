@@ -241,16 +241,48 @@
     <Compile Include="Migrations\201801261029559_add isActive field.Designer.cs">
       <DependentUpon>201801261029559_add isActive field.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802181422320_ad country.cs" />
+    <Compile Include="Migrations\201802181422320_ad country.Designer.cs">
+      <DependentUpon>201802181422320_ad country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181423561_countries.cs" />
+    <Compile Include="Migrations\201802181423561_countries.Designer.cs">
+      <DependentUpon>201802181423561_countries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181435402_delete countries.cs" />
+    <Compile Include="Migrations\201802181435402_delete countries.Designer.cs">
+      <DependentUpon>201802181435402_delete countries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181504318_drop countries.cs" />
+    <Compile Include="Migrations\201802181504318_drop countries.Designer.cs">
+      <DependentUpon>201802181504318_drop countries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181506255_add countries.cs" />
+    <Compile Include="Migrations\201802181506255_add countries.Designer.cs">
+      <DependentUpon>201802181506255_add countries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181602599_add Contries to context.cs" />
+    <Compile Include="Migrations\201802181602599_add Contries to context.Designer.cs">
+      <DependentUpon>201802181602599_add Contries to context.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\JobCategories.cs" />
     <Compile Include="Models\JobOffer.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\ICountryRepository.cs" />
+    <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\ICountryService.cs" />
+    <Compile Include="Services\IEmailService.cs" />
     <Compile Include="Services\IJobCategoryService.cs" />
     <Compile Include="Services\JobCategoryService.cs" />
+    <Compile Include="ViewModels\CompanyDetailsViewModel.cs" />
     <Compile Include="ViewModels\CompanyViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\CountryViewModel.cs" />
     <Compile Include="ViewModels\JobCategoriesViewModel.cs" />
     <Compile Include="ViewModels\EditJobOfferViewModel.cs" />
     <Compile Include="ViewModels\JobOfferViewModel.cs" />
@@ -407,6 +439,7 @@
     <Content Include="Views\Home\SendEmail.cshtml" />
     <Content Include="Views\Account\EmailNotConfirmed.cshtml" />
     <Content Include="Views\Account\ArchiveJobsOffer.cshtml" />
+    <Content Include="Views\Account\CompanyDescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -423,6 +456,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801261029559_add isActive field.resx">
       <DependentUpon>201801261029559_add isActive field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181422320_ad country.resx">
+      <DependentUpon>201802181422320_ad country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181423561_countries.resx">
+      <DependentUpon>201802181423561_countries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181435402_delete countries.resx">
+      <DependentUpon>201802181435402_delete countries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181504318_drop countries.resx">
+      <DependentUpon>201802181504318_drop countries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181506255_add countries.resx">
+      <DependentUpon>201802181506255_add countries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181602599_add Contries to context.resx">
+      <DependentUpon>201802181602599_add Contries to context.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

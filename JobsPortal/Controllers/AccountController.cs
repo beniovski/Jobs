@@ -20,11 +20,35 @@ namespace JobsPortal.Controllers
         private ApplicationUserManager _userManager;
         private readonly IJobOfferService _jobOfferService;
         private readonly IJobCategoryService _categoryService;
+        private readonly ICountryService _countryService;
+        private readonly IEmailService _emailService;
 
-        public AccountController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService)
+        public AccountController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService, 
+                                 IEmailService emailService, ICountryService countryService)
         {
+            _emailService = emailService;
             _categoryService = jobCategoryService;
+            _countryService = countryService;
             _jobOfferService = jobOfferService;
+        }
+        public async Task<ActionResult> CompanyDescription()
+        {
+            CompanyViewModel cvm = new CompanyViewModel();
+            cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            return View(cvm);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public async Task<ActionResult> CompanyDescription(CompanyViewModel cvm)
+        {
+            var appUser = new ApplicationUser();
+            appUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            appUser.Description = cvm.ApplicationUser.Description;
+
+            await  UserManager.UpdateAsync(appUser);
+
+            return View(cvm);
         }
      
         public async Task<ActionResult> CompanyDetails()
@@ -34,6 +58,8 @@ namespace JobsPortal.Controllers
             cvm.JobOfferView = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
             return View("JobOffers", cvm);
         }
+
+
 
         public async Task<ActionResult> ArchiveJobsOffer()
         {
@@ -55,6 +81,7 @@ namespace JobsPortal.Controllers
         {
             AddJobOfferViewModel adjo = new AddJobOfferViewModel();
             adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
+            adjo.CountryViewModel = await _countryService.GetAllCountriesAsync();
             return View(adjo);
         }
         [HttpGet]
@@ -80,7 +107,9 @@ namespace JobsPortal.Controllers
         public async Task<ActionResult> CopyJobOffer(int id)
         {
             AddJobOfferViewModel adjo = new AddJobOfferViewModel();
+
             adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
+            adjo.CountryViewModel = await _countryService.GetAllCountriesAsync();
 
             var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
             adjo.JobOfferViewModel = jobOffer;
@@ -100,6 +129,7 @@ namespace JobsPortal.Controllers
                 await _jobOfferService.AddJobOferAsync(jobOffer);
             }
             jobOffer.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
+            jobOffer.CountryViewModel = await _countryService.GetAllCountriesAsync();
             return View(jobOffer);
         }
 
@@ -252,17 +282,12 @@ namespace JobsPortal.Controllers
                     // Wyślij wiadomość e-mail z tym łączem
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Potwierdź konto", "Potwierdź konto, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
+                  //  await UserManager.SendEmailAsync(user.Id, "Potwierdź konto", "Potwierdź konto, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
+                  
 
-                    //semdEmailTest
-                   
-                        MailMessage msg  = new MailMessage();
-                        msg.To.Add(user.Email);
-                        msg.Body = callbackUrl;
+                    _emailService.SendEmail(user.Email, callbackUrl);
 
-                        Services.EmailService.SendEmailConf(msg);
-
-                        ViewBag.ConfirmEmail = $"sprawdź swoją skrzynkę {user.Email}";
+                    ViewBag.ConfirmEmail = $"sprawdź swoją skrzynkę {user.Email}";
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -303,7 +328,7 @@ namespace JobsPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByEmailAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Nie ujawniaj informacji o tym, że użytkownik nie istnieje lub nie został potwierdzony
@@ -312,10 +337,11 @@ namespace JobsPortal.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Wyślij wiadomość e-mail z tym łączem
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
                 // await UserManager.SendEmailAsync(user.Id, "Resetuj hasło", "Resetuj hasło, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                _emailService.SendEmail(model.Email, callbackUrl);
+                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // Dotarcie do tego miejsca wskazuje, że wystąpił błąd, wyświetl ponownie formularz
@@ -349,7 +375,7 @@ namespace JobsPortal.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Nie ujawniaj informacji o tym, że użytkownik nie istnieje
