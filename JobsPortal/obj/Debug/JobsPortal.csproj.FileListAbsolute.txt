@@ -143,9 +143,6 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\System.Diagnostics.DiagnosticSource.xml
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.Init.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.csproj.GenerateResource.Cache
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addisActivefield.resources
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.dll
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.dll
@@ -157,9 +154,5 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.pdb
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.xml
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.adcountry.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.countries.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.deletecountries.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.dropcountries.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addcountries.resources
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.addContriestocontext.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.Addcountriesmodel.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.csproj.GenerateResource.Cache

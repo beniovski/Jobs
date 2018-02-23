@@ -25,6 +25,7 @@ namespace JobsPortal.Mappers
                     .ForMember(dest => dest.DateTo, opts => opts.MapFrom(src => src.JobOfferViewModel.DateTo))
                     .ForMember(dest => dest.Descriptions, opts => opts.MapFrom(src => src.JobOfferViewModel.Descriptions))
                     .ForMember(dest => dest.JobCategoriesId, opts => opts.MapFrom(src => src.JobOfferViewModel.JobCategories.Id))
+                    .ForMember(dest => dest.CountriesId, opts => opts.MapFrom(src => src.JobOfferViewModel.Country.Id))
                     .ForMember(dest => dest.Requaierments, opts => opts.MapFrom(src => src.JobOfferViewModel.Requaierments))
                     .ForMember(dest => dest.SalaryMax, opts => opts.MapFrom(src => src.JobOfferViewModel.SalaryMax))
                     .ForMember(dest => dest.SalaryMin, opts => opts.MapFrom(src => src.JobOfferViewModel.SalaryMin))

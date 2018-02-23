@@ -83,8 +83,6 @@
                                     <div class="row form-group add-title">
                                         @Html.LabelFor(m => m.JobOfferViewModel.Country, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.JobOfferViewModel.Country, new { @class = "form-control" })
-
                                             @Html.DropDownListFor(model => model.JobOfferViewModel.Country.Id, new SelectList(Model.CountryViewModel, "Id", "CountryName"), "Wybierz kraj")
 
                                         </div>

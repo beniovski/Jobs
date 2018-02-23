@@ -7,13 +7,13 @@ namespace JobsPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addContriestocontext : IMigrationMetadata
+    public sealed partial class Addcountriesmodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addContriestocontext));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Addcountriesmodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802181602599_add Contries to context"; }
+            get { return "201802230924471_Add countries model"; }
         }
         
         string IMigrationMetadata.Source

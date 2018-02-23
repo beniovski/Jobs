@@ -3,15 +3,27 @@ namespace JobsPortal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init : DbMigration
+    public partial class Addcountriesmodel : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Countries",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CountryName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.JobOffers",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        CompanyId = c.String(maxLength: 128),
+                        JobCategoriesId = c.Int(nullable: false),
+                        CountriesId = c.Int(nullable: false),
                         Title = c.String(),
                         Country = c.String(),
                         City = c.String(),
@@ -22,14 +34,15 @@ namespace JobsPortal.Migrations
                         DateTo = c.DateTime(),
                         SalaryMin = c.Decimal(nullable: false, precision: 18, scale: 2),
                         SalaryMax = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        CompanyId = c.String(maxLength: 128),
-                        JobCategoriesId = c.Int(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.CompanyId)
+                .ForeignKey("dbo.Countries", t => t.CountriesId, cascadeDelete: true)
                 .ForeignKey("dbo.JobCategories", t => t.JobCategoriesId, cascadeDelete: true)
                 .Index(t => t.CompanyId)
-                .Index(t => t.JobCategoriesId);
+                .Index(t => t.JobCategoriesId)
+                .Index(t => t.CountriesId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -119,6 +132,7 @@ namespace JobsPortal.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.JobOffers", "JobCategoriesId", "dbo.JobCategories");
+            DropForeignKey("dbo.JobOffers", "CountriesId", "dbo.Countries");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.JobOffers", "CompanyId", "dbo.AspNetUsers");
@@ -129,6 +143,7 @@ namespace JobsPortal.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.JobOffers", new[] { "CountriesId" });
             DropIndex("dbo.JobOffers", new[] { "JobCategoriesId" });
             DropIndex("dbo.JobOffers", new[] { "CompanyId" });
             DropTable("dbo.AspNetRoles");
@@ -138,6 +153,7 @@ namespace JobsPortal.Migrations
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.JobOffers");
+            DropTable("dbo.Countries");
         }
     }
 }

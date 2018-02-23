@@ -233,37 +233,9 @@
     </Compile>
     <Compile Include="IoC\ContainerModule.cs" />
     <Compile Include="Mappers\AutoMapperConfig.cs" />
-    <Compile Include="Migrations\201801131023115_Init.cs" />
-    <Compile Include="Migrations\201801131023115_Init.Designer.cs">
-      <DependentUpon>201801131023115_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801261029559_add isActive field.cs" />
-    <Compile Include="Migrations\201801261029559_add isActive field.Designer.cs">
-      <DependentUpon>201801261029559_add isActive field.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181422320_ad country.cs" />
-    <Compile Include="Migrations\201802181422320_ad country.Designer.cs">
-      <DependentUpon>201802181422320_ad country.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181423561_countries.cs" />
-    <Compile Include="Migrations\201802181423561_countries.Designer.cs">
-      <DependentUpon>201802181423561_countries.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181435402_delete countries.cs" />
-    <Compile Include="Migrations\201802181435402_delete countries.Designer.cs">
-      <DependentUpon>201802181435402_delete countries.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181504318_drop countries.cs" />
-    <Compile Include="Migrations\201802181504318_drop countries.Designer.cs">
-      <DependentUpon>201802181504318_drop countries.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181506255_add countries.cs" />
-    <Compile Include="Migrations\201802181506255_add countries.Designer.cs">
-      <DependentUpon>201802181506255_add countries.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181602599_add Contries to context.cs" />
-    <Compile Include="Migrations\201802181602599_add Contries to context.Designer.cs">
-      <DependentUpon>201802181602599_add Contries to context.cs</DependentUpon>
+    <Compile Include="Migrations\201802230924471_Add countries model.cs" />
+    <Compile Include="Migrations\201802230924471_Add countries model.Designer.cs">
+      <DependentUpon>201802230924471_Add countries model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Countries.cs" />
@@ -451,29 +423,8 @@
     <Content Include="Scripts\gator.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801131023115_Init.resx">
-      <DependentUpon>201801131023115_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801261029559_add isActive field.resx">
-      <DependentUpon>201801261029559_add isActive field.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181422320_ad country.resx">
-      <DependentUpon>201802181422320_ad country.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181423561_countries.resx">
-      <DependentUpon>201802181423561_countries.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181435402_delete countries.resx">
-      <DependentUpon>201802181435402_delete countries.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181504318_drop countries.resx">
-      <DependentUpon>201802181504318_drop countries.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181506255_add countries.resx">
-      <DependentUpon>201802181506255_add countries.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181602599_add Contries to context.resx">
-      <DependentUpon>201802181602599_add Contries to context.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802230924471_Add countries model.resx">
+      <DependentUpon>201802230924471_Add countries model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
