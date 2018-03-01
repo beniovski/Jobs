@@ -16,6 +16,8 @@ namespace JobsPortal.Models
     {
         public string CompanyName { get; set; }
 
+        public string LogoPath { get; set; }
+        
         public string Adress { get; set; }
 
         public string Description { get; set; }
@@ -23,6 +25,8 @@ namespace JobsPortal.Models
         public string City { get; set; }
 
         public DateTime CreationDate { get; set; }
+
+        public DateTime LastLoginDate { get; set; }
 
         public virtual ICollection<JobOffer> JobOffers { get; protected set; }
         

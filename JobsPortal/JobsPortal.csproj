@@ -225,6 +225,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountPart.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -236,6 +237,10 @@
     <Compile Include="Migrations\201802230924471_Add countries model.cs" />
     <Compile Include="Migrations\201802230924471_Add countries model.Designer.cs">
       <DependentUpon>201802230924471_Add countries model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802231149290_Add last login and logo path to model.cs" />
+    <Compile Include="Migrations\201802231149290_Add last login and logo path to model.Designer.cs">
+      <DependentUpon>201802231149290_Add last login and logo path to model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Countries.cs" />
@@ -415,6 +420,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -425,6 +431,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802230924471_Add countries model.resx">
       <DependentUpon>201802230924471_Add countries model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802231149290_Add last login and logo path to model.resx">
+      <DependentUpon>201802231149290_Add last login and logo path to model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

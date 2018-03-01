@@ -14,7 +14,7 @@ using JobsPortal.ViewModels;
 namespace JobsPortal.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public partial class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

@@ -23,8 +23,10 @@
         <div class="job-profile section">
             <div class="user-profile">
                 <div class="user-images">
-                    <img src="images/user.jpg" alt="User Images" class="img-responsive">
+                    <img src="@Url.Content(Model.ApplicationUser.LogoPath)" alt="User Images" class="img-responsive">
+                   
                 </div>
+              
                 <div class="user">
                     <h2>Hello, @Model.ApplicationUser.CompanyName</h2>
                   
