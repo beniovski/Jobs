@@ -4,41 +4,60 @@
 <!-- Tabela z ofertami pracy -->
 <section class="content">
     <div class="container">
+        <div class="banner-form banner-form-full job-list-form">
+            <form action="#">
+                <!-- category-change -->
+                <div class="dropdown category-dropdown">
+                    <a data-toggle="dropdown" href="#"><span class="change-text">Job Category</span> <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu category-change">
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Software Engineer</a></li>
+                        <li><a href="#">Program Development</a></li>
+                        <li><a href="#">Project Manager</a></li>
+                        <li><a href="#">Graphics Designer</a></li>
+                    </ul>
+                </div><!-- category-change -->
+                <!-- language-dropdown -->
+                <input type="text" class="form-inline"  placeholder="Miasto">
+                <input type="text" class="form-inline" placeholder="Type your key word">
+                <button type="submit" class="btn btn-primary" value="Search">Search</button>
+            </form>
+        </div><!-- banner-form -->
         <div class="section latest-jobs-ads">
-           
 
-                    @foreach (var item in Model)
-                    {
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="images/job/3.png" alt="Image" class="img-responsive"></a>
-                                    </div><!-- item-image -->
-                                </div>
 
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class= title>@item.Title</a><a href="#">@item.Company</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
-                                         
-                                        </ul>
-                                    </div><!-- ad-meta -->
-                                </div><!-- ad-info -->
-                                <div class="button">
-                                    @Html.ActionLink("Aplikuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-primary" })
-                                </div>
-                            </div><!-- item-info -->
-                        </div><!-- ad-item -->
-                    }
-                 
-                
+            @foreach (var item in Model)
+            {
+                <div class="job-ad-item">
+                    <div class="item-info">
+                        <div class="item-image-box">
+                            <div class="item-image">
+                                <a href="job-details.html"><img src="images/job/3.png" alt="Image" class="img-responsive"></a>
+                            </div><!-- item-image -->
+                        </div>
 
-              
-           
+                        <div class="ad-info">
+                            <span><a href="job-details.html" class=title>@item.Title</a><a href="#">@item.Company</a></span>
+                            <div class="ad-meta">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
+                                    <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
+                                    <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
+
+                                </ul>
+                            </div><!-- ad-meta -->
+                        </div><!-- ad-info -->
+                        <div class="button">
+                            @Html.ActionLink("Aplikuj", "Details", "JobOffer", new {id = item.Id}, new {@class = "btn btn-primary"})
+                        </div>
+                    </div><!-- item-info -->
+                </div><!-- ad-item -->
+            }
+
+
+
+
+
         </div><!-- trending ads -->
     </div>
 </section>
