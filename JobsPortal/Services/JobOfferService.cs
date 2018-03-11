@@ -47,6 +47,10 @@ namespace JobsPortal.Services
         {
             return  _jobOfferRepository.JobSuggestBoxSearch(name);
         }
+        public List<string> CitySuggestBox(string city)
+        {
+            return _jobOfferRepository.CitySuggestBox(city);
+        }
 
         public async Task EditJobOfferAsync(JobOfferViewModel jobOffer)
         {
@@ -61,6 +65,12 @@ namespace JobsPortal.Services
         public async Task<IEnumerable<JobOfferViewModel>> GetArchiveJobOfferByCompanyIdAsync(string companyId)
         {
             var jobOffer = await _jobOfferRepository.GetArchiveByCompanyId(companyId);
+            return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(jobOffer);
+        }
+
+        public async Task<IEnumerable<JobOfferViewModel>> JobSearchingAsync(int categoryId, string city, string phrase)
+        {
+            var jobOffer = await _jobOfferRepository.JobSearchingAsync(categoryId, city, phrase);
             return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(jobOffer);
         }
     }

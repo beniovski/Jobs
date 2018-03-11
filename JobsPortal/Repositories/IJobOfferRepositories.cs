@@ -10,7 +10,7 @@ namespace JobsPortal.Repositories
 
         Task UpdateJobOfferAsync(JobOffer jobOffer);
 
-        Task ArchiveJobOfferAsync(int id);
+        Task ArchiveJobOfferAsync(int id);       
 
         Task<IEnumerable<JobOffer>> GetAllAsync();
 
@@ -20,6 +20,11 @@ namespace JobsPortal.Repositories
 
         Task<IEnumerable<JobOffer>> GetArchiveByCompanyId(string id);
 
+        Task<IEnumerable<JobOffer>> JobSearchingAsync(int categoryId, string city, string phrase);
+
         List<string> JobSuggestBoxSearch(string name);
+
+        List<string> CitySuggestBox(string city);
+
     }
 }

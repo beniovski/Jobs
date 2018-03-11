@@ -15,7 +15,6 @@ namespace JobsPortal.Repositories
         {
 
         }
-           
 
         public async Task AddJobOfferAsync(JobOffer jobOffer)
         {
@@ -23,18 +22,19 @@ namespace JobsPortal.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task <IEnumerable<JobOffer>> GetAllAsync()
-        {
-            return _dbContext.JobOffer.Where(x=>x.IsActive && x.DateTo > DateTime.Now).OrderByDescending(x => x.DateFrom);
-        }
+        public async Task<IEnumerable<JobOffer>> GetAllAsync() => await Task.FromResult(_dbContext.JobOffer.Where(x => x.IsActive));
 
         public async Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id) => await Task.FromResult(_dbContext.JobOffer.Where(x => x.CompanyId == id && x.IsActive));
 
         public async Task<JobOffer> GetAsync(int id) => await Task.FromResult(_dbContext.JobOffer.FirstOrDefault(x => x.Id == id));
 
         public List<string> JobSuggestBoxSearch(string name) => _dbContext.JobOffer
-                                                                 .Where(p => p.Title.Contains(name))
-                                                                 .Select(p=>p.Title).ToList();
+                                                                 .Where(p => p.Title.Contains(name) && p.IsActive)
+                                                                 .Select(p=>p.Title).Distinct().ToList();
+
+        public List<string> CitySuggestBox(string city) => _dbContext.JobOffer
+                                                                 .Where(p => p.City.Contains(city) && p.IsActive)
+                                                                 .Select(p => p.City).Distinct().ToList();
 
         public async Task UpdateJobOfferAsync(JobOffer jobOffer)
         {
@@ -58,6 +58,12 @@ namespace JobsPortal.Repositories
 
         public async Task<IEnumerable<JobOffer>> GetArchiveByCompanyId(string id)
             => await Task.FromResult(_dbContext.JobOffer.Where(x => x.CompanyId == id && !x.IsActive));
+
+
+        public async Task<IEnumerable<JobOffer>> JobSearchingAsync(int categoryId, string city, string phrase)
+            => await Task.FromResult(_dbContext.JobOffer
+                .Where(x => x.IsActive && ( x.JobCategoriesId == categoryId && x.City == city ||
+                (x.Descriptions.Contains(phrase)||x.Title.Contains(phrase)||x.Requaierments.Contains(phrase)) )));
 
     }
 }

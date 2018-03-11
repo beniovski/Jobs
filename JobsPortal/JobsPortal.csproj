@@ -273,6 +273,8 @@
     <Compile Include="Services\IJobOfferService.cs" />
     <Compile Include="Services\JobOfferService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\SearchConsoleViewModel.cs" />
+    <Compile Include="ViewModels\SearchJobOfferViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

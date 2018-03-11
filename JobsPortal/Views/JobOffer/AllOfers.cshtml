@@ -1,32 +1,34 @@
-﻿@model IEnumerable<JobsPortal.ViewModels.JobOfferViewModel>
+﻿@using System.Net.Sockets
+@model JobsPortal.ViewModels.SearchJobOfferViewModel
 
 
 <!-- Tabela z ofertami pracy -->
 <section class="content">
     <div class="container">
-        <div class="banner-form banner-form-full job-list-form">
-            <form action="#">
+        <div class="">
+            
+            @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get, new{@class = "form-group row banner-form banner-form-full job-list-form col-xs-12" }))
+            {
                 <!-- category-change -->
-                <div class="dropdown category-dropdown">
-                    <a data-toggle="dropdown" href="#"><span class="change-text">Job Category</span> <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-menu category-change">
-                        <li><a href="#">Customer Service</a></li>
-                        <li><a href="#">Software Engineer</a></li>
-                        <li><a href="#">Program Development</a></li>
-                        <li><a href="#">Project Manager</a></li>
-                        <li><a href="#">Graphics Designer</a></li>
-                    </ul>
-                </div><!-- category-change -->
+                    @Html.DropDownListFor(m => m.SearchConsoleViewModel.selectedCategory, new SelectList(Model.SearchConsoleViewModel.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "dropdown category-dropdown col-xs-3" })
+               <!--category-change -->
                 <!-- language-dropdown -->
-                <input type="text" class="form-inline"  placeholder="Miasto">
-                <input type="text" class="form-inline" placeholder="Type your key word">
-                <button type="submit" class="btn btn-primary" value="Search">Search</button>
-            </form>
-        </div><!-- banner-form -->
+              
+                  <!--  <input type="text" class="form-control" placeholder="Miasto" id="cityInput"> -->
+                    <div class="col-xs-2">
+                          @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new { @class = "form-control col-xs-3", id = "cityInput" })
+                   </div>
+                    <div class="col-xs-2">
+                          @Html.TextBoxFor(m => m.SearchConsoleViewModel.phraseSearch, new { @class = "form-control col-xs-3" })
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary" value="Search">Search</button>
+                    }
+                </div><!-- banner-form -->
         <div class="section latest-jobs-ads">
 
-
-            @foreach (var item in Model)
+            @foreach (var item in Model.JobOfferViewModel)
             {
                 <div class="job-ad-item">
                     <div class="item-info">
@@ -73,3 +75,18 @@
         </div>
     </div>
 </section>
+
+@section scripts
+{
+@Scripts.Render("~/bundles/homeIndex")
+   <script type="text/javascript">
+        $(function (){
+            $("#cityInput").autocomplete({
+                source : '@Url.Action("CitySuggest", "Home")'
+
+            });
+        });
+
+    </script>
+
+}
