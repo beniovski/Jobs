@@ -5,63 +5,198 @@
 <!-- Tabela z ofertami pracy -->
 <section class="content">
     <div class="container">
-        <div class="">
-            
-            @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get, new{@class = "form-group row banner-form banner-form-full job-list-form col-xs-12" }))
+        <div class="row">
+
+            @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get, new { @class = "row banner-form banner-form-full job-list-form col-md-12" }))
             {
                 <!-- category-change -->
-                    @Html.DropDownListFor(m => m.SearchConsoleViewModel.selectedCategory, new SelectList(Model.SearchConsoleViewModel.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "dropdown category-dropdown col-xs-3" })
+                @Html.DropDownListFor(m => m.SearchConsoleViewModel.selectedCategory, new SelectList(Model.SearchConsoleViewModel.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "dropdown category-dropdown col-xs-3" })
                <!--category-change -->
                 <!-- language-dropdown -->
-              
+
                   <!--  <input type="text" class="form-control" placeholder="Miasto" id="cityInput"> -->
+                <div class="col-xs-2">
+                    @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new { @class = "form-control col-xs-3 dropdown", id = "cityInput" })
+                </div>
                     <div class="col-xs-2">
-                          @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new { @class = "form-control col-xs-3", id = "cityInput" })
-                   </div>
-                    <div class="col-xs-2">
-                          @Html.TextBoxFor(m => m.SearchConsoleViewModel.phraseSearch, new { @class = "form-control col-xs-3" })
+                        @Html.TextBoxFor(m => m.SearchConsoleViewModel.phraseSearch, new { @class = "form-control col-xs-3" })
                     </div>
 
 
                     <button type="submit" class="btn btn-primary" value="Search">Search</button>
-                    }
-                </div><!-- banner-form -->
+            }
+        </div><!-- banner-form -->
+    </div>
+
+    <div class="container">
+       
+
         <div class="section latest-jobs-ads">
 
-            @foreach (var item in Model.JobOfferViewModel)
+            <div class="col-md-3 col-sm-4">
+                <div class="accordion">
+                    <!-- panel-group -->
+                    <div class="panel-group" id="accordion">
+
+                        <!-- panel -->
+                        <div class="panel panel-default panel-faq">
+                            <!-- panel-heading -->
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#accordion-one">
+                                        <h4>Categories<span class="pull-right"><i class="fa fa-minus"></i></span></h4>
+                                    </a>
+                                </div>
+                            </div><!-- panel-heading -->
+
+                            <div id="accordion-one" class="panel-collapse collapse in">
+                                <!-- panel-body -->
+                                <div class="panel-body">
+                                    <h5><a href="categories-main.html"><i class="fa fa-caret-down"></i> All Categories</a></h5>
+                                    <a href="#"><i class="icofont icofont-man-in-glasses"></i>Engineer/Architects</a>
+                                    <ul>
+                                        <li><a href="#">Software <span>(129)</span></a></li>
+                                        <li><a href="#">Architecture <span>(8342)</span></a></li>
+                                        <li><a href="#">UI & UX Designer <span>(782)</span></a></li>
+                                        <li><a href="#">Telecommunication <span>(5247)</span></a></li>
+                                        <li><a href="#">Civil Engineer <span>(634)</span></a></li>
+                                        <li><a href="#">Chemical Engineer <span>(453)</span></a></li>
+                                        <li><a href="#">Program Development <span>(7986)</span></a></li>
+                                        <li><a href="#">Mechanical Engineer <span>(742)</span></a></li>
+                                        <li><a href="#">Industrial Engineer <span>(149)</span></a></li>
+                                    </ul>
+                                    <div class="see-more">
+                                        <button type="button" class="show-more one"><i class="fa fa-plus-square-o" aria-hidden="true"></i>See More</button>
+                                        <ul class="more-category one">
+                                            <li><a href="#">Fron end developer<span>(289)</span></a></li>
+                                            <li><a href="#">Back end developer<span>(5402)</span></a></li>
+                                            <li><a href="#">IT Department Manager<span>(3829)</span></a></li>
+                                            <li><a href="#">QA Department Manager<span>(352)</span></a></li>
+                                        </ul>
+                                    </div>
+
+                                </div><!-- panel-body -->
+                            </div>
+                        </div><!-- panel -->                       
+                        
+                        <!-- panel -->
+                        <div class="panel panel-default panel-faq">
+                            <!-- panel-heading -->
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#accordion-four">
+                                        <h4>Employment Type<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
+                                    </a>
+                                </div>
+                            </div><!-- panel-heading -->
+
+                            <div id="accordion-four" class="panel-collapse collapse">
+                                <!-- panel-body -->
+                                <div class="panel-body">
+                                    <label for="full-time"><input type="checkbox" name="full-time" id="full-time"> Full Time</label>
+                                    <label for="part-time"><input type="checkbox" name="part-time" id="part-time"> Part Time</label>
+                                    <label for="contractor"><input type="checkbox" name="contractor" id="contractor"> Contractor</label>
+                                    <label for="intern"><input type="checkbox" name="intern" id="intern"> Intern</label>
+                                    <label for="seasonal"><input type="checkbox" name="seasonal" id="seasonal"> Seasonal / Temp</label>
+                                </div><!-- panel-body -->
+                            </div>
+                        </div><!-- panel -->
+                        <!-- panel -->
+                        <div class="panel panel-default panel-faq">
+                            <!-- panel-heading -->
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#accordion-five">
+                                        <h4>Experience Level<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
+                                    </a>
+                                </div>
+                            </div><!-- panel-heading -->
+
+                            <div id="accordion-five" class="panel-collapse collapse">
+                                <!-- panel-body -->
+                                <div class="panel-body">
+                                    <label for="training"><input type="checkbox" name="training" id="training"> Training</label>
+                                    <label for="entry-level"><input type="checkbox" name="entry-level" id="entry-level"> Entry Level</label>
+                                    <label for="mid-senior"><input type="checkbox" name="mid-senior" id="mid-senior"> Mid-Senior Level</label>
+                                    <label for="top-level"><input type="checkbox" name="top-level" id="top-level"> Top Level</label>
+                                </div><!-- panel-body -->
+                            </div>
+                        </div> <!-- panel -->
+                      
+                        <!-- panel -->
+                        <div class="panel panel-default panel-faq">
+                            <!-- panel-heading -->
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#accordion-seven">
+                                        <h4>Location<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
+                                    </a>
+                                </div>
+                            </div><!-- panel-heading -->
+
+                            <div id="accordion-seven" class="panel-collapse collapse">
+                                <!-- panel-body -->
+                                <div class="panel-body">
+                                    <input type="text" placeholder="Search Location" class="form-control">
+                                    <label for="angeles"><input type="checkbox" name="angeles" id="angeles"> Los Angeles, CA</label>
+                                    <label for="kingdom"><input type="checkbox" name="kingdom" id="kingdom"> United Kingdom</label>
+                                    <label for="states"><input type="checkbox" name="states" id="states"> United States</label>
+                                    <label for="columbia"><input type="checkbox" name="columbia" id="columbia"> British Columbia</label>
+                                    <label for="australia"><input type="checkbox" name="australia" id="australia"> Australia</label>
+                                    <label for="germany"><input type="checkbox" name="germany" id="germany"> Germany</label>
+                                    <div class="see-more">
+                                        <button type="button" class="show-more three"><i class="fa fa-plus-square-o" aria-hidden="true"></i>See More</button>
+                                        <div class="more-category three">
+                                            <label for="belgium"><input type="checkbox" name="belgium" id="belgium">Belgium</label>
+                                            <label for="brazil"><input type="checkbox" name="brazil" id="brazil">Brazil</label>
+                                            <label for="denmark"><input type="checkbox" name="denmark" id="denmark">Denmark</label>
+                                            <label for="indonesia"><input type="checkbox" name="indonesia" id="indonesia">Indonesia</label>
+                                        </div>
+                                    </div>
+                                </div><!-- panel-body -->
+                            </div>
+                        </div> <!-- panel -->
+
+                    </div><!-- panel-group -->
+                </div>
+            </div>
+            <div class="col-sm-7 col-md-8">
+
+                @foreach (var item in Model.JobOfferViewModel)
             {
-                <div class="job-ad-item">
-                    <div class="item-info">
-                        <div class="item-image-box">
-                            <div class="item-image">
-                                <a href="job-details.html"><img src="images/job/3.png" alt="Image" class="img-responsive"></a>
-                            </div><!-- item-image -->
-                        </div>
+                    <div class="job-ad-item">
+                        <div class="item-info">
+                            <div class="item-image-box">
+                                <div class="item-image">
+                                    <a href="job-details.html"><img src="images/job/3.png" alt="Image" class="img-responsive"></a>
+                                </div><!-- item-image -->
+                            </div>
 
-                        <div class="ad-info">
-                            <span><a href="job-details.html" class=title>@item.Title</a><a href="#">@item.Company</a></span>
-                            <div class="ad-meta">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
-                                    <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                    <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
+                            <div class="ad-info">
+                                <span><a href="job-details.html" class= title>@item.Title</a><a href="#">@item.Company</a></span>
+                                <div class="ad-meta">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
+                                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
+                                        <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
 
-                                </ul>
-                            </div><!-- ad-meta -->
-                        </div><!-- ad-info -->
-                        <div class="button">
-                            @Html.ActionLink("Aplikuj", "Details", "JobOffer", new {id = item.Id}, new {@class = "btn btn-primary"})
-                        </div>
-                    </div><!-- item-info -->
-                </div><!-- ad-item -->
-            }
-
-
+                                    </ul>
+                                </div><!-- ad-meta -->
+                            </div><!-- ad-info -->
+                            <div class="button">
+                                @Html.ActionLink("Aplikuj", "Details", "JobOffer", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            </div>
+                        </div><!-- item-info -->
+                    </div><!-- ad-item -->
+                }
 
 
 
-        </div><!-- trending ads -->
+
+
+            </div><!-- trending ads -->
     </div>
+        </div>
 </section>
 <!-- Koniec tabeli z ofertami pracy -->
 <section class="bgnd bgnd-3 js-parallax-bg">

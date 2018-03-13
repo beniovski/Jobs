@@ -12,5 +12,7 @@ namespace JobsPortal.ViewModels
         public IEnumerable<JobCategoriesViewModel> JobCategoriesViewModel { get; set; }
 
         public IEnumerable<CountryViewModel> CountryViewModel { get; set; }
+
+        public IEnumerable<StateViewModel> StateViewModel { get; set; }
     }
 }

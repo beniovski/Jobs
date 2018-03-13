@@ -30,11 +30,28 @@ namespace JobsPortal.Controllers
                 appUser.LogoPath = $"~/Content/Images/{file.FileName}";
                 await UserManager.UpdateAsync(appUser);
 
-            }
-            
+            }     
 
 
-            return View("CompanyDetails", cvm);
+            return View("CompanyDescription", cvm);
+        }
+
+        public async Task<ActionResult> DeleteLogo()
+        {
+            CompanyViewModel cvm = new CompanyViewModel();
+            cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            var path = Path.Combine(Server.MapPath(cvm.ApplicationUser.LogoPath));
+            FileInfo Fi = new FileInfo(path);
+            Fi.Delete();
+
+            cvm.ApplicationUser.LogoPath = @"~\Content\Images\default.jpg";
+            UserManager.Update(cvm.ApplicationUser);
+
+                  
+
+
+            return View("CompanyDescription", cvm);
         }
     }
      

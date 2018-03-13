@@ -18,6 +18,8 @@ namespace JobsPortal.Models
 
         public int CountriesId { get; set; }
 
+        public int StateId { get; set; }
+
         public string Title { get; set; }
       
         public string Country { get; set; }
@@ -45,6 +47,8 @@ namespace JobsPortal.Models
         public JobCategories JobCategories { get; set; } 
 
         public Countries Countries { get; set; }
+
+        public State State { get; set; }
 
         public ApplicationUser Company { get; set; }
 

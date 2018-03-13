@@ -7,13 +7,13 @@ namespace JobsPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Addlastloginandlogopathtomodel : IMigrationMetadata
+    public sealed partial class state : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Addlastloginandlogopathtomodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(state));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802231149290_Add last login and logo path to model"; }
+            get { return "201803111128409_state"; }
         }
         
         string IMigrationMetadata.Source

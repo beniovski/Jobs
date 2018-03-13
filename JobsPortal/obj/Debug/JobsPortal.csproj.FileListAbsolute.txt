@@ -154,6 +154,5 @@ C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.pdb
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\bin\SendGrid.xml
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.Addcountriesmodel.resources
+C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.state.resources
 C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.csproj.GenerateResource.Cache
-C:\Users\Daniel\documents\visual studio 2017\Projects\JobsPortal\JobsPortal\obj\Debug\JobsPortal.Migrations.Addlastloginandlogopathtomodel.resources

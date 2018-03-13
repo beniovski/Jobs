@@ -51,6 +51,8 @@ namespace JobsPortal.Models
 
         public DbSet<Countries> Countries { get; set; }
 
+        public DbSet<State> State { get; set; }
+
         public DbSet<JobCategories> JobOfferCategories { get; set; }
 
         public ApplicationDbContext()

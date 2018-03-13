@@ -29,30 +29,56 @@
                             </div>
                         </div>
                      
-                        <button type="submit" class="btn btn-primary">Dodaj Ofertę pracy</button>
+                        <button type="submit" class="btn btn-primary">Dodaj Opis</button>
                     </div><!-- postdetails -->
                 </fieldset>
             }
         </div>
-        
-        
+
         <div class="col-md-4">
-            @using (Html.BeginForm("AddLogo", "Account", FormMethod.Post, new {enctype = "multipart/form-data"}))
-            {
-                <h3>Dodaj Logo firmy</h3>
-                <input type="file" name="file" value="Browser"/>
-                <br>
-                <input type="submit" value="Upload"/>
-                
-            }
-            @if (ViewBag.UploadSuccess == true)
-            {
-                <span>Upload Success </span>
-            }
-
+            <h2>Logo Firmy</h2>
         </div>
+      
 
-    </div><!-- photos-ad -->
+        @if (!Model.ApplicationUser.LogoPath.Contains("default"))
+        {
+            <div class="col-md-4">
+                <div class="user-images">
+                    <img src="@Url.Content(Model.ApplicationUser.LogoPath)" alt="User Images" class="center-block img-responsive ">
+
+                </div>               
+            </div>
+
+            @Html.ActionLink("Usuń", "DeleteLogo", "Account", new { @class = "btn btn-primary" })
+
+        }
+        else
+        {
+                <div class="col-md-4">
+                @using (Html.BeginForm("AddLogo", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h3>Dodaj Logo firmy</h3>
+                    <div class="user-images">
+                        <img src="@Url.Content(Model.ApplicationUser.LogoPath)" alt="User Images" class="center-block img-responsive ">
+
+                    </div>
+                    <input type="file" name="file" value="Browser" />
+                    <br>
+                    <input type="submit" value="Upload" />
+
+                }
+                @if (ViewBag.UploadSuccess == true)
+                {
+                    <span>Upload Success </span>
+                }
+
+            </div>
+
+        }
+
+          
+
+        </div><!-- photos-ad -->
 </div>
 
 }

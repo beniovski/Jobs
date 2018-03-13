@@ -57,10 +57,16 @@ namespace JobsPortal.ViewModels
 
         public int CountriesId { get; set; }
 
+        public int StateId { get; set; }
+
+        [Display(Name = "Wybierz kategorie : ")]
         public JobCategoriesViewModel JobCategories { get; set; }
 
         [Display(Name = "Wybierz kraj : ")]
         public CountryViewModel Country { get; set; }
+
+        [Display(Name = "Wybierz województwo : ")]
+        public StateViewModel State { get; set; }
 
         public ApplicationUser Company { get; set; }
     }

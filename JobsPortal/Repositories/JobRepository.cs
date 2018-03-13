@@ -61,9 +61,10 @@ namespace JobsPortal.Repositories
 
 
         public async Task<IEnumerable<JobOffer>> JobSearchingAsync(int categoryId, string city, string phrase)
-            => await Task.FromResult(_dbContext.JobOffer
-                .Where(x => x.IsActive && ( x.JobCategoriesId == categoryId && x.City == city ||
+            => await Task.FromResult(_dbContext.JobOffer.Where(x => x.IsActive && ( x.JobCategoriesId == categoryId && x.City == city ||
                 (x.Descriptions.Contains(phrase)||x.Title.Contains(phrase)||x.Requaierments.Contains(phrase)) )));
 
+
+       
     }
 }

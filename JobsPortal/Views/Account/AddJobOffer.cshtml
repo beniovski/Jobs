@@ -48,11 +48,10 @@
                                     </div>                               
                                     
                                         <div class="row form-group add-title">
-                                            @Html.LabelFor(m => m.JobOfferViewModel.Category, new { @class = "col-sm-3 label-title" })
-                                            <div class="col-sm-9">
-                                                @Html.TextBoxFor(m => m.JobOfferViewModel.Category, new { @class = "form-control" })
-                                                
-                                                @Html.DropDownListFor(model => model.JobOfferViewModel.JobCategories.Id, new SelectList(Model.JobCategoriesViewModel,"Id", "Name"), "Wybierz kategorie")
+                                            @Html.LabelFor(m => m.JobOfferViewModel.JobCategories, new { @class = "col-sm-3 label-title" })
+                                            <div class="col-sm-9">                                              
+
+                                                    @Html.DropDownListFor(model => model.JobOfferViewModel.JobCategories.Id, new SelectList(Model.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "col-sm-9 dropdown category-dropdown form-control" })
                                                
                                             </div>
                                         </div>
@@ -71,22 +70,33 @@
                                         </div>
                                     </div>
                                 
-                                <div class="row form-group select-price">
-                                        <div class="col-sm-9">                                        
-                                       
-                                            <span>@Html.LabelFor(m => m.JobOfferViewModel.City)</span>
-                                            @Html.TextBoxFor(m => m.JobOfferViewModel.City, new { @class = "form-control" })
-                                           
+
+                                        <div class="row form-group add-title">
+                                            @Html.LabelFor(m => m.JobOfferViewModel.Country, new { @class = "col-sm-3 label-title" })
+                                            <div class="col-sm-9">
+                                                @Html.DropDownListFor(model => model.JobOfferViewModel.Country.Id, new SelectList(Model.CountryViewModel, "Id", "CountryName"), "Wybierz kraj", new { @class = "dropdown category-dropdown form-control", id = "countrySelect" })
+
+                                            </div>
                                         </div>
-                                    </div>
-                                
+
+                                        <div class="row form-group add-title" id = "stateSelect">
+                                            @Html.LabelFor(m => m.JobOfferViewModel.State, new { @class = "col-sm-3 label-title" })
+                                            <div class="col-sm-9">
+                                                @Html.DropDownListFor(model => model.JobOfferViewModel.State.Id, new SelectList(Model.StateViewModel, "Id", "StateName"), "Wybierz województwo", new { @class = "dropdown category-dropdown form-control" })
+
+                                            </div>
+                                        </div>    
+                                      
+                             
                                     <div class="row form-group add-title">
-                                        @Html.LabelFor(m => m.JobOfferViewModel.Country, new { @class = "col-sm-3 label-title" })
+                                        @Html.LabelFor(m => m.JobOfferViewModel.City, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.DropDownListFor(model => model.JobOfferViewModel.Country.Id, new SelectList(Model.CountryViewModel, "Id", "CountryName"), "Wybierz kraj")
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.City, new { @class = "form-control" })
 
                                         </div>
                                     </div>
+
+                                     
                                    
 
                                     <div class="row form-group select-price">
@@ -103,7 +113,12 @@
                                         @Html.LabelFor(m => m.JobOfferViewModel.DateFrom, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
                                             @Html.TextBoxFor(m => m.JobOfferViewModel.DateFrom, new { @class = "form-control", id= "DateFrom" })
-                                        </div>
+                                        </div>                                    
+                                   
+
+                                        
+
+
                                     </div>
                                     <div class="row form-group item-description">
                                        
@@ -177,6 +192,17 @@
 
         $('#Requaierments').wysihtml5();
         $('#Descriptions').wysihtml5();
+        $('#stateSelect').hide();
+
+
+        $('#countrySelect').change(function () {
+            if ($(this).val() === "13") {
+                $('#stateSelect').show(500);
+            }
+            else {
+                $('#stateSelect').hide(500);
+            }
+        });
 
     </script>
 

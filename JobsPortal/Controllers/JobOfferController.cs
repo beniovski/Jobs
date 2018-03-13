@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using JobsPortal.Repositories;
 using JobsPortal.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace JobsPortal.Controllers
 {
@@ -58,7 +59,8 @@ namespace JobsPortal.Controllers
             scvm.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             scvm.CountryViewModel = await _countryService.GetAllCountriesAsync();
             sjovm.SearchConsoleViewModel = scvm;
-            sjovm.JobOfferViewModel = await _jobOfferService.GetAllJobOfferAsync();
+            sjovm.JobOfferViewModel = await _jobOfferService.GetAllJobOfferAsync();          
+          
 
             return View(sjovm);
         }

@@ -19,13 +19,15 @@ namespace JobsPortal.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private readonly IJobOfferService _jobOfferService;
+        private readonly IStateService _stateService;
         private readonly IJobCategoryService _categoryService;
         private readonly ICountryService _countryService;
         private readonly IEmailService _emailService;
 
         public AccountController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService, 
-                                 IEmailService emailService, ICountryService countryService)
+                                 IEmailService emailService, ICountryService countryService, IStateService stateService)
         {
+            _stateService = stateService;
             _emailService = emailService;
             _categoryService = jobCategoryService;
             _countryService = countryService;
@@ -82,6 +84,7 @@ namespace JobsPortal.Controllers
             AddJobOfferViewModel adjo = new AddJobOfferViewModel();
             adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
             adjo.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            adjo.StateViewModel = await _stateService.GetAllStatesAsync();
             return View(adjo);
         }
         [HttpGet]
@@ -110,7 +113,7 @@ namespace JobsPortal.Controllers
 
             adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
             adjo.CountryViewModel = await _countryService.GetAllCountriesAsync();
-
+            adjo.StateViewModel = await _stateService.GetAllStatesAsync();            
             var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
             adjo.JobOfferViewModel = jobOffer;
             return View("AddJobOffer", adjo);
@@ -130,6 +133,7 @@ namespace JobsPortal.Controllers
             }
             jobOffer.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
             jobOffer.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            jobOffer.StateViewModel = await _stateService.GetAllStatesAsync();
             return View(jobOffer);
         }
 
@@ -261,15 +265,16 @@ namespace JobsPortal.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {  
+            {
 
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
-                    Email = model.Email,                   
+                    Email = model.Email,
                     CompanyName = model.CompanyName,
                     CreationDate = DateTime.Now,
-                   
+                    LogoPath = @"~\Content\Images\default.jpg",
+
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

@@ -18,6 +18,7 @@ namespace JobsPortal.Mappers
                 cfg.CreateMap<AddJobOfferViewModel, JobOffer>()
                     .ForMember(dest => dest.JobCategories, opts => opts.MapFrom(src => src.JobCategoriesViewModel))
                     .ForMember(dest => dest.Countries, opts => opts.MapFrom(src => src.CountryViewModel))
+                    .ForMember(dest => dest.State, opts => opts.MapFrom(src => src.StateViewModel))
                     .ForMember(dest => dest.City, opts => opts.MapFrom(src => src.JobOfferViewModel.City))
                     .ForMember(dest => dest.Company, opts => opts.MapFrom(src => src.JobOfferViewModel.Company))
                     .ForMember(dest => dest.CompanyId, opts => opts.MapFrom(src => src.JobOfferViewModel.CompanyId))
@@ -26,6 +27,7 @@ namespace JobsPortal.Mappers
                     .ForMember(dest => dest.Descriptions, opts => opts.MapFrom(src => src.JobOfferViewModel.Descriptions))
                     .ForMember(dest => dest.JobCategoriesId, opts => opts.MapFrom(src => src.JobOfferViewModel.JobCategories.Id))
                     .ForMember(dest => dest.CountriesId, opts => opts.MapFrom(src => src.JobOfferViewModel.Country.Id))
+                    .ForMember(dest => dest.StateId, opts => opts.MapFrom(src => src.JobOfferViewModel.State.Id))
                     .ForMember(dest => dest.Requaierments, opts => opts.MapFrom(src => src.JobOfferViewModel.Requaierments))
                     .ForMember(dest => dest.SalaryMax, opts => opts.MapFrom(src => src.JobOfferViewModel.SalaryMax))
                     .ForMember(dest => dest.SalaryMin, opts => opts.MapFrom(src => src.JobOfferViewModel.SalaryMin))
@@ -37,6 +39,8 @@ namespace JobsPortal.Mappers
                 cfg.CreateMap<JobCategories, JobCategoriesViewModel>();
                 cfg.CreateMap<CountryViewModel, Countries>();
                 cfg.CreateMap<Countries, CountryViewModel>();
+                cfg.CreateMap<StateViewModel, State>();
+                cfg.CreateMap<State, StateViewModel>();
                 cfg.CreateMap< EditJobOfferViewModel , JobOffer>();
 
             });
