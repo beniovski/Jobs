@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using JobsPortal.Models;
 using JobsPortal.Services;
 using JobsPortal.ViewModels;
+using PagedList;
 
 namespace JobsPortal.Controllers
 {
@@ -53,21 +54,32 @@ namespace JobsPortal.Controllers
             return View(cvm);
         }
      
-        public async Task<ActionResult> CompanyDetails()
+        public async Task<ActionResult> CompanyDetails(int ?page)
         {
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
             CompanyViewModel cvm = new CompanyViewModel();
             cvm.ApplicationUser =  await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            cvm.JobOfferView = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            var jobsOffer= await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            cvm.JobOfferView = jobsOffer.ToPagedList(pageNumber, pageSize);
+
             return View("JobOffers", cvm);
         }
 
 
 
-        public async Task<ActionResult> ArchiveJobsOffer()
+        public async Task<ActionResult> ArchiveJobsOffer(int ? page)
         {
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
             CompanyViewModel cvm = new CompanyViewModel();
             cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            cvm.JobOfferView = await _jobOfferService.GetArchiveJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            var jobs = await _jobOfferService.GetArchiveJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+
+            cvm.JobOfferView = jobs.ToPagedList(pageNumber, pageSize);
+
             return View("ArchiveJobsOffer", cvm);
         }
       

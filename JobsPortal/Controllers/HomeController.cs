@@ -22,7 +22,7 @@ namespace JobsPortal.Controllers
         {
             var jobOffer = await _jobOfferService.GetAllJobOfferAsync();
 
-            return View(jobOffer);
+            return View(jobOffer.OrderByDescending(x => x.DateFrom).Take(10));
         }
         
         public ActionResult About()

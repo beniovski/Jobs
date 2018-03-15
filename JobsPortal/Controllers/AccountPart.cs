@@ -46,9 +46,7 @@ namespace JobsPortal.Controllers
             Fi.Delete();
 
             cvm.ApplicationUser.LogoPath = @"~\Content\Images\default.jpg";
-            UserManager.Update(cvm.ApplicationUser);
-
-                  
+            UserManager.Update(cvm.ApplicationUser);                 
 
 
             return View("CompanyDescription", cvm);

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PagedList;
 using System.Web;
 using System.Web.Mvc;
 using JobsPortal.Repositories;
@@ -38,7 +39,7 @@ namespace JobsPortal.Controllers
             scvmn.selectedCategory = scvm.SearchConsoleViewModel.selectedCategory;
             sjovm.SearchConsoleViewModel = scvmn;
             
-            sjovm.JobOfferViewModel = jobsOffer;
+            sjovm.JobOfferViewModel = jobsOffer.ToPagedList(10,5);
 
             return View("AllOfers", sjovm);
         }
@@ -50,8 +51,11 @@ namespace JobsPortal.Controllers
             return View(jobOffer);
         }
          
-        public async Task<ActionResult> AllOfers()
+        public async Task<ActionResult> AllOfers(int? page)
         {
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
             var jobOffers = await _jobOfferService.GetAllJobOfferAsync();
 
             var sjovm = new SearchJobOfferViewModel();
@@ -59,8 +63,12 @@ namespace JobsPortal.Controllers
             scvm.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             scvm.CountryViewModel = await _countryService.GetAllCountriesAsync();
             sjovm.SearchConsoleViewModel = scvm;
-            sjovm.JobOfferViewModel = await _jobOfferService.GetAllJobOfferAsync();          
-          
+
+            var getJobs = await _jobOfferService.GetAllJobOfferAsync();
+
+            sjovm.JobOfferViewModel = getJobs.ToPagedList(pageNumber, pageSize);
+
+
 
             return View(sjovm);
         }

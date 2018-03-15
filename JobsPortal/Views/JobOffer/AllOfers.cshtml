@@ -1,4 +1,6 @@
 ﻿@using System.Net.Sockets
+@using PagedList.Mvc;
+    
 @model JobsPortal.ViewModels.SearchJobOfferViewModel
 
 
@@ -190,8 +192,11 @@
                     </div><!-- ad-item -->
                 }
 
+                <br />
+                <br />
+                Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber  ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
 
-
+                @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action("AllOfers", new { page }))
 
 
             </div><!-- trending ads -->

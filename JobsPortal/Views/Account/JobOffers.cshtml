@@ -1,4 +1,5 @@
 ﻿@model JobsPortal.ViewModels.CompanyViewModel
+@using PagedList.Mvc;
 @{
     Layout = "_CompanyDetailsPartial.cshtml";
 }
@@ -45,4 +46,8 @@
 
        
     }
+    <br />
+    Page @(Model.JobOfferView.PageCount < Model.JobOfferView.PageNumber ? 0 : Model.JobOfferView.PageCount) of @Model.JobOfferView.PageCount
+
+    @Html.PagedListPager(Model.JobOfferView, page => Url.Action("CompanyDetails", new { page }))
 }
