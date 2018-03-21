@@ -64,7 +64,11 @@ namespace JobsPortal.Repositories
             => await Task.FromResult(_dbContext.JobOffer.Where(x => x.IsActive && ( x.JobCategoriesId == categoryId && x.City == city ||
                 (x.Descriptions.Contains(phrase)||x.Title.Contains(phrase)||x.Requaierments.Contains(phrase)) )));
 
+        public async Task<IEnumerable<JobOffer>> JobSearchingAsync(string city, string phrase)
+            => await Task.FromResult(_dbContext.JobOffer.Where(x => x.City == city && (x.Descriptions.Contains(phrase) || x.Title.Contains(phrase) || x.Requaierments.Contains(phrase))));
+     
 
-       
+
+
     }
 }

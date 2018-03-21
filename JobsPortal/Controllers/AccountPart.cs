@@ -21,7 +21,8 @@ namespace JobsPortal.Controllers
             var fileExt = Path.GetExtension(file.FileName).ToLower();
             var path = "";
             if (file != null && file.ContentLength >0 && fileExt == ".jpg")
-            {
+            {               
+
                  path = Path.Combine(Server.MapPath("~/Content/Images/"), file.FileName);
                  file.SaveAs(path);
                  ViewBag.UploadSuccess = true;

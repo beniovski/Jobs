@@ -20,6 +20,8 @@ namespace JobsPortal.Repositories
 
         Task<IEnumerable<JobOffer>> GetArchiveByCompanyId(string id);
 
+        Task<IEnumerable<JobOffer>> JobSearchingAsync(string city, string phrase);
+
         Task<IEnumerable<JobOffer>> JobSearchingAsync(int categoryId, string city, string phrase);
 
         List<string> JobSuggestBoxSearch(string name);

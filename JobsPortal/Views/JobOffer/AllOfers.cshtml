@@ -6,26 +6,28 @@
 
 <!-- Tabela z ofertami pracy -->
 <section class="content">
-    <div class="container">
-        <div class="row">
+    <div class="container text-center">
+        <div class="col-md-12">
 
-            @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get, new { @class = "row banner-form banner-form-full job-list-form col-md-12" }))
+            @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get ))
             {
-                <!-- category-change -->
-                @Html.DropDownListFor(m => m.SearchConsoleViewModel.selectedCategory, new SelectList(Model.SearchConsoleViewModel.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "dropdown category-dropdown col-xs-3" })
-               <!--category-change -->
-                <!-- language-dropdown -->
+                <div class="form-inline col-md-12">
 
-                  <!--  <input type="text" class="form-control" placeholder="Miasto" id="cityInput"> -->
-                <div class="col-xs-2">
-                    @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new { @class = "form-control col-xs-3 dropdown", id = "cityInput" })
-                </div>
-                    <div class="col-xs-2">
-                        @Html.TextBoxFor(m => m.SearchConsoleViewModel.phraseSearch, new { @class = "form-control col-xs-3" })
-                    </div>
+
+                    <!-- category-change -->
+                    @Html.DropDownListFor(m => m.SearchConsoleViewModel.selectedCategory, new SelectList(Model.SearchConsoleViewModel.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "form-control dropdown category-dropdown" })
+                   
+                    
+                        @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new {@class = "form-control",  id = "cityInput" })
+                    
+                  
+                        @Html.TextBoxFor(m => m.SearchConsoleViewModel.phraseSearch, new { @class = "form-control" })
+                   
 
 
                     <button type="submit" class="btn btn-primary" value="Search">Search</button>
+
+                </div>
             }
         </div><!-- banner-form -->
     </div>

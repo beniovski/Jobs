@@ -45,6 +45,25 @@ namespace JobsPortal.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult> HomeSearch(IndexHomeViewModel isjvm)
+        {
+            var jobsOffer = await _jobOfferService.JobSearchingAsync(isjvm.IndexSearchJobOfferViewModel.CitySearch, isjvm.IndexSearchJobOfferViewModel.PhraseSearch);
+
+            var sjovm = new SearchJobOfferViewModel();
+            var scvmn = new SearchConsoleViewModel();
+
+            scvmn.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            scvmn.CountryViewModel = await _countryService.GetAllCountriesAsync();
+           
+            sjovm.SearchConsoleViewModel = scvmn;
+
+            sjovm.JobOfferViewModel = jobsOffer.ToPagedList(1, 5);
+          
+
+            return View("AllOfers", sjovm);
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
             var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);

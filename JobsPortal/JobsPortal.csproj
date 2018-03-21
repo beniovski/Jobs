@@ -266,6 +266,8 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\IndexHomeViewModel.cs" />
+    <Compile Include="ViewModels\IndexSearchJobOfferViewModel.cs" />
     <Compile Include="ViewModels\StateViewModel.cs" />
     <Compile Include="ViewModels\CountryViewModel.cs" />
     <Compile Include="ViewModels\JobCategoriesViewModel.cs" />
