@@ -12,6 +12,9 @@ namespace JobsPortal.Controllers
 {
     public partial class AccountController : Controller
     {
+
+   
+
         [HttpPost]
         public async Task<ActionResult> AddLogo(HttpPostedFileBase file)
         {

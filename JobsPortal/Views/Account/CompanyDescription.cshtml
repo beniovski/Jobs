@@ -55,23 +55,23 @@
         else
         {
                 <div class="col-md-4">
-                @using (Html.BeginForm("AddLogo", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
+              @using (Html.BeginForm("AddLogo", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+              { 
                     <h3>Dodaj Logo firmy</h3>
                     <div class="user-images">
                         <img src="@Url.Content(Model.ApplicationUser.LogoPath)" alt="User Images" class="center-block img-responsive ">
 
                     </div>
-                    <input type="file" name="file" value="Browser" />
+                    <input type="file" name="file" value="Browser" id="file" />
                     <br>
-                    <input type="submit" value="Upload" />
+                    <input type="submit" value="Upload" id="ImgSendButton" />
 
-                }
+              }
                 @if (ViewBag.UploadSuccess == true)
                 {
                     <span>Upload Success </span>
                 }
-
+                    <h3 id='response'></h3>
             </div>
 
         }
@@ -82,3 +82,14 @@
 </div>
 
 }
+
+
+
+
+
+
+
+
+
+
+
