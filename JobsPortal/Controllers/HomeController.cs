@@ -1,5 +1,6 @@
 ﻿using JobsPortal.Services;
 using JobsPortal.ViewModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +24,10 @@ namespace JobsPortal.Controllers
         {
             var jobOffer = await _jobOfferService.GetAllJobOfferAsync();
 
-            IndexHomeViewModel ihvm = new IndexHomeViewModel();
-            ihvm.JobOfferViewModel = jobOffer.OrderByDescending(x => x.DateFrom).Take(10);
+            SearchJobOfferViewModel scvm = new SearchJobOfferViewModel();
+            scvm.JobOfferViewModel = jobOffer.OrderByDescending(x => x.DateFrom).Take(10).ToPagedList(1,10);
 
-            return View(ihvm);
+            return View(scvm);
         }
         
         public ActionResult About()

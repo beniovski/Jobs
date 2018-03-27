@@ -198,7 +198,13 @@
                 <br />
                 Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber  ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
 
-                @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action("AllOfers", new { page }))
+                @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action("JobSearchOverload",
+               new { page,
+                   city = Model.SearchConsoleViewModel.citySearch,
+                   phrase = Model.SearchConsoleViewModel.phraseSearch,
+                   categoryId = Model.SearchConsoleViewModel.selectedCategory,               
+
+                   }))
 
 
             </div><!-- trending ads -->

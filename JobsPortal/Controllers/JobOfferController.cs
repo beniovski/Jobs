@@ -26,20 +26,51 @@ namespace JobsPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> JobSearch(SearchJobOfferViewModel scvm)
+        public async Task<ActionResult> JobSearch(SearchJobOfferViewModel scvm, int ? page)
         {
-           var jobsOffer = await _jobOfferService.JobSearchingAsync(scvm.SearchConsoleViewModel.selectedCategory, scvm.SearchConsoleViewModel.citySearch,
-                scvm.SearchConsoleViewModel.phraseSearch);
 
-            var sjovm = new SearchJobOfferViewModel();
-            var scvmn = new SearchConsoleViewModel();
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
 
-            scvmn.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
-            scvmn.CountryViewModel = await _countryService.GetAllCountriesAsync();
-            scvmn.selectedCategory = scvm.SearchConsoleViewModel.selectedCategory;
-            sjovm.SearchConsoleViewModel = scvmn;
+            IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
             
-            sjovm.JobOfferViewModel = jobsOffer.ToPagedList(10,5);
+            if(scvm.SearchConsoleViewModel.phraseSearch != "" && scvm.SearchConsoleViewModel.citySearch != "")
+            {
+                  jobsOffer = await _jobOfferService.JobSearchingAsync(scvm.SearchConsoleViewModel.citySearch, scvm.SearchConsoleViewModel.phraseSearch);
+            }
+
+            scvm.SearchConsoleViewModel.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            scvm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            scvm.SearchConsoleViewModel.selectedCategory = scvm.SearchConsoleViewModel.selectedCategory;
+
+            scvm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
+
+            return View("AllOfers", scvm);
+        }
+
+        [HttpGet]
+        [ActionName("JobSearchOverload")]
+        public async Task<ActionResult> JobSearch(string city, string phrase , int? page, int? categoryId, int? countryId, int? regionId )
+        {
+
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
+
+            if (phrase!= "" && city != "")
+            {
+                jobsOffer = await _jobOfferService.JobSearchingAsync(city, phrase);
+            }
+            SearchJobOfferViewModel sjovm = new SearchJobOfferViewModel();
+            sjovm.SearchConsoleViewModel = new SearchConsoleViewModel();            
+            sjovm.SearchConsoleViewModel.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            sjovm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            sjovm.SearchConsoleViewModel.citySearch = city;
+            sjovm.SearchConsoleViewModel.phraseSearch = phrase;
+            sjovm.SearchConsoleViewModel.selectedCategory = Convert.ToInt16(categoryId);
+
+            sjovm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
 
             return View("AllOfers", sjovm);
         }

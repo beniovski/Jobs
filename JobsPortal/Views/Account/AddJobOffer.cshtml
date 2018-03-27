@@ -112,7 +112,7 @@
                                     <div class="row form-group select-price">
                                         @Html.LabelFor(m => m.JobOfferViewModel.DateFrom, new { @class = "col-sm-3 label-title" })
                                         <div class="col-sm-9">
-                                            @Html.TextBoxFor(m => m.JobOfferViewModel.DateFrom, new { @class = "form-control", id= "DateFrom" })
+                                            @Html.TextBoxFor(m => m.JobOfferViewModel.DateFrom, "{0:dd/MM/yyyy}", new { @class = "form-control", id= "DateFrom" })
                                         </div>                                    
                                    
 
@@ -184,7 +184,7 @@
     <script type="text/javascript">
         $(function () {
             $("#DateFrom").datepicker({
-                dateFormat: "dd-mm-yyyy"
+                dateFormat: "dd-mm-yy"
             });
 
 

@@ -1,4 +1,4 @@
-﻿@model JobsPortal.ViewModels.IndexHomeViewModel
+﻿@model JobsPortal.ViewModels.SearchJobOfferViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -19,14 +19,14 @@
                 <h1 class="title">The Easiest Way to Get Your New Job</h1>
                 <h3>We offer 12000 jobs vacation right now</h3>
                 <div class="col-md-12">
-                  @using (Html.BeginForm("HomeSearch", "JobOffer", FormMethod.Get))
+                  @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get))
                   {
 
 
 
                      <div class="form-inline">
-                            @Html.TextBoxFor(x => x.IndexSearchJobOfferViewModel.PhraseSearch, new { @class = "form-control", placeholder = "słowo kluczowe" })
-                            @Html.TextBoxFor(x => x.IndexSearchJobOfferViewModel.CitySearch, new { id = "CountrySearch", @class = "form-control", placeholder = "miasto" })
+                            @Html.TextBoxFor(x => x.SearchConsoleViewModel.phraseSearch  , new { @class = "form-control", placeholder = "słowo kluczowe" })
+                            @Html.TextBoxFor(x => x.SearchConsoleViewModel.citySearch, new { id = "CountrySearch", @class = "form-control", placeholder = "miasto" })
                             <button type="submit" class="btn btn-primary" value="Search">Szukaj</button>
                          
                     </div>
