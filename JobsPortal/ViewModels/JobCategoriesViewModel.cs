@@ -11,11 +11,13 @@ namespace JobsPortal.ViewModels
 
         public string Name { get; set; }
 
-        HashSet<JobOfferViewModel> JobOfferViewModel;
+        public bool IsChecked { get; set; }
+
+        IList<JobOfferViewModel> JobOfferViewModel;
 
         public JobCategoriesViewModel()
         {
-            JobOfferViewModel = new HashSet<JobOfferViewModel>();
+            JobOfferViewModel = new List<JobOfferViewModel>();
         }
     }
 }

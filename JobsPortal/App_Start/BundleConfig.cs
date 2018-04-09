@@ -50,6 +50,12 @@ namespace JobsPortal
                       "~/Content/themes/base/base.css",
                       "~/Content/themes/base/jquery-ui.css",
                       "~/Content/slidr.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/deleteConfirm").Include(
+                      "~/Scripts/bootstrap-confirm-delete.js"));
+
+            bundles.Add(new StyleBundle("~/Content/deleteConfirm").Include(
+                      "~/Content/bootstrap-confirm-delete.css"));
         }
     }
 }

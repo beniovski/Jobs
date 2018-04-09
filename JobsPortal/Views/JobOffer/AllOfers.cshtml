@@ -9,13 +9,13 @@
     <div class="container text-center">
         <div class="col-md-12">
 
-            @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get ))
+         @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Post ))
             {
                 <div class="form-inline col-md-12">
 
 
                     <!-- category-change -->
-                    @Html.DropDownListFor(m => m.SearchConsoleViewModel.selectedCategory, new SelectList(Model.SearchConsoleViewModel.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "form-control dropdown category-dropdown" })
+                 
                    
                     
                         @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new {@class = "form-control",  id = "cityInput" })
@@ -28,18 +28,18 @@
                     <button type="submit" class="btn btn-primary" value="Search">Search</button>
 
                 </div>
-            }
+            } 
         </div><!-- banner-form -->
     </div>
 
     <div class="container">
-       
-
+ 
         <div class="section latest-jobs-ads">
-
             <div class="col-md-3 col-sm-4">
                 <div class="accordion">
                     <!-- panel-group -->
+                    @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Post))
+                    {
                     <div class="panel-group" id="accordion">
 
                         <!-- panel -->
@@ -48,7 +48,7 @@
                             <div class="panel-heading">
                                 <div class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#accordion-one">
-                                        <h4>Categories<span class="pull-right"><i class="fa fa-minus"></i></span></h4>
+                                        <h4>Kategorie<span class="pull-right"><i class="fa fa-minus"></i></span></h4>
                                     </a>
                                 </div>
                             </div><!-- panel-heading -->
@@ -56,29 +56,18 @@
                             <div id="accordion-one" class="panel-collapse collapse in">
                                 <!-- panel-body -->
                                 <div class="panel-body">
-                                    <h5><a href="categories-main.html"><i class="fa fa-caret-down"></i> All Categories</a></h5>
-                                    <a href="#"><i class="icofont icofont-man-in-glasses"></i>Engineer/Architects</a>
-                                    <ul>
-                                        <li><a href="#">Software <span>(129)</span></a></li>
-                                        <li><a href="#">Architecture <span>(8342)</span></a></li>
-                                        <li><a href="#">UI & UX Designer <span>(782)</span></a></li>
-                                        <li><a href="#">Telecommunication <span>(5247)</span></a></li>
-                                        <li><a href="#">Civil Engineer <span>(634)</span></a></li>
-                                        <li><a href="#">Chemical Engineer <span>(453)</span></a></li>
-                                        <li><a href="#">Program Development <span>(7986)</span></a></li>
-                                        <li><a href="#">Mechanical Engineer <span>(742)</span></a></li>
-                                        <li><a href="#">Industrial Engineer <span>(149)</span></a></li>
-                                    </ul>
-                                    <div class="see-more">
-                                        <button type="button" class="show-more one"><i class="fa fa-plus-square-o" aria-hidden="true"></i>See More</button>
-                                        <ul class="more-category one">
-                                            <li><a href="#">Fron end developer<span>(289)</span></a></li>
-                                            <li><a href="#">Back end developer<span>(5402)</span></a></li>
-                                            <li><a href="#">IT Department Manager<span>(3829)</span></a></li>
-                                            <li><a href="#">QA Department Manager<span>(352)</span></a></li>
-                                        </ul>
-                                    </div>
+                                    <h5><a href="categories-main.html"><i class="fa fa-caret-down"></i> Kategorie</a></h5>
+                                    
+                                    <ul class=" checkbox-inline">
+                                          @for (int i =0; i <  Model.CategoriesViewModel.Count(); i++)
+                                          {
+                                              <li>@Html.CheckBoxFor(m => Model.CategoriesViewModel[i].IsChecked) @Model.CategoriesViewModel[i].Name</li>
+                                              @Html.HiddenFor(m => Model.CategoriesViewModel[i].Id);
+                                              @Html.HiddenFor(m => Model.CategoriesViewModel[i].Name);
+                                          }
 
+                                    </ul>
+                              
                                 </div><!-- panel-body -->
                             </div>
                         </div><!-- panel -->                       
@@ -89,7 +78,7 @@
                             <div class="panel-heading">
                                 <div class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#accordion-four">
-                                        <h4>Employment Type<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
+                                        <h4>Miejsce Pracy<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
                                     </a>
                                 </div>
                             </div><!-- panel-heading -->
@@ -97,11 +86,23 @@
                             <div id="accordion-four" class="panel-collapse collapse">
                                 <!-- panel-body -->
                                 <div class="panel-body">
-                                    <label for="full-time"><input type="checkbox" name="full-time" id="full-time"> Full Time</label>
-                                    <label for="part-time"><input type="checkbox" name="part-time" id="part-time"> Part Time</label>
-                                    <label for="contractor"><input type="checkbox" name="contractor" id="contractor"> Contractor</label>
-                                    <label for="intern"><input type="checkbox" name="intern" id="intern"> Intern</label>
-                                    <label for="seasonal"><input type="checkbox" name="seasonal" id="seasonal"> Seasonal / Temp</label>
+                                
+                                    <a data-toggle="collapse"  data-target="#demo">
+                                        <h4>Polska<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
+                                    </a>
+                                    <ul class=" checkbox-inline" id="demo">
+                                        @foreach (var item in Model.SearchConsoleViewModel.StateViewModel)
+                                        {
+                                            <li>@Html.CheckBoxFor(m => item.IsChecked) @item.StateName</li>
+                                            @Html.HiddenFor(m => item.Id);
+                                            @Html.HiddenFor(m => item.StateName);
+                                        }
+
+                                    </ul>
+
+
+
+
                                 </div><!-- panel-body -->
                             </div>
                         </div><!-- panel -->
@@ -160,14 +161,18 @@
                                 </div><!-- panel-body -->
                             </div>
                         </div> <!-- panel -->
-
-                    </div><!-- panel-group -->
+                        <button type="submit" class="btn btn-primary" value="Search">Search</button>
+                    </div>
+                    
+                    
+                    }<!-- panel-group -->
                 </div>
             </div>
+            
             <div class="col-sm-7 col-md-8">
 
                 @foreach (var item in Model.JobOfferViewModel)
-            {
+                {
                     <div class="job-ad-item">
                         <div class="item-info">
                             <div class="item-image-box">
@@ -196,21 +201,27 @@
 
                 <br />
                 <br />
-                Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber  ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
+                Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
 
                 @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action("JobSearchOverload",
-               new { page,
-                   city = Model.SearchConsoleViewModel.citySearch,
-                   phrase = Model.SearchConsoleViewModel.phraseSearch,
-                   categoryId = Model.SearchConsoleViewModel.selectedCategory,               
+           new
+           {
+               page,
+               city = Model.SearchConsoleViewModel.citySearch,
+               phrase = Model.SearchConsoleViewModel.phraseSearch,
+               categoryId = Model.SearchConsoleViewModel.selectedCategory,
 
-                   }))
+           }))
 
 
             </div><!-- trending ads -->
     </div>
-        </div>
-</section>
+
+
+     
+
+
+    </section>
 <!-- Koniec tabeli z ofertami pracy -->
 <section class="bgnd bgnd-3 js-parallax-bg">
     <div class="va-wrapper">

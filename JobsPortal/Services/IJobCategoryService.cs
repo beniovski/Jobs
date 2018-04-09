@@ -9,6 +9,6 @@ namespace JobsPortal.Services
 {
     public interface IJobCategoryService
     {
-       Task <IEnumerable<JobCategoriesViewModel>> GetAllJobCategoriesAsync();
+       Task <IList<JobCategoriesViewModel>> GetAllJobCategoriesAsync();
     }
 }

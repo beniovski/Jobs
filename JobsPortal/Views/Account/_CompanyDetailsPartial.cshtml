@@ -8,6 +8,7 @@
 @section cssStyles
     {
     @Styles.Render("~/Content/wyswigcss")
+    @Styles.Render("~/Content/deleteConfirm")
 }
 
 <section class=" job-bg page  ad-profile-page">
@@ -74,9 +75,21 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/wyswigjs")
+    @Scripts.Render("~/bundles/deleteConfirm")
     <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 
     <script type="text/javascript">
+
+
+
+        $('.demo').bootstrap_confirm_delete({
+            heading: 'Usunąć Ofertę',            
+            message: 'Czy napewno chcesz usunąć ofertę ? ',
+            data_type: null,
+        });
+
+
+
         $(function() {
             $("#DateFrom").datepicker({
                 dateFormat: "dd-mm-yyyy"

@@ -11,6 +11,8 @@ namespace JobsPortal.ViewModels
 
         public string CountryName { get; set; }
 
+        public bool IsChecked { get; set; }
+
         HashSet<CountryViewModel> countryViewModel;
 
         public CountryViewModel()

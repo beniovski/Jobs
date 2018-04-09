@@ -11,6 +11,13 @@ namespace JobsPortal.ViewModels
         public IPagedList<JobOfferViewModel> JobOfferViewModel { get; set; }
 
         public SearchConsoleViewModel SearchConsoleViewModel { get; set; }
-       
+
+        public IList<JobCategoriesViewModel> CategoriesViewModel { get; set; }    
+        
+        public SearchJobOfferViewModel()
+        {
+            CategoriesViewModel = new List<JobCategoriesViewModel>();
+        }
+               
     }
 }

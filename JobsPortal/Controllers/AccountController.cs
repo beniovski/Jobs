@@ -103,7 +103,7 @@ namespace JobsPortal.Controllers
         public async Task<ActionResult> ArchiveJobOffer(int id)
         {
             await _jobOfferService.ArchiveJobOfferAsync(id);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("CompanyDetails", "Account");
         }
 
         public async Task<ActionResult> EditJobOffer(int id)
