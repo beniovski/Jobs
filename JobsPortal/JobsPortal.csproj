@@ -261,6 +261,7 @@
     <Compile Include="Services\IEmailService.cs" />
     <Compile Include="Services\IJobCategoryService.cs" />
     <Compile Include="Services\JobCategoryService.cs" />
+    <Compile Include="ViewModels\ApplyJobOfferViewModel.cs" />
     <Compile Include="ViewModels\CompanyDetailsViewModel.cs" />
     <Compile Include="ViewModels\CompanyViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -268,6 +269,7 @@
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
     <Compile Include="ViewModels\IndexHomeViewModel.cs" />
     <Compile Include="ViewModels\IndexSearchJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\JobApplyViewModel.cs" />
     <Compile Include="ViewModels\StateViewModel.cs" />
     <Compile Include="ViewModels\CountryViewModel.cs" />
     <Compile Include="ViewModels\JobCategoriesViewModel.cs" />
@@ -433,6 +435,10 @@
     <Content Include="Views\Account\ArchiveJobsOffer.cshtml" />
     <Content Include="Views\Account\CompanyDescription.cshtml" />
     <Content Include="Views\JobOffer\Search.cshtml" />
+    <Content Include="Views\JobOffer\_EmailFormPartial.cshtml" />
+    <Content Include="Views\JobOffer\SendApplications.cshtml" />
+    <Content Include="Views\Home\_HomeSearchPartial.cshtml" />
+    <Content Include="Views\JobOffer\_ColunnSearchConsolePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

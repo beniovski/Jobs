@@ -1,0 +1,60 @@
+﻿@model JobsPortal.ViewModels.ApplyJobOfferViewModel
+
+
+
+
+    <div class="col-lg-12">
+        @using (Html.BeginForm("SendApplications", "JobOffer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <fieldset>
+                <div class="section postdetails">
+                    <h4>Wyślij swoje CV !<span class="pull-right">* Wymagane pola</span></h4>
+                    <div class="row form-group add-title">
+                        * @Html.LabelFor(m => m.Name, new { @class = "col-sm-3 label-title" })
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group add-title">
+                        * @Html.LabelFor(m => m.Surname, new { @class = "col-sm-3 label-title" })
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    
+                    <div class="row form-group add-title">
+                        * @Html.LabelFor(m => m.Email, new { @class = "col-sm-3 label-title" })
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group item-description">
+                        @Html.LabelFor(m => m.Meesage, new { @class = "col-sm-3 label-title" })
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(m => m.Meesage, new { @class = "form-control", rows = "12", cols = "10", id = "Descriptions" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group item-description">
+                        <label class = "col-sm-3 label-title" for="CvFile">CV</label>
+                        <div class="col-sm-9">
+                           <input type="file" name ="CvFile" id="CvFile"/> 
+                        </div>
+                    </div>
+
+                    <div class="row form-group item-description">
+                        <div class="col-sm-9">
+                           <!--  <button class="btn btn-primary">Aplikuj !</button> -->
+                            <input type="submit" value="wyslij">
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+

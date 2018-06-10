@@ -18,10 +18,10 @@
                  
                    
                     
-                        @Html.TextBoxFor(m => m.SearchConsoleViewModel.citySearch, new {@class = "form-control",  id = "cityInput" })
+                        @Html.TextBoxFor(m => m.IndexSearchJobOfferViewModel.CitySearch, new {@class = "form-control",  id = "cityInput" })
                     
                   
-                        @Html.TextBoxFor(m => m.SearchConsoleViewModel.phraseSearch, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.IndexSearchJobOfferViewModel.PhraseSearch, new { @class = "form-control" })
                    
 
 
@@ -207,21 +207,18 @@
            new
            {
                page,
-               city = Model.SearchConsoleViewModel.citySearch,
-               phrase = Model.SearchConsoleViewModel.phraseSearch,
+               city = Model.IndexSearchJobOfferViewModel.CitySearch,
+               phrase = Model.IndexSearchJobOfferViewModel.PhraseSearch,
                categoryId = Model.SearchConsoleViewModel.selectedCategory,
 
            }))
 
 
             </div><!-- trending ads -->
-    </div>
+    </div></div>
 
 
-     
-
-
-    </section>
+</section>
 <!-- Koniec tabeli z ofertami pracy -->
 <section class="bgnd bgnd-3 js-parallax-bg">
     <div class="va-wrapper">

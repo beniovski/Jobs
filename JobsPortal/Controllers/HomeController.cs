@@ -27,6 +27,8 @@ namespace JobsPortal.Controllers
             SearchJobOfferViewModel scvm = new SearchJobOfferViewModel();
             scvm.JobOfferViewModel = jobOffer.OrderByDescending(x => x.DateFrom).Take(10).ToPagedList(1,10);
 
+            scvm.IndexSearchJobOfferViewModel = new IndexSearchJobOfferViewModel();
+
             return View(scvm);
         }
         

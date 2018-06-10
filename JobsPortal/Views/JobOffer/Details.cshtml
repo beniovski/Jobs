@@ -1,4 +1,4 @@
-﻿@model JobsPortal.ViewModels.JobOfferViewModel
+﻿@model JobsPortal.ViewModels.JobApplyViewModel
  
  <section class="job-bg page job-details-page">
     <div class="container">
@@ -21,22 +21,22 @@
                     </div>
 
                     <div class="ad-info">
-                        <span><span><a href="#" class="title">@Model.Title </a></span>  <a href="#"> Dropbox Inc</a></span>
+                        <span><span><a href="#" class="title">@Model.JobOfferViewModel.Title </a></span>  <a href="#"> Dropbox Inc</a></span>
                         <div class="ad-meta">
                             <ul>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@Model.Country, @Model.City</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@Model.JobOfferViewModel.Country, @Model.JobOfferViewModel.City</a></li>
                                 <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                <li><i class="fa fa-money" aria-hidden="true"></i>@Model.SalaryMin - @Model.SalaryMax</li>
-                                <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>@Model.Category</a></li>
+                                <li><i class="fa fa-money" aria-hidden="true"></i>@Model.JobOfferViewModel.SalaryMin - @Model.JobOfferViewModel.SalaryMax</li>
+                                <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>@Model.JobOfferViewModel.Category</a></li>
                                 <li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : Jan 10, 2017</li>
                             </ul>
                         </div><!-- ad-meta -->
                     </div><!-- ad-info -->
                 </div><!-- item-info -->
                 <div class="social-media">
-                    <div class="button">
+                    <div id ="applyJobOffer" class="button">
                         <a href="#" class="btn btn-primary"><i class="fa fa-briefcase" aria-hidden="true"></i>Apply For This Job</a>
-                        <a href="#" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a>
+                        <!-- a href="#" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a> -->
                     </div>
                     <ul class="share-social">
                         <li>Share this ad</li>
@@ -56,7 +56,7 @@
                         <div class="section job-description">
                             <div class="description-info">
                                 <h1>Description</h1>                                
-                                    @Html.Raw(WebUtility.HtmlDecode(Model.Descriptions));                                
+                                    @Html.Raw(WebUtility.HtmlDecode(Model.JobOfferViewModel.Descriptions));                                
                             </div>
                             <div class="responsibilities">
                                 <h1>Key Responsibilities:</h1>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="requirements">
                                 <h1>Minimum Requirements</h1>
-                              @Html.Raw(WebUtility.HtmlDecode(Model.Requaierments)); 
+                              @Html.Raw(WebUtility.HtmlDecode(Model.JobOfferViewModel.Requaierments)); 
                             </div>
                         </div>
                     </div>
@@ -115,3 +115,31 @@
         </div><!-- row -->
     </div><!-- contaioner -->
 </section><!-- something-sell -->
+
+<div id = "sendEmailPopUp">
+  
+        @Html.Partial("_EmailFormPartial", Model.ApplyJobOfferViewModel);
+  
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/homeIndex")
+    <script type="text/javascript">
+        $("#sendEmailPopUp").hide();
+
+
+        $("#applyJobOffer").click(function() {
+            $("#sendEmailPopUp").dialog({
+                autoOpen: true,
+                resizable: false,
+                modal: true,
+                height : 'auto',
+                width: 'auto'
+            })
+        });
+
+    </script>
+
+}

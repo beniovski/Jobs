@@ -18,15 +18,63 @@ namespace JobsPortal.Controllers
         private readonly IJobCategoryService _jobCategoryService;
         private readonly ICountryService _countryService;
         private readonly IStateService _stateService;
+        private readonly IEmailService _emailService;
 
-        public JobOfferController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService, ICountryService countryService, IStateService stateService)
+        public JobOfferController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService,
+            ICountryService countryService, IStateService stateService, IEmailService emaioService )
         {
+            _emailService = emaioService;
             _stateService = stateService;
             _jobCategoryService = jobCategoryService;
             _countryService = countryService;
             _jobOfferService = jobOfferService;
         }
 
+        [HttpPost]
+        public ActionResult SendApplications(ApplyJobOfferViewModel ajvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var testEmail = "daniel.bednarczuk90@gmail.com";
+                var message = ajvm.Name + " " + ajvm.Surname;
+                _emailService.SendEmail(testEmail,message, ajvm.CvFile);
+            }
+           
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> HomeSearch(IndexSearchJobOfferViewModel scvm, int? page)
+        {
+           
+
+           int pageSize = 8;
+           int pageNumber = (page ?? 1);
+
+            SearchJobOfferViewModel sjovm = new SearchJobOfferViewModel();
+            sjovm.IndexSearchJobOfferViewModel = new IndexSearchJobOfferViewModel();
+            sjovm.SearchConsoleViewModel = new SearchConsoleViewModel();
+            
+
+            sjovm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            sjovm.SearchConsoleViewModel.StateViewModel = await _stateService.GetAllStatesAsync();
+
+            sjovm.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            sjovm.IndexSearchJobOfferViewModel = scvm;
+
+
+            IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
+            jobsOffer = await _jobOfferService.JobSearchingAsync(scvm.CitySearch, scvm.PhraseSearch);
+
+            sjovm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
+
+
+            return View("AllOfers", sjovm);
+
+
+          
+        }
+        
         [HttpPost]
         public async Task<ActionResult> JobSearch(SearchJobOfferViewModel scvm, int ? page)
         {
@@ -40,10 +88,12 @@ namespace JobsPortal.Controllers
 
             IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
             
+            /*
             if(scvm.SearchConsoleViewModel.phraseSearch != "" && scvm.SearchConsoleViewModel.citySearch != "")
             {
                   jobsOffer = await _jobOfferService.JobSearchingAsync(scvm.SearchConsoleViewModel.citySearch, scvm.SearchConsoleViewModel.phraseSearch);
             }
+            */
 
             scvm.SearchConsoleViewModel.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             scvm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
@@ -105,8 +155,10 @@ namespace JobsPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
-            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
-            return View(jobOffer);
+            var jobApplyViewModel = new JobApplyViewModel();
+            jobApplyViewModel.JobOfferViewModel = await _jobOfferService.GetJobOfferByIdAsync(id);
+            jobApplyViewModel.ApplyJobOfferViewModel = new ApplyJobOfferViewModel();
+            return View(jobApplyViewModel);
         }
          
         public async Task<ActionResult> AllOfers(int? page)

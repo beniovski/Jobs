@@ -1,0 +1,18 @@
+﻿@model JobsPortal.ViewModels.IndexSearchJobOfferViewModel
+
+
+
+@using (Html.BeginForm("HomeSearch", "JobOffer", FormMethod.Post))
+{
+
+
+
+    <div class="form-inline">
+        @Html.TextBoxFor(x => x.PhraseSearch, new { @class = "form-control", placeholder = "słowo kluczowe" })
+        @Html.TextBoxFor(x => x.CitySearch, new { id = "CountrySearch", @class = "form-control", placeholder = "miasto" })
+        <button type="submit" class="btn btn-primary" value="Search">Szukaj</button>
+
+    </div>
+
+
+}

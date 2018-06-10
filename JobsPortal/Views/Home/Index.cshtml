@@ -19,22 +19,10 @@
                 <h1 class="title">The Easiest Way to Get Your New Job</h1>
                 <h3>We offer 12000 jobs vacation right now</h3>
                 <div class="col-md-12">
-                  @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Get))
-                  {
-
-
-
-                     <div class="form-inline">
-                            @Html.TextBoxFor(x => x.SearchConsoleViewModel.phraseSearch  , new { @class = "form-control", placeholder = "słowo kluczowe" })
-                            @Html.TextBoxFor(x => x.SearchConsoleViewModel.citySearch, new { id = "CountrySearch", @class = "form-control", placeholder = "miasto" })
-                            <button type="submit" class="btn btn-primary" value="Search">Szukaj</button>
-                         
-                    </div>
-
+                
+                    @Html.Partial("_HomeSearchPartial", Model.IndexSearchJobOfferViewModel);
                    
-                  }
-                   
-            </div><!-- banner-form -->
+                </div><!-- banner-form -->
                
                 <ul class="banner-socail list-inline">
                     <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
