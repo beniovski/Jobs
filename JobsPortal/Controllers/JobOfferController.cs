@@ -21,9 +21,9 @@ namespace JobsPortal.Controllers
         private readonly IEmailService _emailService;
 
         public JobOfferController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService,
-            ICountryService countryService, IStateService stateService, IEmailService emaioService )
+            ICountryService countryService, IStateService stateService, IEmailService emailService)
         {
-            _emailService = emaioService;
+            _emailService = emailService;
             _stateService = stateService;
             _jobCategoryService = jobCategoryService;
             _countryService = countryService;
@@ -54,12 +54,12 @@ namespace JobsPortal.Controllers
             SearchJobOfferViewModel sjovm = new SearchJobOfferViewModel();
             sjovm.IndexSearchJobOfferViewModel = new IndexSearchJobOfferViewModel();
             sjovm.SearchConsoleViewModel = new SearchConsoleViewModel();
-            
+            sjovm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
 
-            sjovm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
-            sjovm.SearchConsoleViewModel.StateViewModel = await _stateService.GetAllStatesAsync();
+            sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.StateViewModel = await _stateService.GetAllStatesAsync();
 
-            sjovm.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            sjovm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             sjovm.IndexSearchJobOfferViewModel = scvm;
 
 
@@ -82,7 +82,8 @@ namespace JobsPortal.Controllers
             int pageSize = 8;
             int pageNumber = (page ?? 1);
 
-            var selectedCategory = scvm.CategoriesViewModel.Where(x => x.IsChecked == true);
+            scvm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
+            var selectedCategory = scvm.ColumnSearchConsoleViewModel.CategoriesViewModel.Where(x => x.IsChecked == true);
 
                        
 
@@ -99,7 +100,7 @@ namespace JobsPortal.Controllers
             scvm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
             scvm.SearchConsoleViewModel.StateViewModel = await _stateService.GetAllStatesAsync();
           
-            scvm.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            scvm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
 
             scvm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
 
@@ -169,13 +170,14 @@ namespace JobsPortal.Controllers
             var jobOffers = await _jobOfferService.GetAllJobOfferAsync();
 
             var sjovm = new SearchJobOfferViewModel();
-            var scvm = new SearchConsoleViewModel();
-            scvm.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
-            scvm.CountryViewModel = await _countryService.GetAllCountriesAsync();
-            scvm.StateViewModel = await _stateService.GetAllStatesAsync(); 
-            sjovm.SearchConsoleViewModel = scvm;
+            sjovm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
+            sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel = new SearchConsoleViewModel();
+            sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
+            sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.StateViewModel = await _stateService.GetAllStatesAsync(); 
+         
 
-            sjovm.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            sjovm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
 
             var getJobs = await _jobOfferService.GetAllJobOfferAsync();
 

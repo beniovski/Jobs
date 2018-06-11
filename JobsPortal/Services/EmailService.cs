@@ -18,28 +18,31 @@ namespace JobsPortal.Services
         public void EmailService()
         {
             mailMessage = new MailMessage();
-            sourceAdress = new MailAddress("danbed19905@gmail.com"); 
-            destinationMail = new MailAddress(String.Empty);
+          //  sourceAdress = new MailAddress("danbed19905@gmail.com"); 
+            destinationMail = new MailAddress("danbed19905@gmail.com");
             spClient = new SmtpClient();
             
         }
 
         public void SendEmail(string destinationEmail, string message)
         {
+            EmailService();
+
             mailMessage.To.Add(new MailAddress(destinationEmail, "test"));
-            mailMessage.From = sourceAdress;
+          //  mailMessage.From = sourceAdress;
             mailMessage.Body = message;
             spClient.Send(mailMessage);
         }
 
         public void SendEmail(string destinationEmail, string message, HttpPostedFileBase fileUploader)
         {
+            EmailService();
 
             var fileName = Path.GetFileName(fileUploader.FileName);
             var attachment = new Attachment(fileUploader.InputStream, fileName);
             
             mailMessage.To.Add(new MailAddress(destinationEmail, "test"));
-            mailMessage.From = sourceAdress;
+          //  mailMessage.From = sourceAdress;
             mailMessage.Attachments.Add(attachment);
             mailMessage.Body = message;
             spClient.Send(mailMessage);
