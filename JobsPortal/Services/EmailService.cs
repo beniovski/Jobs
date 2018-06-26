@@ -18,7 +18,7 @@ namespace JobsPortal.Services
         public void EmailService()
         {
             mailMessage = new MailMessage();
-          //  sourceAdress = new MailAddress("danbed19905@gmail.com"); 
+          //sourceAdress = new MailAddress("danbed19905@gmail.com"); 
             destinationMail = new MailAddress("danbed19905@gmail.com");
             spClient = new SmtpClient();
             
