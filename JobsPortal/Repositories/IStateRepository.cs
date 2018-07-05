@@ -10,6 +10,6 @@ namespace JobsPortal.Repositories
 {
     public interface IStateRepository
     {
-        Task<IEnumerable<State>> GetAllStates();
+        Task<IList<State>> GetAllStates();
     }
 }

@@ -10,7 +10,7 @@ namespace JobsPortal.ViewModels
     {
         public IPagedList<JobOfferViewModel> JobOfferViewModel { get; set; }
 
-        public IndexSearchJobOfferViewModel IndexSearchJobOfferViewModel { get; set; }
+        public MainSearchConsoleViewModel MainSearchConsoleViewModel { get; set; }
         
         public SearchConsoleViewModel SearchConsoleViewModel { get; set; }
 

@@ -269,7 +269,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
     <Compile Include="ViewModels\IndexHomeViewModel.cs" />
-    <Compile Include="ViewModels\IndexSearchJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\MainSearchConsoleViewModel.cs" />
     <Compile Include="ViewModels\JobApplyViewModel.cs" />
     <Compile Include="ViewModels\StateViewModel.cs" />
     <Compile Include="ViewModels\CountryViewModel.cs" />
@@ -438,7 +438,7 @@
     <Content Include="Views\JobOffer\Search.cshtml" />
     <Content Include="Views\JobOffer\_EmailFormPartial.cshtml" />
     <Content Include="Views\JobOffer\SendApplications.cshtml" />
-    <Content Include="Views\Home\_HomeSearchPartial.cshtml" />
+    <Content Include="Views\Home\_MainSearchPartial.cshtml" />
     <Content Include="Views\JobOffer\_ColumnSearchConsolePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace JobsPortal.ViewModels
 {
-    public class IndexSearchJobOfferViewModel
+    public class MainSearchConsoleViewModel
     {
         public string CitySearch { get; set; }
 

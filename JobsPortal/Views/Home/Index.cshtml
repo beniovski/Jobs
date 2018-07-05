@@ -5,7 +5,7 @@
     var conf = ViewBag.ConfirmEmail;
 }
 @section HomeSlider
-{
+{  
     <header>
         <div>
             @conf;
@@ -20,7 +20,7 @@
                 <h3>We offer 12000 jobs vacation right now</h3>
                 <div class="col-md-12">
                 
-                    @Html.Partial("_HomeSearchPartial", Model.IndexSearchJobOfferViewModel);
+                    @Html.Partial("_MainSearchPartial", Model.MainSearchConsoleViewModel);
                    
                 </div><!-- banner-form -->
                

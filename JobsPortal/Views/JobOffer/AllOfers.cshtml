@@ -7,28 +7,10 @@
 <!-- Tabela z ofertami pracy -->
 <section class="content">
     <div class="container text-center">
-        <div class="col-md-12">
+        <div class="col-md-12">       
 
-         @using (Html.BeginForm("JobSearch", "JobOffer", FormMethod.Post ))
-            {
-                <div class="form-inline col-md-12">
-
-
-                    <!-- category-change -->
-                 
-                   
-                    
-                        @Html.TextBoxFor(m => m.IndexSearchJobOfferViewModel.CitySearch, new {@class = "form-control",  id = "cityInput" })
-                    
-                  
-                        @Html.TextBoxFor(m => m.IndexSearchJobOfferViewModel.PhraseSearch, new { @class = "form-control" })
-                   
-
-
-                    <button type="submit" class="btn btn-primary" value="Search">Search</button>
-
-                </div>
-            } 
+            @Html.Partial("~/Views/Home/_MainSearchPartial.cshtml", Model.MainSearchConsoleViewModel);
+        
         </div><!-- banner-form -->
     </div>
 

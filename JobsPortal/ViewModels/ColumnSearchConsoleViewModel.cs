@@ -10,5 +10,7 @@ namespace JobsPortal.ViewModels
         public SearchConsoleViewModel SearchConsoleViewModel { get; set; }
 
         public IList<JobCategoriesViewModel> CategoriesViewModel { get; set; }
+
+        public IList<StateViewModel> StateVievModel  { get; set; }
     }
 }

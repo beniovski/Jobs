@@ -8,13 +8,13 @@ namespace JobsPortal.ViewModels
 {
     public class IndexHomeViewModel
     {
-        public IndexSearchJobOfferViewModel IndexSearchJobOfferViewModel {  get; set; }
+        public MainSearchConsoleViewModel MainSearchConsoleViewModel {  get; set; }
 
         public IEnumerable<JobOfferViewModel> JobOfferViewModel { get; set; }
 
         public IndexHomeViewModel()
         {
-            IndexSearchJobOfferViewModel = new IndexSearchJobOfferViewModel();                   
+            MainSearchConsoleViewModel = new MainSearchConsoleViewModel();                   
 
         }
     }

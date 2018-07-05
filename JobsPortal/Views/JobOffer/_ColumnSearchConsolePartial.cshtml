@@ -53,11 +53,11 @@
                         <h4>Polska<span class="pull-right"><i class="fa fa-plus"></i></span></h4>
                     </a>
                     <ul class=" checkbox-inline" id="demo">
-                        @foreach (var item in Model.SearchConsoleViewModel.StateViewModel)
+                        @for (int i = 0; i < Model.StateVievModel.Count(); i++)
                         {
-                            <li>@Html.CheckBoxFor(m => item.IsChecked) @item.StateName</li>
-                                            @Html.HiddenFor(m => item.Id);
-                            @Html.HiddenFor(m => item.StateName);
+                            <li>@Html.CheckBoxFor(m => Model.StateVievModel[i].IsChecked) @Model.StateVievModel[i].StateName</li>
+                                            @Html.HiddenFor(m => Model.StateVievModel[i].Id);
+                            @Html.HiddenFor(m => Model.StateVievModel[i].StateName);
                         }
 
                     </ul>

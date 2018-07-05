@@ -18,10 +18,10 @@ namespace JobsPortal.Services
         {
             _stateRepository = stateRepository;
         }
-        public async Task<IEnumerable<StateViewModel>> GetAllStatesAsync()
+        public async Task<IList<StateViewModel>> GetAllStatesAsync()
         {
             var states = await _stateRepository.GetAllStates();
-            return Mapper.Map<IEnumerable<State>, IEnumerable<StateViewModel>>(states);
+            return Mapper.Map<IList<State>, IList<StateViewModel>>(states);
         }
     }
 }

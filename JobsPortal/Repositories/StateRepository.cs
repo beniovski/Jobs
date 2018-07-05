@@ -9,9 +9,9 @@ namespace JobsPortal.Repositories
 {
     public class StateRepository : DbConnection, IStateRepository
     {
-        public async  Task<IEnumerable<State>> GetAllStates()
+        public async  Task<IList<State>> GetAllStates()
         {
-            return _dbContext.State;
+            return _dbContext.State.ToList();
         }
     }
 }

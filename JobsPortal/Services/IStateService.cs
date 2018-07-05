@@ -9,6 +9,6 @@ namespace JobsPortal.Services
 {
     public interface IStateService
     {
-        Task<IEnumerable<StateViewModel>> GetAllStatesAsync();
+        Task<IList<StateViewModel>> GetAllStatesAsync();
     }
 }
