@@ -33,12 +33,13 @@
 
 html,
 body {
-	font-family: 'Ubuntu', sans-serif;
-	font-weight:400;
-	color:#6f6f6f; 
-	overflow-x:hidden;
-	-webkit-font-smoothing: antialiased;
-	background-color: #f7f7f7;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    color: #6f6f6f;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f7f7f7;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2006,7 +2007,6 @@ input:-moz-placeholder {
 /* Category Section */
 
 .page {
-	background-color: #f7f7f7;
 	padding-bottom: 70px;
 }
 
@@ -2143,12 +2143,13 @@ input:-moz-placeholder {
 }
 
 .job-ad-item {
-	padding: 15px;
-	overflow: hidden;
-	position: relative;
-	border: 1px solid #f3f3f3;
-	margin: 18px 0;
-	border-radius:2px;	
+    padding: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #f3f3f3;
+    margin: 18px 0;
+    border-radius: 20px;
+    background-color: white;
 }
 
 .job-ad-item .ad-meta {

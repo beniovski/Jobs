@@ -65,7 +65,19 @@ namespace JobsPortal.Repositories
                 (x.Descriptions.Contains(phrase)||x.Title.Contains(phrase)||x.Requaierments.Contains(phrase)) )));
 
         public async Task<IEnumerable<JobOffer>> JobSearchingAsync(string city, string phrase)
-            => await Task.FromResult(_dbContext.JobOffer.Where(x => x.City == city && (x.Descriptions.Contains(phrase) || x.Title.Contains(phrase) || x.Requaierments.Contains(phrase))));
+        {
+            if(String.IsNullOrEmpty(city)&&String.IsNullOrEmpty(phrase))
+            {
+                return await Task.FromResult(_dbContext.JobOffer);
+            }
+            if (String.IsNullOrEmpty(city))
+            {
+                return await Task.FromResult(_dbContext.JobOffer.Where(x => x.Descriptions.Contains(phrase) || x.Title.Contains(phrase) || x.Requaierments.Contains(phrase)));
+            }
+            return await Task.FromResult(_dbContext.JobOffer.Where(x => x.City == city && (x.Descriptions.Contains(phrase) || x.Title.Contains(phrase) || x.Requaierments.Contains(phrase))));
+            
+        }
+        // => 
 
         public async Task<IEnumerable<JobOffer>> ColumnSearch(IEnumerable<JobCategories> selectedJobCategories, IEnumerable<State> selectedState)
         {

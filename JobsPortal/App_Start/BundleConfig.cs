@@ -41,6 +41,7 @@ namespace JobsPortal
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",                                      
                       "~/Content/custom.css",
+                      "~/Content/style.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/icofont.css",
                       "~/Content/main.css",

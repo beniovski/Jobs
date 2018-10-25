@@ -13,5 +13,7 @@ namespace JobsPortal.ViewModels
 
         public ApplicationUser ApplicationUser { get; set; }
 
+        public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
+
     }
 }

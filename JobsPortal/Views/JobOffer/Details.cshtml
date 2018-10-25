@@ -130,7 +130,9 @@
         $("#sendEmailPopUp").hide();
 
 
-        $("#applyJobOffer").click(function() {
+        $("#applyJobOffer").click(function () {
+            $("#extVal").empty().removeClass("alert alert-danger");
+            
             $("#sendEmailPopUp").dialog({
                 autoOpen: true,
                 resizable: false,
@@ -138,6 +140,21 @@
                 height : 'auto',
                 width: 'auto'
             })
+            var input = $('#CvFile');
+            input.replaceWith(input.val('').clone(true));
+        });
+
+        $("#CvFile").change(function () {
+            var ext = $('#CvFile').val().split('.').pop().toLowerCase();
+            console.log(ext);
+            if ($.inArray(ext, ['doc', 'pdf', 'docx']) == -1) {
+                $("#sendButton").attr("disabled", "disabled");
+                $("#extVal").empty().append("Nie poprawne rozszerzenie pliku").addClass("alert alert-danger");
+            } else {
+                $("#extVal").empty().removeClass("alert alert-danger");
+                $("#sendButton").removeAttr("disabled", "disabled");
+            }
+          
         });
 
     </script>

@@ -12,15 +12,7 @@
 }
 
 <section class=" job-bg page  ad-profile-page">
-    <div class="container">
-        <div class="breadcrumb-section">
-            <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Employee Profile</li>
-            </ol>
-            <h2 class="title">My Profile</h2>
-        </div><!-- breadcrumb-section -->
-
+    <div class="container">      
         <div class="job-profile section">
             <div class="user-profile">
                 <div class="user-images">
@@ -31,20 +23,20 @@
                 <div class="user">
                     <h2>Hello, @Model.ApplicationUser.CompanyName</h2>
                   
-                    <h5>You last logged in at: 10-01-2017 6:40 AM [ USA time (GMT + 6:00hrs)]</h5>
+                    <h5>You last logged in at: @Model.ApplicationUser.LastLoginDate</h5>
                 </div>
 
                
             </div><!-- user-profile -->
 
             <ul class="user-menu">
-                <li class="active"><a href="profile.html">Aktualne oferty</a></li>
+                <li>@Html.ActionLink("Aktualne oferty", "CompanyDetails", "Account")</li>
                 <li>@Html.ActionLink("Archiwum", "ArchiveJobsOffer", "Account")</li>
                 <li>@Html.ActionLink("Profil firmy","CompanyDescription", "Account")</li>
-                <li><a href="profile-details.html">Profil fimry</a></li>
-                <li><a href="bookmark.html">Bookmark</a></li>
+                <li>@Html.ActionLink("Ustawienia", "ChangePassword", "Account")</li>
+               <!-- <li><a href="bookmark.html">Bookmark</a></li>
                 <li><a href="applied-job.html">applied job</a></li>
-                <li><a href="delete-account.html">Close account</a></li>
+                <li><a href="delete-account.html">Close account</a></li>-->
             </ul>
         </div><!-- ad-profile -->            
 <!--
@@ -71,9 +63,9 @@
 </section>   
 
 
-
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/wyswigjs")
     @Scripts.Render("~/bundles/deleteConfirm")
     <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>

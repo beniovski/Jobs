@@ -24,9 +24,9 @@ namespace JobsPortal.Models
 
         public string City { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
 
-        public DateTime LastLoginDate { get; set; }
+        public DateTime? LastLoginDate { get; set; }
 
         public virtual ICollection<JobOffer> JobOffers { get; protected set; }
         

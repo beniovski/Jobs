@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201803111128409_state.Designer.cs">
       <DependentUpon>201803111128409_state.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807060824127_DateTime2 fix.cs" />
+    <Compile Include="Migrations\201807060824127_DateTime2 fix.Designer.cs">
+      <DependentUpon>201807060824127_DateTime2 fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\JobCategories.cs" />
@@ -305,6 +309,7 @@
     <Content Include="Content\parallax.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\slidr.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -440,6 +445,8 @@
     <Content Include="Views\JobOffer\SendApplications.cshtml" />
     <Content Include="Views\Home\_MainSearchPartial.cshtml" />
     <Content Include="Views\JobOffer\_ColumnSearchConsolePartial.cshtml" />
+    <Content Include="Views\Account\AddJobsOfferCredits.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -454,6 +461,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803111128409_state.resx">
       <DependentUpon>201803111128409_state.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060824127_DateTime2 fix.resx">
+      <DependentUpon>201807060824127_DateTime2 fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -38,6 +38,7 @@ namespace JobsPortal.Controllers
         {
             CompanyViewModel cvm = new CompanyViewModel();
             cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            cvm.ChangePasswordViewModel = new ChangePasswordViewModel();
             return View(cvm);
         }
 
@@ -63,7 +64,7 @@ namespace JobsPortal.Controllers
             cvm.ApplicationUser =  await UserManager.FindByIdAsync(User.Identity.GetUserId());
             var jobsOffer= await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
             cvm.JobOfferView = jobsOffer.ToPagedList(pageNumber, pageSize);
-
+            cvm.ChangePasswordViewModel = new ChangePasswordViewModel();
             return View("JobOffers", cvm);
         }
 
@@ -79,7 +80,7 @@ namespace JobsPortal.Controllers
             var jobs = await _jobOfferService.GetArchiveJobOfferByCompanyIdAsync(User.Identity.GetUserId());
 
             cvm.JobOfferView = jobs.ToPagedList(pageNumber, pageSize);
-
+            cvm.ChangePasswordViewModel = new ChangePasswordViewModel();
             return View("ArchiveJobsOffer", cvm);
         }
       
@@ -304,7 +305,7 @@ namespace JobsPortal.Controllers
 
                     _emailService.SendEmail(user.Email, callbackUrl);
 
-                    ViewBag.ConfirmEmail = $"sprawdź swoją skrzynkę {user.Email}";
+                    TempData["emailConfirmation"] = $"sprawdź swoją skrzynkę {user.Email}";
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -545,6 +546,50 @@ namespace JobsPortal.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+       
+        public async Task<ActionResult> ChangePassword()
+        {
+            int pageSize = 8;
+            int pageNumber = 1;
+
+            CompanyViewModel cvm = new CompanyViewModel();
+            cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var jobsOffer = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            cvm.JobOfferView = jobsOffer.ToPagedList(pageNumber, pageSize);
+            cvm.ChangePasswordViewModel = new ChangePasswordViewModel();
+            return View(cvm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(CompanyViewModel model)
+        {
+            int pageSize = 8;
+            int pageNumber = 1;
+            CompanyViewModel cvm = new CompanyViewModel();
+            cvm.ApplicationUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var jobsOffer = await _jobOfferService.GetJobOfferByCompanyIdAsync(User.Identity.GetUserId());
+            cvm.JobOfferView = jobsOffer.ToPagedList(pageNumber, pageSize);
+            cvm.ChangePasswordViewModel = new ChangePasswordViewModel();
+
+            if (!ModelState.IsValid)
+            {
+                return View(cvm);
+            }
+            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.ChangePasswordViewModel.OldPassword, model.ChangePasswordViewModel.NewPassword);
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                TempData["ChangePassSuccess"] = "Hasło zostało pomyślnie zmienione";
+                return RedirectToAction("ChangePassword");
+            }
+            AddErrors(result);
+            return View(cvm);
         }
 
         protected override void Dispose(bool disposing)

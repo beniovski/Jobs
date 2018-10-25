@@ -1,0 +1,14 @@
+﻿body {
+    background-image: url("/Content/Images/background2.jpg");
+}
+
+
+.job-ad-item {
+    padding: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #f3f3f3;
+    margin: 18px 0;
+    background-color : white
+
+}

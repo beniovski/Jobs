@@ -72,7 +72,7 @@ namespace JobsPortal.Controllers
         {
            
 
-           int pageSize = 8;
+            int pageSize = 8;
            int pageNumber = (page ?? 1);
 
             SearchJobOfferViewModel sjovm = new SearchJobOfferViewModel();

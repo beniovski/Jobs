@@ -9,16 +9,16 @@
     <div class="container text-center">
         <div class="col-md-12">       
 
-            @Html.Partial("~/Views/Home/_MainSearchPartial.cshtml", Model.MainSearchConsoleViewModel);
+            @Html.Partial("~/Views/Home/_MainSearchPartial.cshtml", Model.MainSearchConsoleViewModel)
         
         </div><!-- banner-form -->
     </div>
 
     <div class="container">
  
-        <div class="section latest-jobs-ads">
+        <div>
             <div class="col-md-3 col-sm-4">
-                @Html.Partial("_ColumnSearchConsolePartial", Model.ColumnSearchConsoleViewModel);
+                @Html.Partial("_ColumnSearchConsolePartial", Model.ColumnSearchConsoleViewModel)
             </div>
             
             <div class="col-sm-7 col-md-8">
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="ad-info">
-                                <span><a href="job-details.html" class= title>@item.Title</a><a href="#">@item.Company</a></span>
+                                <span><a href="job-details.html" class="title">@item.Title</a><a href="#">@item.Company</a></span>
                                 <div class="ad-meta">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>

@@ -10,6 +10,7 @@
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <fieldset>
                 <div class="section postdetails">
+                    <div id="extVal"></div>
                     <h4>Wyślij swoje CV !<span class="pull-right">* Wymagane pola</span></h4>
                     <div class="row form-group add-title">
                         * @Html.LabelFor(m => m.Name, new { @class = "col-sm-3 label-title" })
@@ -49,7 +50,7 @@
                     <div class="row form-group item-description">
                         <div class="col-sm-9">
                            <!--  <button class="btn btn-primary">Aplikuj !</button> -->
-                            <input type="submit" value="wyslij">
+                            <input type="submit" value="wyslij " id="sendButton">
                         </div>
                     </div>
                 </div>
