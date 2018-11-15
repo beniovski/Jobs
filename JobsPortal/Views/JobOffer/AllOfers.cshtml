@@ -53,19 +53,38 @@
 
                 <br />
                 <br />
-               @* Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
-
-                @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action("JobSearchOverload",
-                    new
+                @{
+                    var parameters = new RouteValueDictionary();
+                    for (int i = 0; i < Model.ColumnSearchConsoleViewModel.StateVievModel.Count; ++i)
                     {
-                        page,
-                        city = Model.IndexSearchJobOfferViewModel.CitySearch,
-                        phrase = Model.IndexSearchJobOfferViewModel.PhraseSearch,
-                        categoryId = Model.SearchConsoleViewModel.selectedCategory,
+                        parameters.Add(Model.ColumnSearchConsoleViewModel.StateVievModel[i].StateName, Model.ColumnSearchConsoleViewModel.StateVievModel[i].IsChecked);
+                    }                   
+                }
+  
+               Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
+             
+               @if (Model.SearchType == "HomeSearch")
+               {
+                   @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType,
+                   new
+                   {
+                       page,
+                       Model.MainSearchConsoleViewModel.CitySearch,
+                       Model.MainSearchConsoleViewModel.PhraseSearch,
+                       parameters,
+                   }))
+               }
 
-                    }))*@
+           
 
-
+                @if (Model.SearchType == "ColumnSearch")
+                {                 
+                    
+                    @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType, new RouteValueDictionary(parameters)
+                    {{"Page",page}}
+                  ), PagedListRenderOptions.PageNumbersOnly)
+                }
+            
             </div><!-- trending ads -->
         </div>
     </div>

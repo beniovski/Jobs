@@ -127,8 +127,11 @@ namespace JobsPortal.Controllers
             adjo.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
             adjo.CountryViewModel = await _countryService.GetAllCountriesAsync();
             adjo.StateViewModel = await _stateService.GetAllStatesAsync();            
-            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);
+            var jobOffer = await _jobOfferService.GetJobOfferByIdAsync(id);            
             adjo.JobOfferViewModel = jobOffer;
+            adjo.JobOfferViewModel.JobCategories = new JobCategoriesViewModel { Id = jobOffer.JobCategoriesId };
+            adjo.JobOfferViewModel.Country = new CountryViewModel { Id = jobOffer.CountriesId };
+            adjo.JobOfferViewModel.State = new StateViewModel { Id = jobOffer.StateId };
             return View("AddJobOffer", adjo);
         }
 
@@ -144,6 +147,7 @@ namespace JobsPortal.Controllers
                 jobOffer.JobOfferViewModel.IsActive = true;
                 await _jobOfferService.AddJobOferAsync(jobOffer);
             }
+            
             jobOffer.JobCategoriesViewModel = await _categoryService.GetAllJobCategoriesAsync();
             jobOffer.CountryViewModel = await _countryService.GetAllCountriesAsync();
             jobOffer.StateViewModel = await _stateService.GetAllStatesAsync();

@@ -8,6 +8,8 @@ namespace JobsPortal.ViewModels
 {
     public class SearchJobOfferViewModel
     {
+        public String SearchType { get; set; }
+
         public IPagedList<JobOfferViewModel> JobOfferViewModel { get; set; }
 
         public MainSearchConsoleViewModel MainSearchConsoleViewModel { get; set; }

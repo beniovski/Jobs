@@ -51,7 +51,7 @@
                                             @Html.LabelFor(m => m.JobOfferViewModel.JobCategories, new { @class = "col-sm-3 label-title" })
                                             <div class="col-sm-9">                                              
 
-                                                    @Html.DropDownListFor(model => model.JobOfferViewModel.JobCategories.Id, new SelectList(Model.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "col-sm-9 dropdown category-dropdown form-control" })
+                                                   @Html.DropDownListFor(model => model.JobOfferViewModel.JobCategories.Id , new SelectList(Model.JobCategoriesViewModel, "Id", "Name"), "Wybierz kategorie", new { @class = "col-sm-9 dropdown category-dropdown form-control" })
                                                
                                             </div>
                                         </div>
@@ -194,8 +194,12 @@
         $('#Descriptions').wysihtml5();
         $('#stateSelect').hide();
 
+        $('document').ready(function () {         
+            if ($('#countrySelect').val() === "13") {
+                $('#stateSelect').show();  }
+        });
 
-        $('#countrySelect').change(function () {
+        $('#countrySelect').change(function () {           
             if ($(this).val() === "13") {
                 $('#stateSelect').show(500);
             }
