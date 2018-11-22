@@ -272,6 +272,7 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\CustomValidation\PaymantValidation.cs" />
     <Compile Include="ViewModels\IndexHomeViewModel.cs" />
     <Compile Include="ViewModels\MainSearchConsoleViewModel.cs" />
     <Compile Include="ViewModels\JobApplyViewModel.cs" />

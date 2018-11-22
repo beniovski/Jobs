@@ -23,10 +23,12 @@ namespace JobsPortal.ViewModels
 
         [DisplayName("Wiadomość ")]
         public string Meesage { get; set; }
-
-       
+               
         [DisplayName("CV w formacie doc lub pdf")]
         public HttpPostedFileBase CvFile { get; set; }
+
+        public string CompanyId { get; set; }
+
 
     }
 }

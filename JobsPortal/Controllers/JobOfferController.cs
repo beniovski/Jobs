@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using JobsPortal.Repositories;
 using JobsPortal.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace JobsPortal.Controllers
 {
@@ -36,9 +38,9 @@ namespace JobsPortal.Controllers
             
             if (ModelState.IsValid)
             {
-                var testEmail = "daniel.bednarczuk90@gmail.com";
+                var email = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(ajvm.CompanyId).UserName;
                 var message = ajvm.Name + " " + ajvm.Surname;
-                _emailService.SendEmail(testEmail,message, ajvm.CvFile);
+                _emailService.SendEmail(email, message, ajvm.CvFile);
             }
            
             return View();

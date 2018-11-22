@@ -54,11 +54,14 @@
                 <br />
                 <br />
                 @{
-                    var parameters = new RouteValueDictionary();
+                    IDictionary<string, object> parameters = new Dictionary<string, object>();
+                    
                     for (int i = 0; i < Model.ColumnSearchConsoleViewModel.StateVievModel.Count; ++i)
                     {
                         parameters.Add(Model.ColumnSearchConsoleViewModel.StateVievModel[i].StateName, Model.ColumnSearchConsoleViewModel.StateVievModel[i].IsChecked);
-                    }                   
+                    }
+                    
+                    parameters.Add("new", new object());
                 }
   
                Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
@@ -73,16 +76,12 @@
                        Model.MainSearchConsoleViewModel.PhraseSearch,
                        parameters,
                    }))
-               }
-
-           
+               }           
 
                 @if (Model.SearchType == "ColumnSearch")
                 {                 
                     
-                    @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType, new RouteValueDictionary(parameters)
-                    {{"Page",page}}
-                  ), PagedListRenderOptions.PageNumbersOnly)
+                    @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType, new RouteValueDictionary(parameters)))
                 }
             
             </div><!-- trending ads -->

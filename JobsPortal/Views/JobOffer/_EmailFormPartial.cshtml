@@ -1,8 +1,6 @@
 ﻿@model JobsPortal.ViewModels.ApplyJobOfferViewModel
 
 
-
-
     <div class="col-lg-12">
         @using (Html.BeginForm("SendApplications", "JobOffer", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -46,6 +44,7 @@
                            <input type="file" name ="CvFile" id="CvFile"/> 
                         </div>
                     </div>
+                    @Html.HiddenFor(m => m.CompanyId)
 
                     <div class="row form-group item-description">
                         <div class="col-sm-9">

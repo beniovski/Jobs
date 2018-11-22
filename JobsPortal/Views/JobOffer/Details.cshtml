@@ -1,5 +1,9 @@
 ﻿@model JobsPortal.ViewModels.JobApplyViewModel
- 
+
+@{
+    Model.ApplyJobOfferViewModel.CompanyId = Model.JobOfferViewModel.CompanyId;
+}
+
  <section class="job-bg page job-details-page">
     <div class="container">
         <div class="breadcrumb-section">

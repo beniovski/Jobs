@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobsPortal.Models;
+using JobsPortal.ViewModels.CustomValidation;
 
 namespace JobsPortal.ViewModels
 {
@@ -47,6 +48,7 @@ namespace JobsPortal.ViewModels
         public Decimal SalaryMin { get; set; }
 
         [Display(Name = "Maksymalne zarobki")]
+        [MaxPaymentGreatherThenMin("SalaryMin")]
         public Decimal SalaryMax { get; set; }
 
         public string CompanyId { get; set; }
