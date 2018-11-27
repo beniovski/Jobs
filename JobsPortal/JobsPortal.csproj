@@ -257,6 +257,8 @@
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\ICountryRepository.cs" />
     <Compile Include="Repositories\StateRepository.cs" />
+    <Compile Include="Services\CacheService.cs" />
+    <Compile Include="Services\ICacheService.cs" />
     <Compile Include="Services\SteteService.cs" />
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\EmailService.cs" />

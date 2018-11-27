@@ -21,6 +21,7 @@ namespace JobsPortal.IoC
             builder.RegisterType<JobCategoryService>().As<IJobCategoryService>();
             builder.RegisterType<CountryService>().As<ICountryService>();
             builder.RegisterType<StateService>().As<IStateService>();
+            builder.RegisterType<CacheService>().As<ICacheService>();
             builder.RegisterType<EmailServices>().As<IEmailService>().InstancePerLifetimeScope();
 
             base.Load(builder);

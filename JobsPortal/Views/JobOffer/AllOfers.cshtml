@@ -53,35 +53,19 @@
 
                 <br />
                 <br />
-                @{
-                    IDictionary<string, object> parameters = new Dictionary<string, object>();
-                    
-                    for (int i = 0; i < Model.ColumnSearchConsoleViewModel.StateVievModel.Count; ++i)
-                    {
-                        parameters.Add(Model.ColumnSearchConsoleViewModel.StateVievModel[i].StateName, Model.ColumnSearchConsoleViewModel.StateVievModel[i].IsChecked);
-                    }
-                    
-                    parameters.Add("new", new object());
-                }
+             
   
                Page @(Model.JobOfferViewModel.PageCount < Model.JobOfferViewModel.PageNumber ? 0 : Model.JobOfferViewModel.PageCount) of @Model.JobOfferViewModel.PageCount  
              
                @if (Model.SearchType == "HomeSearch")
                {
-                   @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType,
-                   new
-                   {
-                       page,
-                       Model.MainSearchConsoleViewModel.CitySearch,
-                       Model.MainSearchConsoleViewModel.PhraseSearch,
-                       parameters,
-                   }))
+                   @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType, new {page, }))
                }           
 
                 @if (Model.SearchType == "ColumnSearch")
                 {                 
                     
-                    @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType, new RouteValueDictionary(parameters)))
+                    @Html.PagedListPager(Model.JobOfferViewModel, page => Url.Action(Model.SearchType,new { page, }))
                 }
             
             </div><!-- trending ads -->

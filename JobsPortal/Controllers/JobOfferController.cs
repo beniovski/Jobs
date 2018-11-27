@@ -10,6 +10,7 @@ using JobsPortal.Repositories;
 using JobsPortal.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Web.Security;
+using System.Web.Caching;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace JobsPortal.Controllers
@@ -21,15 +22,17 @@ namespace JobsPortal.Controllers
         private readonly ICountryService _countryService;
         private readonly IStateService _stateService;
         private readonly IEmailService _emailService;
+        private readonly ICacheService _cacheService;
 
         public JobOfferController(IJobOfferService jobOfferService, IJobCategoryService jobCategoryService,
-            ICountryService countryService, IStateService stateService, IEmailService emailService)
+            ICountryService countryService, IStateService stateService, IEmailService emailService, ICacheService cacheService)
         {
             _emailService = emailService;
             _stateService = stateService;
             _jobCategoryService = jobCategoryService;
             _countryService = countryService;
             _jobOfferService = jobOfferService;
+            _cacheService = cacheService;
         }
 
         [HttpPost]
@@ -53,40 +56,33 @@ namespace JobsPortal.Controllers
             
             sjvm.ColumnSearchConsoleViewModel = scvm;
             sjvm.ColumnSearchConsoleViewModel.SearchConsoleViewModel = new SearchConsoleViewModel();
-
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-
             var selectedStates = scvm.StateVievModel.Where(x => x.IsChecked).ToList();               
             var selectedCategory = scvm.CategoriesViewModel.Where(x => x.IsChecked).ToList();
             var getjobs = await _jobOfferService.ColumnSearchAsync(selectedCategory, selectedStates);
+
+            _cacheService.SetCache("jobOffer", getjobs);
 
             sjvm.JobOfferViewModel = getjobs.ToPagedList(pageNumber, pageSize);
             sjvm.MainSearchConsoleViewModel = new MainSearchConsoleViewModel();
             sjvm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             sjvm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
             sjvm.ColumnSearchConsoleViewModel.StateVievModel = await _stateService.GetAllStatesAsync();
-            sjvm.SearchType = "ColumnSearch";
+            sjvm.SearchType = "ColumnSearch"; 
             return View("AllOfers", sjvm);
         }
 
         [HttpGet]
-        public async Task<ActionResult> ColumnSearch(IDictionary<string, Object> parameters) 
-        {               
-
+        public async Task<ActionResult> ColumnSearch(int ? page) 
+        {
+            int pageNumber = (page ?? 1);
             var sjvm = new SearchJobOfferViewModel();
-
             sjvm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
             sjvm.ColumnSearchConsoleViewModel.SearchConsoleViewModel = new SearchConsoleViewModel();
-
             int pageSize = 8;
-            // int pageNumber = (page ?? 1);
-
-            //   var selectedStates = state.Where(x => x.IsChecked).ToList();
-            //   var selectedCategory = categories.Where(x => x.IsChecked).ToList();
-            var getjobs = await _jobOfferService.GetAllJobOfferAsync();
-
-            sjvm.JobOfferViewModel = getjobs.ToPagedList(1, pageSize);
+            var getjobs = _cacheService.GetFromCache<IEnumerable<JobOfferViewModel>>("jobOffer");
+            sjvm.JobOfferViewModel = getjobs.ToPagedList(pageNumber, pageSize);
             sjvm.MainSearchConsoleViewModel = new MainSearchConsoleViewModel();
             sjvm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             sjvm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
@@ -95,72 +91,42 @@ namespace JobsPortal.Controllers
             return View("AllOfers", sjvm);
         }
 
-
-
-
-
-
         [HttpPost]
         public async Task<ActionResult> HomeSearch(MainSearchConsoleViewModel scvm)
-        {
-
-            
+        {                        
             int pageSize = 8;
             int pageNumber = 1;
-
             SearchJobOfferViewModel sjovm = new SearchJobOfferViewModel();
             sjovm.MainSearchConsoleViewModel = new MainSearchConsoleViewModel();
             sjovm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
             sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel = new SearchConsoleViewModel();
-
             sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
             sjovm.ColumnSearchConsoleViewModel.StateVievModel = await _stateService.GetAllStatesAsync();
-
             sjovm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             sjovm.MainSearchConsoleViewModel = scvm;
             sjovm.SearchType = "HomeSearch";            
-
-            IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
-            jobsOffer = await _jobOfferService.JobSearchingAsync(scvm.CitySearch, scvm.PhraseSearch);
-
+            var jobsOffer = await _jobOfferService.JobSearchingAsync(scvm.CitySearch, scvm.PhraseSearch);
+            _cacheService.SetCache("HomeSearchJobCache", jobsOffer);
             sjovm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
-
-
-            return View("AllOfers", sjovm);
-
-
-          
+            return View("AllOfers", sjovm);          
         }
+
         [HttpGet]
-        public async Task<ActionResult> HomeSearch(int? page, string CitySearch, string PhraseSearch, System.Web.Routing.RouteValueDictionary parameters)
+        public async Task<ActionResult> HomeSearch(int ? page) 
         {
-
-
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-
             SearchJobOfferViewModel sjovm = new SearchJobOfferViewModel();
             sjovm.MainSearchConsoleViewModel = new MainSearchConsoleViewModel();
             sjovm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
             sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel = new SearchConsoleViewModel();
-            sjovm.MainSearchConsoleViewModel.CitySearch = CitySearch;
-            sjovm.MainSearchConsoleViewModel.PhraseSearch = PhraseSearch;
             sjovm.ColumnSearchConsoleViewModel.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();
             sjovm.ColumnSearchConsoleViewModel.StateVievModel = await _stateService.GetAllStatesAsync();
-
             sjovm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
+            var jobsOffer = _cacheService.GetFromCache<IEnumerable<JobOfferViewModel>>("HomeSearchJobCache");
             sjovm.SearchType = "HomeSearch";
-
-            IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
-            jobsOffer = await _jobOfferService.JobSearchingAsync(CitySearch, PhraseSearch);
-
             sjovm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
-
-
             return View("AllOfers", sjovm);
-
-
-
         }
 
         [HttpPost]
@@ -169,7 +135,6 @@ namespace JobsPortal.Controllers
 
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-
             scvm.ColumnSearchConsoleViewModel = new ColumnSearchConsoleViewModel();
             var selectedCategory = scvm.ColumnSearchConsoleViewModel.CategoriesViewModel.Where(x => x.IsChecked == true);                     
             IEnumerable<JobOfferViewModel> jobsOffer = Enumerable.Empty<JobOfferViewModel>();
@@ -177,9 +142,7 @@ namespace JobsPortal.Controllers
             scvm.SearchConsoleViewModel.CountryViewModel = await _countryService.GetAllCountriesAsync();             
             scvm.ColumnSearchConsoleViewModel.CategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
             scvm.ColumnSearchConsoleViewModel.StateVievModel = await _stateService.GetAllStatesAsync();
-
             scvm.JobOfferViewModel = jobsOffer.ToPagedList(pageNumber, pageSize);
-
             return View("AllOfers", scvm);
         }
 
@@ -209,26 +172,7 @@ namespace JobsPortal.Controllers
 
             return View("AllOfers", sjovm);
         }
-        /*
-        [HttpGet]
-        public async Task<ActionResult> HomeSearch(IndexHomeViewModel isjvm)
-        {
-            var jobsOffer = await _jobOfferService.JobSearchingAsync(isjvm.MainSearchConsoleViewModel.CitySearch, isjvm.MainSearchConsoleViewModel.PhraseSearch);
-
-            var sjovm = new SearchJobOfferViewModel();
-            var scvmn = new SearchConsoleViewModel();
-
-            scvmn.JobCategoriesViewModel = await _jobCategoryService.GetAllJobCategoriesAsync();
-            scvmn.CountryViewModel = await _countryService.GetAllCountriesAsync();
-           
-            sjovm.SearchConsoleViewModel = scvmn;
-
-            sjovm.JobOfferViewModel = jobsOffer.ToPagedList(1, 5);
-          
-
-            return View("AllOfers", sjovm);
-        }
-        */
+ 
         [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
