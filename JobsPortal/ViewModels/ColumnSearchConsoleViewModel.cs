@@ -12,5 +12,7 @@ namespace JobsPortal.ViewModels
         public IList<JobCategoriesViewModel> CategoriesViewModel { get; set; }
 
         public IList<StateViewModel> StateVievModel  { get; set; }
+
+        public bool AbroadSearch { get; set; }
     }
 }

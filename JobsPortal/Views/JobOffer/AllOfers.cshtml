@@ -17,7 +17,7 @@
     <div class="container">
  
         <div>
-            <div class="col-md-3 col-sm-4">
+            <div class="col-md-3 col-sm-2">
                 @Html.Partial("_ColumnSearchConsolePartial", Model.ColumnSearchConsoleViewModel)
             </div>
             
@@ -35,11 +35,11 @@
 
                             <div class="ad-info">
                                 <span><a href="job-details.html" class="title">@item.Title</a><a href="#">@item.Company</a></span>
-                                <div class="ad-meta">
+                                <div class="ad-meta" style="font-size:">
                                     <ul>
-                                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </a></li>
-                                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                        <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
+                                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>@item.City, @item.Country </li>                                        
+                                        <li><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>@item.DateTo.Day.@item.DateTo.Month.@item.DateTo.Year</li>
 
                                     </ul>
                                 </div><!-- ad-meta -->
@@ -96,7 +96,21 @@
                 source : '@Url.Action("CitySuggest", "Home")'
 
             });
-        });
+       });
+
+       $(function () {
+           $("#slider-range").slider({
+               range: true,
+               min: 0,
+               max: 20000,
+               values: [75, 300],
+               slide: function (event, ui) {
+                   $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+               }
+           });
+           $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+               " - $" + $("#slider-range").slider("values", 1));
+       });
 
     </script>
 

@@ -77,14 +77,32 @@ namespace JobsPortal.Repositories
             return await Task.FromResult(_dbContext.JobOffer.Where(x => x.City == city && (x.Descriptions.Contains(phrase) || x.Title.Contains(phrase) || x.Requaierments.Contains(phrase))));
             
         }
-        // => 
-
-        public async Task<IEnumerable<JobOffer>> ColumnSearch(IEnumerable<JobCategories> selectedJobCategories, IEnumerable<State> selectedState)
+        
+        public async Task<IEnumerable<JobOffer>> ColumnSearch(IEnumerable<JobCategories> selectedJobCategories, IEnumerable<State> selectedState, bool abroadSearch)
         {
+            var selectedStateZero = selectedState.Count() == 0 ? true : false;
+            // var getJobs = _dbContext.JobOffer.Where(x=>x.IsActive && (x.DateFrom< DateTime.Today && x.DateTo > DateTime.Today)).ToList();
             var getJobs = _dbContext.JobOffer.ToList();
-            var result = getJobs.Where(p => selectedJobCategories.Any(p2 => p2.Id == p.JobCategoriesId))
-                         .Where(x => selectedState.Any(p3 => p3.Id == x.StateId)).ToList(); 
-              
+            var result = Enumerable.Empty<JobOffer>();
+
+            if (!abroadSearch&&!selectedStateZero)
+            {
+                 result = getJobs.Where(p => selectedJobCategories.Any(p2 => p2.Id == p.JobCategoriesId))
+                             .Where(x => selectedState.Any(p3 => p3.Id == x.StateId))
+                             .Where(x=>x.CountriesId == 13).ToList();
+            }
+
+            else if (abroadSearch && selectedStateZero)
+            {
+                 result = getJobs.Where(p => selectedJobCategories.Any(p2 => p2.Id == p.JobCategoriesId))                           
+                            .Where(x => x.CountriesId != 13).ToList();
+            }
+            else
+            {
+                result = getJobs.Where(p => selectedJobCategories.Any(p2 => p2.Id == p.JobCategoriesId))
+                               .Where(x => selectedState.Any(p3 => p3.Id == x.StateId)).ToList();
+            }
+            
             return result;
         }
     }

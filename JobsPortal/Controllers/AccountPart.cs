@@ -12,14 +12,7 @@ namespace JobsPortal.Controllers
 {
     public partial class AccountController : Controller
     {
-
-        public async Task<ActionResult> AddJobsOfferCredits()
-        {
-            return View();
-        }
-
-
-
+        
         [HttpPost]
         public async Task<ActionResult> AddLogo(HttpPostedFileBase file)
         {

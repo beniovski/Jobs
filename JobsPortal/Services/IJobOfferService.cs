@@ -26,7 +26,7 @@ namespace JobsPortal.Services
 
         Task<IEnumerable<JobOfferViewModel>> JobSearchingAsync(string city, string phrase);
 
-        Task<IEnumerable<JobOfferViewModel>> ColumnSearchAsync(IEnumerable<JobCategoriesViewModel> jobCategories, IEnumerable<StateViewModel> selectedState);
+        Task<IEnumerable<JobOfferViewModel>> ColumnSearchAsync(IEnumerable<JobCategoriesViewModel> jobCategories, IEnumerable<StateViewModel> selectedState, bool abroadSearch);
 
         Task<JobOfferViewModel> GetJobOfferByIdAsync(int id);
 

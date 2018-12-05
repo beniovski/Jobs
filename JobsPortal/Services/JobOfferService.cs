@@ -80,12 +80,12 @@ namespace JobsPortal.Services
             return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(jobOffer);
         }
 
-        public async Task<IEnumerable<JobOfferViewModel>> ColumnSearchAsync(IEnumerable<JobCategoriesViewModel> jobCategories, IEnumerable<StateViewModel> selectedState)
+        public async Task<IEnumerable<JobOfferViewModel>> ColumnSearchAsync(IEnumerable<JobCategoriesViewModel> jobCategories, IEnumerable<StateViewModel> selectedState, bool abroadSearch)
         {
             var SelectedCategory = Mapper.Map<IEnumerable<JobCategoriesViewModel>, IEnumerable<JobCategories>>(jobCategories);
             var SelectedStates = Mapper.Map<IEnumerable<StateViewModel>, IEnumerable<State>>(selectedState);
 
-            var result = await _jobOfferRepository.ColumnSearch(SelectedCategory, SelectedStates);
+            var result = await _jobOfferRepository.ColumnSearch(SelectedCategory, SelectedStates, abroadSearch);
 
             return Mapper.Map<IEnumerable<JobOffer>, IEnumerable<JobOfferViewModel>>(result); ;
         }

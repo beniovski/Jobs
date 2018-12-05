@@ -16,7 +16,7 @@ namespace JobsPortal.Repositories
 
         Task<JobOffer> GetAsync(int id);
 
-        Task<IEnumerable<JobOffer>> ColumnSearch(IEnumerable<JobCategories> jobCategories, IEnumerable<State> selectedState);
+        Task<IEnumerable<JobOffer>> ColumnSearch(IEnumerable<JobCategories> jobCategories, IEnumerable<State> selectedState, bool abroadSearch);
         
         Task<IEnumerable<JobOffer>> GetAsyncByCompanyId(string id);
 

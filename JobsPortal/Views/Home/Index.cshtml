@@ -102,18 +102,11 @@
     <div class="container">
     <div class="section latest-jobs-ads">
         <div class="section-title tab-manu">
-            <h4>Latest Jobs</h4>
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="#hot-jobs" data-toggle="tab">Hot Jobs</a></li>
-                <li role="presentation"><a href="#recent-jobs" data-toggle="tab">Recent Jobs</a></li>
-                <li role="presentation" class="active"><a href="#popular-jobs" data-toggle="tab">Popular Jobs</a></li>
-            </ul>
+            <h4>NAJNOWSZE OFERTY PRACY</h4>           
         </div>
 
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in" id="hot-jobs">
-
+         
             @foreach(var item in Model.JobOfferViewModel)
             {
                 <div class="job-ad-item">
@@ -132,6 +125,9 @@
                                     <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
                                     <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>@item.SalaryMin - @item.SalaryMax</a></li>
                                     <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>@item.Category</a></li>
+                                    <li>
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>@item.DateTo.Year .@item.DateTo.Month . @item.DateTo.Day
+                                    </li>
                                 </ul>
                             </div><!-- ad-meta -->
                         </div><!-- ad-info -->
@@ -140,19 +136,10 @@
                         </div>
                     </div><!-- item-info -->
                 </div><!-- ad-item -->
-            }
-             
-            </div><!-- tab-pane -->
+            }       
+        
 
-            <div role="tabpanel" class="tab-pane fade in" id="recent-jobs">
-
-            
-            </div><!-- tab-pane -->
-
-            <div role="tabpanel" class="tab-pane fade in active" id="popular-jobs">
-              
-
-            </div><!-- tab-pane -->
+      
         </div><!-- tab-content -->
     </div><!-- trending ads -->	
     </div>
